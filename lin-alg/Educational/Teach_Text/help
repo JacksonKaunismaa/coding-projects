@@ -1,0 +1,7 @@
+<text>Tutorial</text><transform=t><ihat>1,0</ihat><jhat>0,1</jhat><visible=t><add=9999>
+<text>This is a short introduction into how to use this program, especially the "Explore" mode, where instructions aren't given</text>
+<text>The first thing you can do is add vectors to the grid by right clicking anywhere on it.</text>
+<text>These vectors can then be dragged around by holding left click (only vectors added by right click can be dragged like this)</text>
+<text>For example, the green and red vectors, which represent i hat and j hat respectively, cannot be dragged</text>
+<text>Transformations are specified by setting the values of the matrix on the left, using the sliders that correspond positionally to the value they represent</text>
+<text>To see the effects of the transformation hit "Apply transformation"</text>

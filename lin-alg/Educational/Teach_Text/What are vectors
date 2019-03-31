@@ -1,0 +1,12 @@
+<text>What is a vector?</text><ihat>1,0</ihat><jhat>0,0</jhat><transform=f><add=0><visible=f>
+<text>To begin, lets recall an example you should mostly be familiar with: the number line.</text>
+<text>The idea is to take an infinitely long line (horizontal white line) and pick an arbitrary point and call it 0 (intersection of the 2 white lines)</text>
+<text>Then, you can specify an arbitrary length to represent "1," then you can count up from 0 and mark off every number</text>
+<text>Name any real number, and its on the number line: 1 (orange), 2 (red), -3.2 (green), π (white), -4.54035 (gray), are all on the number line</text><vector>(-4.54035,5.4,P),(-3.2,-1,G,4),(3.141593,1,W),(2,5,R).(1,0,O),</vector>
+<text>A small note, you are probably used to seeing numbers on the number line shown with tick marks, but the arrows here serve the same purpose, "pointing" to the value they represent</text>
+<text>So we see the idea of representing a number along a line, in space. The interesting question is why limit ourselves to just one axis, one line?</text>
+<text>If we expand our single 1D number line to make up an entire infinite grid, we can now represent numbers that can have two "components". With these new, "2D" numbers we can have something like [2, 5] (red), representing a single number</text><vector>(5.2,-1.7,B)</vector><jhat>0,1</jhat>
+<text>Perhaps you think of these 2 axes representing 2 different quantities, for example house price and square footage. The point [2, 5] in red then represents a single house that has a price of 2 and a square footage of 5.</text>
+<text>In this light, its clear that the vector [2, 5] (red) is NOT the same as [5, 2] (yellow), which is obvious if you imagine these 2 numbers/vectors sitting in space. </text><vector>(5,2,Y,5)</vector>
+<text>In conclusion, we've discovered what a vector is: a multi-dimensional number. Although the limitations of the software and human imagination only allow us to see 1D and 2D vectors, higher dimensional vectors exist, like 3, 4 or 100D vectors</text>
+<text>You should think of a vector firstly as representing a point in space, and secondly as a list of numbers like [2, 5]. With this in mind, we can begin exploring the properties of vectors and how we can work with them.</text>
