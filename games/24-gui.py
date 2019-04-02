@@ -1,179 +1,21 @@
 import pygame as pg
 import colors
 import random
+import time
+import cards
+import subprocess
 
 pg.init()
 pg.font.init()
 WIDTH, HEIGHT = 1000, 800
 CARDS_NUM = 4
+TARGET = 24
+MAX_SCORE = 8500
+MIN_SCORE = 150
+PENALTY = 6000
 gd = pg.display.set_mode((WIDTH, HEIGHT))
-pg.display.set_caption('24!')
+pg.display.set_caption(f'{TARGET}!')
 clock = pg.time.Clock()
-
-
-class BorderedSprite(pg.sprite.Sprite):
-    def __init__(self, sz):
-        pg.sprite.Sprite.__init__(self)
-        self.b_width = 3
-        self.rect = sz.copy()
-
-        self.back = pg.Surface((self.rect.width, self.rect.height))
-        self.back.fill(colors.WHITE)
-
-        self.border = pg.Rect(self.rect.left-self.b_width, self.rect.top-self.b_width, self.rect.width+2*self.b_width, self.rect.height+2*self.b_width)
-        self.border_color = colors.BLACK
-
-        self.selected = False
-        self.visible = False
-
-    def draw(self, surf):
-        if self.visible:
-            pg.draw.rect(gd, self.border_color, self.border)
-            gd.blit(self.back, self.rect)
-            gd.blit(surf, self.rect)
-
-    def center_draw(self, surf):
-        if self.visible:
-            pg.draw.rect(gd, self.border_color, self.border)
-            gd.blit(self.back, self.rect)
-            gd.blit(surf, surf.get_rect(center=self.rect.center))
-
-
-    def move(self, pos):
-        self.rect.x = pos[0]
-        self.rect.y = pos[1]
-        self.border.x = pos[0] - self.b_width
-        self.border.y = pos[1] - self.b_width
-
-    def hide(self):
-        self.move((-1000, -1000))
-        self.visible = False
-        self.selected = False
-
-    def slot(self, s):
-        self.visible = True
-        self.selected = False
-        for i in range(CARDS_NUM):
-            if s == i:
-                self.move((self.rect.width+((WIDTH-3*self.rect.width)//(CARDS_NUM-1))*i, HEIGHT//2-self.rect.height//2))
-                print(self)
-                return
-        else:
-            raise ValueError(f"Slot value must be in the range [0,{CARDS_NUM-1}]")
-
-    def try_select(self, mouse_evt):
-        if self.rect.collidepoint(mouse_evt.pos):
-            self.selected = True
-            self.border_color = colors.ORANGE
-        return self.selected
-
-    def deselect(self):
-        self.selected = False
-        self.border_color = colors.BLACK
-
-
-class Card(BorderedSprite):
-    def __init__(self, value, im_name):
-        im_load = pg.image.load(f"./assets/{im_name}").convert_alpha()
-        super().__init__(im_load.get_rect())
-
-        self.value = value
-        self.name = im_name
-        self.image = im_load
-
-    def draw(self):
-        super().draw(self.image)
-
-    def __repr__(self):
-        return f"Card(name={self.name}, value={self.value}, loc={self.rect}, visible={self.visible}), hbox={self.border}"
-
-
-class Fraction(BorderedSprite):
-    def __init__(self, top, low, sz):
-        if not low:
-            raise ZeroDivisionError(f"Can't create a fraction with denominator 0 (numerator was {top})")
-        super().__init__(sz)
-        self.top = top
-        self.low = low
-        self.sz = sz.copy()
-
-        self.font = pg.font.SysFont("Comic Sans MS", 80)
-        self.reduce()
-
-    def draw(self):
-        text = repr(self)
-        text_surf = self.font.render(text, True, colors.BLACK)
-        super().center_draw(text_surf)
-
-    def reduce(self):
-        a = abs(self.top)
-        b = abs(self.low)
-        while b:
-            a, b = b, a%b
-        self.top //= a
-        self.low //= a
-        if self.low < 0:
-            self.top *= -1
-            self.low *= -1
-
-    def __sub__(self, other):
-        if type(other) is Fraction:
-            self.top = other.low*self.top - other.top*self.low
-            self.low = other.low*self.low
-        elif type(other) is int:
-            self.top = self.top - other*self.low
-        else:
-            raise ValueError(f"Can't add type 'Fraction' and '{type(other)}'")
-        self.reduce()
-        return self
-
-    def __add__(self, other):
-        if type(other) is Fraction:
-            self.top = other.low*self.top + other.top*self.low
-            self.low = other.low*self.low
-        elif type(other) is int:
-            self.top += other*self.low
-        else:
-            raise ValueError(f"Can't sub type 'Fraction' and '{type(other)}'")
-        self.reduce()
-        return self
-
-    def __mul__(self, other):
-        if type(other) is Fraction:
-            self.top *= other.top
-            self.low *= other.low
-        elif type(other) is int:
-            self.top *= other
-        else:
-            raise ValueError(f"Can't mul type 'Fraction' and '{type(other)}'")
-        self.reduce()
-        return self
-
-    def __truediv__(self, other):
-        if type(other) is Fraction:
-            if other.top  == 0:
-                raise ZeroDivisionError(f"You can't do that! (Tried to divide a fraction <{self}> by fraction <{other}>)")
-            self.top *= other.low
-            self.low *= other.top
-        elif type(other) is int:
-            if other == 0:
-                raise ZeroDivisionError(f"You can't do that! (Tried to divide a fraction <{self}> by int 0)")
-            self.low *= other
-        else:
-            raise ValueError(f"Can't div type 'Fraction' and '{type(other)}'")
-        self.reduce()
-        return self
-
-    def __floordiv__(self, other):
-        self.__truediv__(other)
-        return self
-
-    def __repr__(self):
-        if self.low == 1 or self.top == 0:
-            text = f"{self.top}"
-        else:
-            text = f"{self.top}/{self.low}"
-        return text
 
 def load_imgs():
     img_arr = []
@@ -181,52 +23,260 @@ def load_imgs():
     suits = ["hearts", "clubs", "diamonds", "spades"]
     for v in range(1, 14):
         for s in suits:
-            new_c = Card(v, f"cards/light/{val_map[v]}_of_{s}.png")
+            new_c = cards.Card(v, f"cards/light/{val_map[v]}_of_{s}.png")
             new_c.hide()
             img_arr.append(new_c)
     return img_arr
 
 
-def rand_slot(cards):
-    random.shuffle(cards)
-    cs = random.sample(cards, 4)
-    for card in cards:
+def rand_slot(deck):
+    random.shuffle(deck)
+    slotted = []
+    cs = random.sample(deck, 4)
+    for card in deck:
         card.hide()
     for s, c in enumerate(cs):
-        c.slot(s)
+        c.slot(WIDTH, HEIGHT, CARDS_NUM, s)
+        slotted.append(c)
+    return slotted
 
 def do_op(op_chosen, val1, val2):
-    if op_chosen == 0:
+    if op_chosen == 1:
         return val1 + val2
-    elif op_chosen == 1:
-        return val1 - val2
     elif op_chosen == 2:
-        return val1*val2
+        return val1 - val2
     elif op_chosen == 3:
+        return val1*val2
+    elif op_chosen == 4:
         return val1/val2
     else:
         raise ValueError(f"Illegal operation '{op_chosen}', must be in [0,3]")
 
 
-def game():
-    cards = load_imgs()
-    rand_slot(cards)
-    num = Fraction(2, 3, cards[5].rect)
-    num.slot(1)
+def attempt_select(mpos, deck):
+    for card in deck:
+        if card.try_select(mpos):
+            return card
+    return False
+
+def hide_all(deck):
+    for card in deck:
+        card.hide()
+
+
+def deselect_all(deck):
+    for card in deck:
+        card.deselect()
+
+def one_left(deck):
+    one = False
+    for card in deck:
+        if card.visible:
+            if one:
+                return False
+            else:
+                one = card
+    return card
+
+
+def continue_screen(txt_msg):
+    t_msg = cards.TextBox(txt_msg, pg.Rect((WIDTH//2-(len(txt_msg)*20), HEIGHT//2), (len(txt_msg)*40, 100)))
+    cont_msg = cards.TextBox("Click to continue", pg.Rect((WIDTH//2-(17*20), HEIGHT//2-200), (17*40, 100)))
     while True:
         for evt in pg.event.get():
+            if evt.type == pg.MOUSEBUTTONDOWN or evt.type == pg.KEYDOWN:
+                return 0
+            elif evt.type == pg.QUIT:
+                pg.quit()
+                quit()
+        gd.fill(colors.WHITE)
+        t_msg.draw(gd)
+        cont_msg.draw(gd)
+        pg.display.update()
+        clock.tick(15)
+
+
+
+def verify_no_solution(hand):
+    res = subprocess.run(["krypto", str(TARGET), str(hand[0].value), str(hand[1].value), str(hand[2].value), str(hand[3].value), "-f"], stdout=subprocess.PIPE)
+    if res.stdout[0] == 78:
+        return 1
+    return res.stdout.decode('utf-8')
+
+def load_gui():
+    names = ["undo.jpeg", "plus_sign.jpeg", "minus_sign.jpeg", "multiply_sign.jpeg", "divide_sign.jpeg", "redo.jpeg"]
+    buttons = []
+    for idx, name in enumerate(names):
+        new_b = cards.Card(idx, f"math_symbols/{name}", dark_flag=True)
+        new_b.slot_below(WIDTH, HEIGHT, len(names), idx)
+        buttons.append(new_b)
+    buttons[0].darken()
+    buttons[-1].darken()
+    return buttons
+
+def game():
+    deck = load_imgs()
+    hand_copy = rand_slot(deck)
+    buttons = load_gui()
+    moves_played = []
+    extra_cards = []
+    card1 = None   # card currently selected
+    op_selected = None          # op chosen
+    score = 0
+    start = time.time()
+    score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 10), (200, 70)))
+    score_box = cards.TextBox("0", pg.Rect((WIDTH//2-125, 80), (250, 60)))
+    pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)))
+    correct_flag = 0
+    stack = {}
+    sp = 0
+    while True:
+        for evt in pg.event.get():
+            pass_btn.deselect() # this button keeps selecting for some reason, this makes it not do that
             if evt.type == pg.QUIT:
                 pg.quit()
                 return 0
             elif evt.type == pg.MOUSEBUTTONDOWN:
-                pass
-            elif evt.type == pg.MOUSEBUTTONUP:
-                pass
-
+                if pass_btn.try_select(evt):
+                    correct_flag = verify_no_solution(hand_copy)
+                result = attempt_select(evt, deck+extra_cards)
+                if result:
+                    if not card1:
+                        card1 = result
+                    elif op_selected:
+                        if card1 == result:
+                            break
+                        if type(card1.value) is cards.MathFraction:
+                            c1_val = card1.value
+                        else:
+                            c1_val = cards.MathFraction(card1.value, 1)
+                        if type(result.value) is cards.MathFraction:
+                            res_val = result.value
+                        else:
+                            res_val = cards.MathFraction(result.value, 1)
+                        new_val = do_op(op_selected.value, c1_val, res_val)
+                        new_card = cards.Fraction(new_val, card1.rect)
+                        sp_cpy = sp+3  # if overwriting stack, delete everything above overwrite point
+                        try:
+                            while True:
+                                del stack[sp_cpy]
+                                sp_cpy += 1
+                        except KeyError:  # absolutely beautiful code right here, waiting to throw an error to exit a loop
+                            pass
+                        stack[sp] = result
+                        stack[sp+1] = card1
+                        stack[sp+2] = new_card
+                        sp += 3
+                        card1.deselect()
+                        result.deselect()
+                        card1.hide()
+                        result.hide()
+                        new_card.slot(WIDTH, HEIGHT, CARDS_NUM, result.slot_num)
+                        extra_cards.append(new_card)
+                        op_selected.deselect()
+                        op_selected = None
+                        card1 = new_card
+                        card1.select_it()
+                    elif card1 != result:
+                        card1.deselect()
+                        card1 = result
+                else:
+                    if card1:
+                        op_result = attempt_select(evt, buttons)
+                        if op_result == buttons[0]:  # back arrow
+                            if op_selected:
+                                op_selected.deselect()
+                                op_selected = None
+                                op_result.deselect()
+                            else:
+                                 stack[sp-1].hide()  # delete newest card
+                                 stack[sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
+                                 stack[sp-3].reslot(WIDTH, HEIGHT, CARDS_NUM)
+                                 stack[sp-2].unhide()
+                                 stack[sp-3].unhide()
+                                 stack[sp-2].select_it()
+                                 card1.deselect()
+                                 card1 = stack[sp-2]
+                                 sp -= 3
+                        if op_result == buttons[-1]:
+                            stack[sp].hide()
+                            stack[sp+1].hide()
+                            stack[sp+2].unhide()
+                            stack[sp+2].reslot(WIDTH, HEIGHT, CARDS_NUM)
+                            stack[sp+2].select_it()
+                            card1.deselect()
+                            card1 = stack[sp+2]
+                            sp += 3
+                        if op_result and op_result not in [buttons[0], buttons[-1]]:
+                            if op_selected:
+                                op_selected.deselect()
+                            op_selected = op_result
+                            op_selected.select_it()
         gd.fill(colors.WHITE)
-        for card in cards:
-            card.draw()
-        num.draw()
+        for card in deck+extra_cards:
+            card.draw(gd)
+        for buto in buttons:
+            buto.draw(gd)
+        #print("stack is", stack, "with sp being", sp)
+        #print("sp", sp, "len(stack)", len(stack))
+        #print("in play", [c for c in deck+extra_cards if c.visible], "card1", card1)
+        if sp == 0:
+            buttons[0].disable()
+            buttons[0].darken()
+        if sp != 0 and len(stack) != 0:
+            buttons[0].enable()
+            buttons[0].lighten()
+        if len(stack) != sp:
+            buttons[-1].enable()
+            buttons[-1].lighten()
+        else:
+            buttons[-1].disable()
+            buttons[-1].darken()
+
+        if op_selected:
+            buttons[0].enable()
+            buttons[0].lighten()
+        if len(stack) == 0 and op_selected is None:
+            buttons[0].disable()
+            buttons[0].darken()
+        buttons[0].deselect()
+        buttons[-1].deselect()
+        score_disp.draw(gd)
+        score_box.draw(gd)
+        pass_btn.draw(gd)
+        last_card = one_left(deck+extra_cards)
+        if (last_card and last_card.value == TARGET) or correct_flag == 1:
+            stack = {}
+            sp = 0
+            extra_cards = []
+            deselect_all(deck)
+            deselect_all(buttons)
+            hide_all(deck)
+            hand_copy = rand_slot(deck)
+            moves_played = []
+            card1 = None   # card currently selected
+            op_selected = None          # op chosen
+            score += MAX_SCORE/(time.time()-start)+MIN_SCORE
+            score_box.update_text(score)
+            start = time.time()
+            correct_flag = 0
+        if correct_flag not in [0, 1]:
+            stack = {}
+            sp = 0
+            extra_cards = []
+            deselect_all(deck)
+            deselect_all(buttons)
+            hide_all(deck)
+            hand_copy = rand_slot(deck)
+            moves_played = []
+            card1 = None   # card currently selected
+            op_selected = None          # op chosen
+            score -= PENALTY
+            score_box.update_text(score)
+            start = time.time()
+            continue_screen(f"A solution was {correct_flag[:-1]}")
+            pass_btn.deselect()
+            correct_flag = 0
         pg.display.update()
         clock.tick(15)
 
