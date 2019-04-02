@@ -24,7 +24,7 @@ class GameState(object):
 class BorderedSprite(pg.sprite.Sprite):
     def __init__(self, sz):
         pg.sprite.Sprite.__init__(self)
-        self.b_width = 3
+        self.b_width = 5
         self.rect = sz.copy()
 
         self.back = pg.Surface((self.rect.width, self.rect.height))

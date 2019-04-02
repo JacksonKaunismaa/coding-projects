@@ -16,6 +16,22 @@ PENALTY = 6000
 gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
 clock = pg.time.Clock()
+puzzles = []
+try:
+    with open("r", "24-puzzles.elo") as f:
+        puzzles
+
+
+
+def write_elos(
+
+
+
+
+
+
+
+
 
 def load_imgs():
     img_arr = []
