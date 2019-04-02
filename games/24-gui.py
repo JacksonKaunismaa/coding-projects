@@ -4,10 +4,12 @@ import random
 import time
 import cards
 import subprocess
+import elo
+
 
 pg.init()
 pg.font.init()
-WIDTH, HEIGHT = 1000, 800
+WIDTH, HEIGHT = 1000, 1000
 CARDS_NUM = 4
 TARGET = 24
 MAX_SCORE = 8500
@@ -16,21 +18,7 @@ PENALTY = 6000
 gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
 clock = pg.time.Clock()
-puzzles = []
-try:
-    with open("r", "24-puzzles.elo") as f:
-        puzzles
-
-
-
-def write_elos(
-
-
-
-
-
-
-
+elo_table = elo.EloTable("gui-24.elo")
 
 
 def load_imgs():
@@ -112,12 +100,12 @@ def continue_screen(txt_msg):
         clock.tick(15)
 
 
-
 def verify_no_solution(hand):
     res = subprocess.run(["krypto", str(TARGET), str(hand[0].value), str(hand[1].value), str(hand[2].value), str(hand[3].value), "-f"], stdout=subprocess.PIPE)
     if res.stdout[0] == 78:
         return 1
     return res.stdout.decode('utf-8')
+
 
 def load_gui():
     names = ["undo.jpeg", "plus_sign.jpeg", "minus_sign.jpeg", "multiply_sign.jpeg", "divide_sign.jpeg", "redo.jpeg"]
@@ -277,6 +265,11 @@ def buttons_enable_disable(gs):
         gs.buttons[0].darken()
 
 
+def get_puzzle_name(gs):
+    puzzle_values = sorted([x.value for x in gs.hand_copy])
+    puzzle_name = "|".join([str(x) for x in puzzle_values])
+    return puzzle_name
+
 def handle_correct(gs):
     gs.stack = {}
     gs.sp = 0
@@ -287,11 +280,19 @@ def handle_correct(gs):
     gs.hand_copy = rand_slot(gs.deck)
     gs.card1 = None   # card currently selected
     gs.op_selected = None          # op chosen
-    gs.score += MAX_SCORE/(time.time()-gs.start)+MIN_SCORE
+
+    points_earned = MAX_SCORE/(time.time()-gs.start)+MIN_SCORE
+    score_earned = min(1,0.7+(points_earned-MIN_SCORE)/(10.0/3.0*float(MAX_SCORE)))
+
+    puzzle_name = get_puzzle_name(gs)
+    gs.correct += 1
+    elo_table.update_player(puzzle_name, score_earned)
+    gs.score += points_earned
     gs.score_box.update_text(gs.score)
     gs.start = time.time()
     gs.correct_flag = 0
-
+    gs.pf_box.update_text("%.3f"%elo_table.performance)
+    gs.solved_box.update_text(gs.correct)
 
 def handle_wrong(gs):
     gs.stack = {}
@@ -303,13 +304,17 @@ def handle_wrong(gs):
     gs.hand_copy = rand_slot(gs.deck)
     gs.card1 = None   # card currently selected
     gs.op_selected = None          # op chosen
+    puzzle_name = get_puzzle_name(gs)
+    elo_table.update_player(puzzle_name, 0)
     gs.score -= PENALTY
     gs.score_box.update_text(gs.score)
     gs.start = time.time()
+    gs.wrong += 1
     continue_screen(f"A solution was {gs.correct_flag[:-1]}")
     gs.pass_btn.deselect()
     gs.correct_flag = 0
-
+    gs.pf_box.update_text("%.3f"%elo_table.performance)
+    gs.wrong_box.update_text(gs.wrong)
 
 def game():
     gs = cards.GameState()     # not really a class, basically a struct with named variables
@@ -321,9 +326,27 @@ def game():
     gs.op_selected = None          # op chosen
     gs.score = 0
     gs.start = time.time()
-    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 10), (200, 70)))
-    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-125, 80), (250, 60)))
-    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)))
+    game_start = time.time()
+    gs.correct = 0
+    gs.wrong = 0
+
+    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 0), (200, 60)), bsize=2)
+    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-300, 60), (600, 60)), bsize=2)
+
+    gs.pf_disp = cards.TextBox("Performance", pg.Rect((WIDTH//2-185, 130), (370, 60)), bsize=2)
+    gs.pf_box = cards.TextBox("1500", pg.Rect((WIDTH//2-150, 192), (300, 60)), bsize=2)
+
+    gs.time_disp = cards.TextBox("Time", pg.Rect((0, 0), (150, 60)), bsize=2)
+    gs.time_box = cards.TextBox("0", pg.Rect((0, 60), (150, 60)), bsize=2)
+
+    gs.solved_disp = cards.TextBox("Solved", pg.Rect((0, 130), (200, 60)), bsize=2)
+    gs.solved_box = cards.TextBox("0", pg.Rect((0, 192), (200, 60)), bsize=2)
+
+    gs.wrong_disp = cards.TextBox("Wrong", pg.Rect((WIDTH-180, 130), (180, 60)), bsize=2)
+    gs.wrong_box = cards.TextBox("0", pg.Rect((WIDTH-180, 192), (180, 60)), bsize=2)
+
+    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)), bsize=2)
+
     gs.correct_flag = 0
     gs.stack = {}
     gs.sp = 0
@@ -332,7 +355,12 @@ def game():
             handle_events(evt, gs)
 
         buttons_enable_disable(gs)
-        gd.fill(colors.WHITE)
+        try:
+            gd.fill(colors.WHITE)
+        except pg.error:
+            elo_table.record_save()
+            elo_table.save()
+            quit()
         for card in gs.deck+gs.extra_cards:
             card.draw(gd)
         for buto in gs.buttons:
@@ -340,10 +368,20 @@ def game():
         gs.score_disp.draw(gd)
         gs.score_box.draw(gd)
         gs.pass_btn.draw(gd)
+        gs.pf_disp.draw(gd)
+        gs.pf_box.draw(gd)
+        gs.time_disp.draw(gd)
+        gs.time_box.draw(gd)
+        gs.solved_disp.draw(gd)
+        gs.solved_box.draw(gd)
+        gs.wrong_box.draw(gd)
+        gs.wrong_disp.draw(gd)
 
         gs.buttons[0].deselect()
         gs.buttons[-1].deselect()
         gs.pass_btn.deselect()
+
+        gs.time_box.update_text(int(time.time()-game_start))
 
         last_card = one_left(gs.deck+gs.extra_cards)
         if (last_card and last_card.value == TARGET) or gs.correct_flag == 1:

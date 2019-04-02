@@ -16,15 +16,28 @@ class GameState(object):
         self.score_disp = None
         self.score_box = None
         self.pass_btn = None
+        self.pf_disp = None
+        self.pf_box = None
+        self.time_disp = None
+        self.time_box = None
+        self.solved_disp = None
+        self.solved_box = None
         self.correct_flag = None
         self.stack = None
         self.sp = None
+        self.correct = None
+        self.wrong = None
+        self.wrong_disp = None
+        self.wrong_box = None
 
 
 class BorderedSprite(pg.sprite.Sprite):
-    def __init__(self, sz):
+    def __init__(self, sz, bsize=None):
         pg.sprite.Sprite.__init__(self)
-        self.b_width = 5
+        if bsize is None:
+            self.b_width = 5
+        else:
+            self.b_width = bsize
         self.rect = sz.copy()
 
         self.back = pg.Surface((self.rect.width, self.rect.height))
@@ -285,8 +298,8 @@ class Fraction(BorderedSprite):
 
 
 class TextBox(BorderedSprite):
-    def __init__(self, txt, sz):
-        super().__init__(sz)
+    def __init__(self, txt, sz, bsize=None):
+        super().__init__(sz, bsize=bsize)
         self.sz = sz.copy()
         self.txt = txt
         self.font = pg.font.SysFont("Comic Sans MS", 80)
