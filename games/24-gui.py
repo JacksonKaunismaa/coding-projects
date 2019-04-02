@@ -9,9 +9,9 @@ import elo
 
 pg.init()
 pg.font.init()
-WIDTH, HEIGHT = 1000, 1000
-CARDS_NUM = 4
-TARGET = 24
+WIDTH, HEIGHT = 1200, 1000
+CARDS_NUM = 5
+TARGET = 60
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
@@ -36,7 +36,7 @@ def load_imgs():
 def rand_slot(deck):
     random.shuffle(deck)
     slotted = []
-    cs = random.sample(deck, 4)
+    cs = random.sample(deck, CARDS_NUM)
     for card in deck:
         card.hide()
     for s, c in enumerate(cs):
@@ -155,11 +155,11 @@ def do_operation(result, gs):
     gs.card1.select_it()
 
 
-def handle_undo(op_result, gs):
+def handle_undo(gs):
     if gs.op_selected:
         gs.op_selected.deselect()
         gs.op_selected = None
-        op_result.deselect()
+        gs.buttons[0].deselect()
     else:
          gs.stack[gs.sp-1].hide()  # delete newest card
          gs.stack[gs.sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
@@ -218,6 +218,9 @@ def handle_events(evt, gs):
             add_all(gs)
         elif evt.key == pg.K_s:
             mul_all(gs)
+        elif evt.key == pg.K_ESCAPE:
+            if gs.buttons[0].enabled:
+                handle_undo(gs)
     elif evt.type == pg.MOUSEBUTTONDOWN:  # if button maybe clicked
         if gs.pass_btn.try_select(evt):      # claim no solution
             gs.correct_flag = verify_no_solution(gs.hand_copy)
@@ -234,7 +237,7 @@ def handle_events(evt, gs):
             if gs.card1:
                 op_result = attempt_select(evt, gs.buttons)
                 if op_result == gs.buttons[0]:  # undo
-                    handle_undo(op_result, gs)
+                    handle_undo(gs)
                 if op_result == gs.buttons[-1]:  # redo 
                     handle_redo(gs)
                 if op_result and op_result not in [gs.buttons[0], gs.buttons[-1]]:  # changing op chosen
