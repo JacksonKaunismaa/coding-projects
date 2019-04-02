@@ -114,174 +114,228 @@ def load_gui():
     buttons[-1].darken()
     return buttons
 
+
+def do_operation(result, gs):
+    if gs.card1 == result:
+        return
+    if type(gs.card1.value) is cards.MathFraction:
+        c1_val = gs.card1.value
+    else:
+        c1_val = cards.MathFraction(gs.card1.value, 1)
+    if type(result.value) is cards.MathFraction:
+        res_val = result.value
+    else:
+        res_val = cards.MathFraction(result.value, 1)
+    new_val = do_op(gs.op_selected.value, c1_val, res_val)
+    new_card = cards.Fraction(new_val, gs.card1.rect)
+    sp_cpy = gs.sp+3  # if overwriting stack, delete everything above overwrite point
+    try:
+        while True:
+            del gs.stack[sp_cpy]
+            sp_cpy += 1
+    except KeyError:  # absolutely beautiful code right here, waiting to throw an error to exit a loop
+        pass
+    gs.stack[gs.sp] = result
+    gs.stack[gs.sp+1] = gs.card1
+    gs.stack[gs.sp+2] = new_card
+    gs.sp += 3
+    gs.card1.deselect()
+    result.deselect()
+    gs.card1.hide()
+    result.hide()
+    new_card.slot(WIDTH, HEIGHT, CARDS_NUM, result.slot_num)
+    gs.extra_cards.append(new_card)
+    gs.op_selected.deselect()
+    gs.op_selected = None
+    gs.card1 = new_card
+    gs.card1.select_it()
+
+
+def handle_undo(op_result, gs):
+    if gs.op_selected:
+        gs.op_selected.deselect()
+        gs.op_selected = None
+        op_result.deselect()
+    else:
+         gs.stack[gs.sp-1].hide()  # delete newest card
+         gs.stack[gs.sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
+         gs.stack[gs.sp-3].reslot(WIDTH, HEIGHT, CARDS_NUM)
+         gs.stack[gs.sp-2].unhide()
+         gs.stack[gs.sp-3].unhide()
+         gs.stack[gs.sp-2].select_it()
+         gs.card1.deselect()
+         gs.card1 = gs.stack[gs.sp-2]
+         gs.sp -= 3
+
+
+def handle_redo(gs):
+    gs.stack[gs.sp].hide()
+    gs.stack[gs.sp+1].hide()
+    gs.stack[gs.sp+2].unhide()
+    gs.stack[gs.sp+2].reslot(WIDTH, HEIGHT, CARDS_NUM)
+    gs.stack[gs.sp+2].select_it()
+    gs.card1.deselect()
+    gs.card1 = gs.stack[gs.sp+2]
+    gs.sp += 3
+
+
+def get_cards_in_play(gs):
+    return [c for c in gs.deck+gs.extra_cards if c.visible]
+
+
+def add_all(gs):
+    while True:
+        c_remaining = get_cards_in_play(gs)
+        if len(c_remaining) == 1:
+            break
+        gs.op_selected = gs.buttons[1]
+        gs.card1 = c_remaining[0]
+        result = c_remaining[1]
+        do_operation(result, gs)
+
+
+def mul_all(gs):
+    while True:
+        c_remaining = get_cards_in_play(gs)
+        if len(c_remaining) == 1:
+            break
+        gs.op_selected = gs.buttons[3]
+        gs.card1 = c_remaining[0]
+        result = c_remaining[1]
+        do_operation(result, gs)
+
+
+def handle_events(evt, gs):
+    if evt.type == pg.QUIT:
+        pg.quit()
+        return 0
+    elif evt.type == pg.KEYDOWN:
+        if evt.key == pg.K_a:
+            add_all(gs)
+        elif evt.key == pg.K_s:
+            mul_all(gs)
+    elif evt.type == pg.MOUSEBUTTONDOWN:  # if button maybe clicked
+        if gs.pass_btn.try_select(evt):      # claim no solution
+            gs.correct_flag = verify_no_solution(gs.hand_copy)
+        result = attempt_select(evt, gs.deck+gs.extra_cards)  # selecting other cars
+        if result:
+            if not gs.card1:   # if card1 not already chosen
+                gs.card1 = result
+            elif gs.op_selected:    # if op already chosen
+                do_operation(result, gs)
+            elif gs.card1 != result:   # if no op selected and another card clicked, change which card is selected
+                gs.card1.deselect()
+                gs.card1 = result
+        else:
+            if gs.card1:
+                op_result = attempt_select(evt, gs.buttons)
+                if op_result == gs.buttons[0]:  # undo
+                    handle_undo(op_result, gs)
+                if op_result == gs.buttons[-1]:  # redo 
+                    handle_redo(gs)
+                if op_result and op_result not in [gs.buttons[0], gs.buttons[-1]]:  # changing op chosen
+                    if gs.op_selected:
+                        gs.op_selected.deselect()
+                    gs.op_selected = op_result
+                    gs.op_selected.select_it()
+
+
+def buttons_enable_disable(gs):
+    if gs.sp == 0:
+        gs.buttons[0].disable()
+        gs.buttons[0].darken()
+    if gs.sp != 0 and len(gs.stack) != 0:
+        gs.buttons[0].enable()
+        gs.buttons[0].lighten()
+    if len(gs.stack) != gs.sp:
+        gs.buttons[-1].enable()
+        gs.buttons[-1].lighten()
+    else:
+        gs.buttons[-1].disable()
+        gs.buttons[-1].darken()
+    if gs.op_selected:
+        gs.buttons[0].enable()
+        gs.buttons[0].lighten()
+    if len(gs.stack) == 0 and gs.op_selected is None:
+        gs.buttons[0].disable()
+        gs.buttons[0].darken()
+
+
+def handle_correct(gs):
+    gs.stack = {}
+    gs.sp = 0
+    gs.extra_cards = []
+    deselect_all(gs.deck)
+    deselect_all(gs.buttons)
+    hide_all(gs.deck)
+    gs.hand_copy = rand_slot(gs.deck)
+    gs.card1 = None   # card currently selected
+    gs.op_selected = None          # op chosen
+    gs.score += MAX_SCORE/(time.time()-gs.start)+MIN_SCORE
+    gs.score_box.update_text(gs.score)
+    gs.start = time.time()
+    gs.correct_flag = 0
+
+
+def handle_wrong(gs):
+    gs.stack = {}
+    gs.sp = 0
+    gs.extra_cards = []
+    deselect_all(gs.deck)
+    deselect_all(gs.buttons)
+    hide_all(gs.deck)
+    gs.hand_copy = rand_slot(gs.deck)
+    gs.card1 = None   # card currently selected
+    gs.op_selected = None          # op chosen
+    gs.score -= PENALTY
+    gs.score_box.update_text(gs.score)
+    gs.start = time.time()
+    continue_screen(f"A solution was {gs.correct_flag[:-1]}")
+    gs.pass_btn.deselect()
+    gs.correct_flag = 0
+
+
 def game():
-    deck = load_imgs()
-    hand_copy = rand_slot(deck)
-    buttons = load_gui()
-    moves_played = []
-    extra_cards = []
-    card1 = None   # card currently selected
-    op_selected = None          # op chosen
-    score = 0
-    start = time.time()
-    score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 10), (200, 70)))
-    score_box = cards.TextBox("0", pg.Rect((WIDTH//2-125, 80), (250, 60)))
-    pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)))
-    correct_flag = 0
-    stack = {}
-    sp = 0
+    gs = cards.GameState()     # not really a class, basically a struct with named variables
+    gs.deck = load_imgs()
+    gs.hand_copy = rand_slot(gs.deck)
+    gs.buttons = load_gui()
+    gs.extra_cards = []
+    gs.card1 = None   # card currently selected
+    gs.op_selected = None          # op chosen
+    gs.score = 0
+    gs.start = time.time()
+    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 10), (200, 70)))
+    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-125, 80), (250, 60)))
+    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)))
+    gs.correct_flag = 0
+    gs.stack = {}
+    gs.sp = 0
     while True:
         for evt in pg.event.get():
-            pass_btn.deselect() # this button keeps selecting for some reason, this makes it not do that
-            if evt.type == pg.QUIT:
-                pg.quit()
-                return 0
-            elif evt.type == pg.MOUSEBUTTONDOWN:
-                if pass_btn.try_select(evt):
-                    correct_flag = verify_no_solution(hand_copy)
-                result = attempt_select(evt, deck+extra_cards)
-                if result:
-                    if not card1:
-                        card1 = result
-                    elif op_selected:
-                        if card1 == result:
-                            break
-                        if type(card1.value) is cards.MathFraction:
-                            c1_val = card1.value
-                        else:
-                            c1_val = cards.MathFraction(card1.value, 1)
-                        if type(result.value) is cards.MathFraction:
-                            res_val = result.value
-                        else:
-                            res_val = cards.MathFraction(result.value, 1)
-                        new_val = do_op(op_selected.value, c1_val, res_val)
-                        new_card = cards.Fraction(new_val, card1.rect)
-                        sp_cpy = sp+3  # if overwriting stack, delete everything above overwrite point
-                        try:
-                            while True:
-                                del stack[sp_cpy]
-                                sp_cpy += 1
-                        except KeyError:  # absolutely beautiful code right here, waiting to throw an error to exit a loop
-                            pass
-                        stack[sp] = result
-                        stack[sp+1] = card1
-                        stack[sp+2] = new_card
-                        sp += 3
-                        card1.deselect()
-                        result.deselect()
-                        card1.hide()
-                        result.hide()
-                        new_card.slot(WIDTH, HEIGHT, CARDS_NUM, result.slot_num)
-                        extra_cards.append(new_card)
-                        op_selected.deselect()
-                        op_selected = None
-                        card1 = new_card
-                        card1.select_it()
-                    elif card1 != result:
-                        card1.deselect()
-                        card1 = result
-                else:
-                    if card1:
-                        op_result = attempt_select(evt, buttons)
-                        if op_result == buttons[0]:  # back arrow
-                            if op_selected:
-                                op_selected.deselect()
-                                op_selected = None
-                                op_result.deselect()
-                            else:
-                                 stack[sp-1].hide()  # delete newest card
-                                 stack[sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
-                                 stack[sp-3].reslot(WIDTH, HEIGHT, CARDS_NUM)
-                                 stack[sp-2].unhide()
-                                 stack[sp-3].unhide()
-                                 stack[sp-2].select_it()
-                                 card1.deselect()
-                                 card1 = stack[sp-2]
-                                 sp -= 3
-                        if op_result == buttons[-1]:
-                            stack[sp].hide()
-                            stack[sp+1].hide()
-                            stack[sp+2].unhide()
-                            stack[sp+2].reslot(WIDTH, HEIGHT, CARDS_NUM)
-                            stack[sp+2].select_it()
-                            card1.deselect()
-                            card1 = stack[sp+2]
-                            sp += 3
-                        if op_result and op_result not in [buttons[0], buttons[-1]]:
-                            if op_selected:
-                                op_selected.deselect()
-                            op_selected = op_result
-                            op_selected.select_it()
-        gd.fill(colors.WHITE)
-        for card in deck+extra_cards:
-            card.draw(gd)
-        for buto in buttons:
-            buto.draw(gd)
-        #print("stack is", stack, "with sp being", sp)
-        #print("sp", sp, "len(stack)", len(stack))
-        #print("in play", [c for c in deck+extra_cards if c.visible], "card1", card1)
-        if sp == 0:
-            buttons[0].disable()
-            buttons[0].darken()
-        if sp != 0 and len(stack) != 0:
-            buttons[0].enable()
-            buttons[0].lighten()
-        if len(stack) != sp:
-            buttons[-1].enable()
-            buttons[-1].lighten()
-        else:
-            buttons[-1].disable()
-            buttons[-1].darken()
+            handle_events(evt, gs)
 
-        if op_selected:
-            buttons[0].enable()
-            buttons[0].lighten()
-        if len(stack) == 0 and op_selected is None:
-            buttons[0].disable()
-            buttons[0].darken()
-        buttons[0].deselect()
-        buttons[-1].deselect()
-        score_disp.draw(gd)
-        score_box.draw(gd)
-        pass_btn.draw(gd)
-        last_card = one_left(deck+extra_cards)
-        if (last_card and last_card.value == TARGET) or correct_flag == 1:
-            stack = {}
-            sp = 0
-            extra_cards = []
-            deselect_all(deck)
-            deselect_all(buttons)
-            hide_all(deck)
-            hand_copy = rand_slot(deck)
-            moves_played = []
-            card1 = None   # card currently selected
-            op_selected = None          # op chosen
-            score += MAX_SCORE/(time.time()-start)+MIN_SCORE
-            score_box.update_text(score)
-            start = time.time()
-            correct_flag = 0
-        if correct_flag not in [0, 1]:
-            stack = {}
-            sp = 0
-            extra_cards = []
-            deselect_all(deck)
-            deselect_all(buttons)
-            hide_all(deck)
-            hand_copy = rand_slot(deck)
-            moves_played = []
-            card1 = None   # card currently selected
-            op_selected = None          # op chosen
-            score -= PENALTY
-            score_box.update_text(score)
-            start = time.time()
-            continue_screen(f"A solution was {correct_flag[:-1]}")
-            pass_btn.deselect()
-            correct_flag = 0
+        buttons_enable_disable(gs)
+        gd.fill(colors.WHITE)
+        for card in gs.deck+gs.extra_cards:
+            card.draw(gd)
+        for buto in gs.buttons:
+            buto.draw(gd)
+        gs.score_disp.draw(gd)
+        gs.score_box.draw(gd)
+        gs.pass_btn.draw(gd)
+
+        gs.buttons[0].deselect()
+        gs.buttons[-1].deselect()
+        gs.pass_btn.deselect()
+
+        last_card = one_left(gs.deck+gs.extra_cards)
+        if (last_card and last_card.value == TARGET) or gs.correct_flag == 1:
+            handle_correct(gs)
+        if gs.correct_flag not in [0, 1]:
+            handle_wrong(gs)
         pg.display.update()
         clock.tick(15)
-
-
-
 
 
 

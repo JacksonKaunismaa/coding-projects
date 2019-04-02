@@ -1,5 +1,25 @@
 import pygame as pg
 import colors
+import random
+
+
+class GameState(object):
+    def __init__(self):
+        self.deck = None
+        self.hand_copy = None
+        self.buttons = None
+        self.extra_cards = None
+        self.card1 = None
+        self.op_selected = None
+        self.score = None
+        self.start = None
+        self.score_disp = None
+        self.score_box = None
+        self.pass_btn = None
+        self.correct_flag = None
+        self.stack = None
+        self.sp = None
+
 
 class BorderedSprite(pg.sprite.Sprite):
     def __init__(self, sz):
