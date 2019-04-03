@@ -211,8 +211,7 @@ def mul_all(gs):
 
 def handle_events(evt, gs):
     if evt.type == pg.QUIT:
-        pg.quit()
-        return 0
+        gs.keep_looping = False
     elif evt.type == pg.KEYDOWN:
         if evt.key == pg.K_a:
             add_all(gs)
@@ -353,17 +352,13 @@ def game():
     gs.correct_flag = 0
     gs.stack = {}
     gs.sp = 0
-    while True:
+    gs.keep_looping = True
+    while gs.keep_looping:
         for evt in pg.event.get():
             handle_events(evt, gs)
 
         buttons_enable_disable(gs)
-        try:
-            gd.fill(colors.WHITE)
-        except pg.error:
-            elo_table.record_save()
-            elo_table.save()
-            quit()
+        gd.fill(colors.WHITE)
         for card in gs.deck+gs.extra_cards:
             card.draw(gd)
         for buto in gs.buttons:
@@ -393,9 +388,10 @@ def game():
             handle_wrong(gs)
         pg.display.update()
         clock.tick(15)
-
-
-
+    pg.quit()
+    elo_table.save()
+    elo_table.record_save()
+    return 0
 
 if __name__ == "__main__":
     game()

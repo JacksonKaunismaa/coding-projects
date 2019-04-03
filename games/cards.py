@@ -5,6 +5,7 @@ import random
 
 class GameState(object):
     def __init__(self):
+        self.keep_looping = None
         self.deck = None
         self.hand_copy = None
         self.buttons = None
