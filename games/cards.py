@@ -30,6 +30,7 @@ class GameState(object):
         self.wrong = None
         self.wrong_disp = None
         self.wrong_box = None
+        self.solution = None
 
 
 class BorderedSprite(pg.sprite.Sprite):

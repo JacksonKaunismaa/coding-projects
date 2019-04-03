@@ -5,6 +5,7 @@ import time
 import cards
 import subprocess
 import elo
+import threading as th
 
 
 pg.init()
@@ -19,7 +20,8 @@ gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
 clock = pg.time.Clock()
 elo_table = elo.EloTable("gui-24.elo")
-
+lock = th.Lock()
+th_event = th.Event()
 
 def load_imgs():
     img_arr = []
@@ -100,11 +102,21 @@ def continue_screen(txt_msg):
         clock.tick(15)
 
 
-def verify_no_solution(hand):
-    res = subprocess.run(["krypto", str(TARGET), str(hand[0].value), str(hand[1].value), str(hand[2].value), str(hand[3].value), "-f"], stdout=subprocess.PIPE)
-    if res.stdout[0] == 78:
-        return 1
-    return res.stdout.decode('utf-8')
+def async_check(gs):
+    while gs.keep_looping:
+        flags = ["krypto", str(TARGET)] + [str(x.value) for x in gs.hand_copy] + ["-f"]
+        with lock:
+            res = subprocess.run(flags, stdout=subprocess.PIPE)
+            gs.solution = res
+        th_event.wait()
+        th_event.clear()
+
+def verify_no_solution(gs):
+    with lock:
+        if gs.solution.stdout[0] == 78:
+            return 1
+        else:
+            return gs.solution.stdout.decode('utf-8')
 
 
 def load_gui():
@@ -222,7 +234,7 @@ def handle_events(evt, gs):
                 handle_undo(gs)
     elif evt.type == pg.MOUSEBUTTONDOWN:  # if button maybe clicked
         if gs.pass_btn.try_select(evt):      # claim no solution
-            gs.correct_flag = verify_no_solution(gs.hand_copy)
+            gs.correct_flag = verify_no_solution(gs)
         result = attempt_select(evt, gs.deck+gs.extra_cards)  # selecting other cars
         if result:
             if not gs.card1:   # if card1 not already chosen
@@ -295,6 +307,7 @@ def handle_correct(gs):
     gs.correct_flag = 0
     gs.pf_box.update_text("%.3f"%elo_table.performance)
     gs.solved_box.update_text(gs.correct)
+    th_event.set()
 
 def handle_wrong(gs):
     gs.stack = {}
@@ -317,6 +330,7 @@ def handle_wrong(gs):
     gs.correct_flag = 0
     gs.pf_box.update_text("%.3f"%elo_table.performance)
     gs.wrong_box.update_text(gs.wrong)
+    th_event.set()
 
 def game():
     gs = cards.GameState()     # not really a class, basically a struct with named variables
@@ -331,6 +345,11 @@ def game():
     game_start = time.time()
     gs.correct = 0
     gs.wrong = 0
+    gs.keep_looping = True
+
+    th_event.clear()
+    solver_thread = th.Thread(target=async_check, args=(gs,))
+    solver_thread.start()
 
     gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 0), (200, 60)), bsize=2)
     gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-300, 60), (600, 60)), bsize=2)
@@ -352,7 +371,6 @@ def game():
     gs.correct_flag = 0
     gs.stack = {}
     gs.sp = 0
-    gs.keep_looping = True
     while gs.keep_looping:
         for evt in pg.event.get():
             handle_events(evt, gs)
@@ -389,8 +407,10 @@ def game():
         pg.display.update()
         clock.tick(15)
     pg.quit()
+    th_event.set()
     elo_table.save()
     elo_table.record_save()
+    solver_thread.join()
     return 0
 
 if __name__ == "__main__":
