@@ -1,0 +1,6 @@
+<text>front page</text><transform=t><ihat>3,2</ihat><jhat>0,1</jhat><visible=t><add=999>
+<text>hello world</text>
+<text>asdfasfasfasfasfasf</text><vector>(3,2,B,0),(-2,3,O,1),...(5,5,B,2),...(4,5,B,3),(1,1,G,12)</vector>
+<text>adsHello world </text><animate>(0.scale(2))..(1.scale(-3.212))..(2.scale(-3.212))..(3.scale(-3.212))...(12.trans(2,1))</animate>
+<text>this is a shitloaddddd of text that is going everywhere i really want to see if itll overflow th<b>atd</b> be interesting, wouldnt it be nice if we were older then we wouldnt have to wait so loooong i barely know what i am writing, double daberino!</text>
+<text>heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeellllllllllllllllllllllllllllllllllooooooooooooooooooooooooooooooooooooooooooooooooooo!</text>

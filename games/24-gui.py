@@ -406,11 +406,15 @@ def game():
             handle_wrong(gs)
         pg.display.update()
         clock.tick(15)
-    pg.quit()
     th_event.set()
+    try:
+        lock.release()
+    except RuntimeError:
+        pass
     elo_table.save()
     elo_table.record_save()
     solver_thread.join()
+    pg.quit()
     return 0
 
 if __name__ == "__main__":
