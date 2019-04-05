@@ -3,6 +3,8 @@ from PIL import Image
 import os
 import time
 
+"""Rather silly project to (poorly) recreate matplotlib in python, was originally hoping it would be faster than it, which it is, but has far fewer features"""
+
 cmap = {'red': (244, 4, 44),
         'sky-blue': (34, 214, 249),
         'indigo': (16, 12, 137),

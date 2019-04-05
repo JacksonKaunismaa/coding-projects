@@ -3,7 +3,7 @@ import numpy as np
 import random
 import q_learning as ql
 import sys
-
+"""Another test game for the q learning agent (tic tac toe)"""
 
 class TicTacToe(object):
     def __init__(self, init_board=None):

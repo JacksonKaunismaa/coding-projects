@@ -4,6 +4,9 @@ import pickle
 import numpy as np
 import math
 
+"""Little script to turn the wierd image format for MNIST from http://yann.lecun.com/exdb/mnist/ to numpy arrays"""
+
+
 def bytes_to_ints(byte_array):
     return [x for x in byte_array]
 

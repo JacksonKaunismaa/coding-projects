@@ -2,6 +2,8 @@ import numpy as np
 import matimg
 import matplotlib.pyplot as pyplt
 
+"""Simple kmeans classifier that also includes some functions to generate random data for testing"""
+
 def update_means(x, y, K):
     new_means = np.zeros((K, x.shape[1]))
     for k in range(K):

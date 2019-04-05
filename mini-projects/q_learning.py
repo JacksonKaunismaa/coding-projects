@@ -2,7 +2,8 @@ import numpy as np
 import math
 import random
 import pickle
-
+"""Not 100% if this exactly classifies as Q-Learning, but I think it essentially fits the mold, as it builds up a table of what moves lead to high scores
+in a given position of an implementation of a Game class and tries to balance exploration and exploitation, and is trained by doing a ton of self-play games"""
 
 class QLearn(object):
     def __init__(self, c, max_moves):

@@ -1,6 +1,9 @@
 import numpy as np
 import time
 
+"""Pure numpy feed forward neural network I did for practice"""
+
+
 NUM_SAMPLES = 2048
 INPT_SIZE = 50
 OUT_SIZE = 10

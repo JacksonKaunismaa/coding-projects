@@ -2,7 +2,9 @@ import numpy as np
 import q_learning as ql
 import sys
 import random
-
+"""Simple game that I tested the Q-Learning agent on, not sure if it is a correct name for it, but it is essentially a game where you start with some number, say 120
+and then you pick another number (<120), call it x. Each 'move' involves players taking turns calling out a number from 1 to x, which increases the running total. Whichever
+player is able to call out the final number (eg. 120) wins the game."""
 
 class Straws(object):
     def __init__(self, game_len, max_move):

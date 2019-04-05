@@ -96,7 +96,7 @@ class BorderedSprite(pg.sprite.Sprite):
         self.visible = True
         self.selected = False
         if s in range(buttons_num):
-            self.move((self.rect.width*3+((WIDTH-7*self.rect.width)//(buttons_num-1))*s, int(HEIGHT-self.rect.height*3.2) ))
+            self.move((self.rect.width*3+((WIDTH-7*self.rect.width)//(buttons_num-1))*s, int(HEIGHT-self.rect.height*4.5) ))
             self.slot_num = s
         else:
             raise ValueError(f"Slot below value must be in the range [0,{buttons_num-1}]")

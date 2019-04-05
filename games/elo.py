@@ -7,7 +7,6 @@ class EloTable(object):
         self.start_volatility = 19
         self.player_name = "player-elo"
         self.performance = 1500
-        self.elo_record_len = 300
         try:
             with open(self.tname, "r") as f:
                 raw = f.readlines()
