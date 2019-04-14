@@ -171,6 +171,11 @@ class AttentionNMT(object):
         print(f"Loaded {len(self.train_src) + len(self.test_src) + len(self.validate_src)} source and target sentence pairs.")
         pretty_print(self.test_src, self.test_tar, self.idx_to_src, self.idx_to_tar)
 
+    def show_msg(self, tensor, lang):
+        for t in tensor:
+            if t != 0:
+                print(lang[tensor], end=" ")
+
     def build_graph(self, hidden_size, layers_deep):
         self.hidden_size = hidden_size
         self.layers_deep = layers_deep
