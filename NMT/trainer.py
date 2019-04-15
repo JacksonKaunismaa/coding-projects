@@ -72,13 +72,18 @@ def load_sentence_words(data_dir, text_file):
     return tokenized
 
 class AttentionNMT(object):
-    def __init__(self):
+    def __init__(self, batch_size=64, hidden_size=256, units=1024):
         self.src_to_idx = {}
         self.idx_to_src = {}
         self.tar_to_idx = {}
         self.idx_to_tar = {}
         self.src_size = 0
         self.tar_size = 0
+        self.batch_size = batch_size
+        self.hidden_size = hidden_size
+        self.units = units
+        self.dataset = []    # holds training data
+        self.testset = []    # holds testing data
 
         self.train_tar = []
         self.test_tar = []
@@ -190,6 +195,17 @@ class AttentionNMT(object):
         cells = [tf.nn.rnn_cell.LSTMCell(num_units=self.hidden_size) for _ in range(self.layers_deep)]
         deep_cell = tf.nn.rnn_cell.MultiRNNCell(cells)
         o_, self.hidden_state = tf.nn.dynamic_rnn(deep_cell, enc_hot, initial_state=enc_tuple_state)
+
+
+    def gen_datasets(self):
+        buf = len(self.train_src)
+        test_buf = len(self.test_src)
+        src_size = len(self.src_to_idx)
+        tar_size = len(self.tar_to_idx)
+        self.dataset = tf.data.Dataset.from_tensor_slices((self.train_src, self.train_tar)).shuffle(buf)
+        self.dataset = self.dataset.batch(self.batch_size, drop_remainder=True)
+        self.testset = tf.data.Dataset.from_tensor_slices((self.test_src, self.test_tar)).shuffle(test_buf)
+        self.testset = self.testset.batch(self.batch_size, drop_remainder=True)
 
     def learn(self):
         pass
