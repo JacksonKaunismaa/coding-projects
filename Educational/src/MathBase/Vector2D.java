@@ -29,7 +29,7 @@ public class Vector2D {
         this(0, 0);
     }
 
-    Vector2D(Vector2D copyVector) {    // ID==null is either meaningless (is never added to grid) or is determined when you actually add it to the grid, to ensure unique IDs
+    public Vector2D(Vector2D copyVector) {    // ID==null is either meaningless (is never added to grid) or is determined when you actually add it to the grid, to ensure unique IDs
         this(copyVector.getVectorX(), copyVector.getVectorY(), copyVector.color, (Integer) null);
     }
 
@@ -90,7 +90,7 @@ public class Vector2D {
     }
 
 
-    private Vector2D norm() {
+    Vector2D norm() {
         // Returns a copy of the vector normalized so it has euclidean norm of 1, but in the same direction
         double mag = getMagnitude();
         if (mag != 0)

@@ -70,6 +70,14 @@ public class TransformPanel extends JPanel {
         JButton clear = new JButton("Clear vectors");
         clear.addActionListener(e -> gridRef.clearVectors());
 
+        JButton eigen = new JButton("Add eigenvectors");
+        eigen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fireEigenEvent(new TransformEvent(this, a11.getValue(), a12.getValue(), a21.getValue(), a22.getValue()));
+            }
+        });
+
         JButton quit = new JButton("Quit");
         quit.addActionListener(e -> {
             exploreRef.fireExitEvent();
@@ -78,6 +86,7 @@ public class TransformPanel extends JPanel {
 
         quit.setFont(font);
         clear.setFont(font);
+        eigen.setFont(font);
         identity.setFont(font);
         transform.setFont(font);
 
@@ -140,6 +149,12 @@ public class TransformPanel extends JPanel {
             gc.gridwidth = 2;
             gb.setConstraints(quit, gc);
             add(quit);
+
+            gc.gridx = 0;
+            gc.gridy = 7;
+            gc.gridwidth = 2;
+            gb.setConstraints(eigen, gc);
+            add(eigen);
         }
     }
 
@@ -176,7 +191,22 @@ public class TransformPanel extends JPanel {
         }
     }
 
+    private void fireEigenEvent(TransformEvent e) {
+        Object[] listeners = listenerList.getListenerList(); // get all listeners
+
+        for (int i = 0; i < listeners.length; i += 2) // step by 2 at a time because listenerList is like classType1, listener1, classType2, listener2, classType3, listener3,
+        { // thus all the even numbered indices are just the classes, and the odd numbered ones are the actual listeners
+            if (listeners[i] == EigenEventListener.class) { // if the listener happens to be a ColorPanelListener, we can now fire colorChanged (equivalent to "actionPerformed")
+                ((EigenEventListener) listeners[i + 1]).sendEigen(e);
+            }
+        }
+    }
+
     public void addTransformListener(TransformEventListener listener) {
         listenerList.add(TransformEventListener.class, listener);
+    }
+
+    public void addEigenListener(EigenEventListener listener) {
+        listenerList.add(EigenEventListener.class, listener);
     }
 }

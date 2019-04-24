@@ -238,11 +238,54 @@ public class LinalgGrid extends JPanel {
     }
 
 
-    Vector2D iHatGet() {
+    public void addEigen(Vector2D iHatNew, Vector2D jHatNew){
+        // compute coefficients a,b,c for solving ax^2 + bx + c = 0
+        removeByID(-1);
+        removeByID(-2);
+        double a = 1.0;
+        double b = -(jHatNew.getVectorY()+iHatNew.getVectorX());
+        double c = (iHatNew.getVectorX()*jHatNew.getVectorY()) - (iHatNew.getVectorY()*jHatNew.getVectorX());
+        double discrim = b*b-4*a*c;
+        if (discrim >= 0) {
+            double sqrtDiscrim = Math.sqrt(discrim);
+            double eig1 = (-b+sqrtDiscrim)/(2*a);
+            double eig2 = (-b-sqrtDiscrim)/(2*a);
+            Vector2D eigVec1, eigVec2;
+            if (jHatNew.getVectorX() != 0) {
+                eigVec1 = (new Vector2D(1.0, (eig1 - iHatNew.getVectorX()) / jHatNew.getVectorX())).norm();
+                eigVec2 = (new Vector2D(1.0, (eig2 - iHatNew.getVectorX()) / jHatNew.getVectorX())).norm();
+            }
+            else if (iHatNew.getVectorY() != 0){
+                eigVec1 = (new Vector2D((eig1 - jHatNew.getVectorY()) / iHatNew.getVectorY(), 1)).norm();
+                eigVec2 = (new Vector2D((eig2 - jHatNew.getVectorY()) / iHatNew.getVectorY(), 1)).norm();
+            }
+            else if ((eig1 - iHatNew.getVectorX() != 0) && (eig2 - iHatNew.getVectorX() != 0)){
+                eigVec1 = (new Vector2D((jHatNew.getVectorY()) / (eig1 - iHatNew.getVectorX()), 1)).norm();
+                eigVec2 = (new Vector2D((jHatNew.getVectorY()) / (eig2 - iHatNew.getVectorX()), 1)).norm();
+            }
+            else if ((eig1 - jHatNew.getVectorY() != 0) && (eig2 - jHatNew.getVectorY() != 0)) {
+                eigVec1 = (new Vector2D(1, (iHatNew.getVectorY()) / (eig1 - jHatNew.getVectorY()))).norm();
+                eigVec2 = (new Vector2D(1, (iHatNew.getVectorY()) / (eig2 - jHatNew.getVectorY()))).norm();
+            }
+            else {
+                eigVec1 = new Vector2D(0, 0, "-1");
+                eigVec2 = new Vector2D(0, 0, "-2");
+            }
+            addVector(eigVec1);
+            addVector(eigVec2);
+            System.out.println("Computed eigenvalues of [value=" + eig1 + ", vector=" + eigVec1 + "] and [value=" + eig2 + ", vector=" + eigVec2 + "]");
+        }
+        else {
+            System.out.println("Eigenvalues could not be found (-ve discriminant => singular matrix)");
+        }
+    }
+
+
+    public Vector2D iHatGet() {
         return iHat;
     }
 
-    Vector2D jHatGet() {
+    public Vector2D jHatGet() {
         return jHat;
     }
 

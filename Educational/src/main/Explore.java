@@ -14,9 +14,11 @@
 package main;
 
 import MathBase.LinalgGrid;
+import MathBase.Vector2D;
 import TransformPanel.TransformEvent;
 import TransformPanel.TransformEventListener;
 import TransformPanel.TransformPanel;
+import TransformPanel.EigenEventListener;
 
 import javax.swing.event.EventListenerList;
 import java.awt.*;
@@ -38,6 +40,13 @@ public class Explore extends ExitPanel {
                 grid.retransform(evt.iHatGet(), evt.jHatGet());
             }
         });
+
+        tp.addEigenListener(new EigenEventListener() {
+            public void sendEigen(TransformEvent evt){
+                grid.addEigen(evt.iHatGet(), evt.jHatGet());
+            }
+        });
+
         tp.setGridRef(grid);    // hacky stuff please ignore
         tp.setExploreRef(this);
 

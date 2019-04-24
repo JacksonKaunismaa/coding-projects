@@ -107,10 +107,13 @@ public class VectorList extends JComponent {
 
     void removeByID(int ID) {
         for (Vector2D vec : vectors) {
-            if (vec.getID() == ID) {
-                vectors.remove(vec);
-                return;
+            try {
+                if (vec.getID() == ID) {
+                    vectors.remove(vec);
+                    return;
+                }
             }
+            catch (Exception ignored) {};
         }
     }
 

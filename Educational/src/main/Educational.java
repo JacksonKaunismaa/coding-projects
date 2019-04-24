@@ -9,10 +9,13 @@
 //---------------------------------------------------------------------------------------|
 package main;
 
+import MathBase.Vector2D;
+
 import javax.swing.*;
 
 public class Educational {
     public static void main(String[] args) {
+
         SwingUtilities.invokeLater(() -> {
             MainFrame frame = new MainFrame();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // exit when the user presses the close button in the top right
