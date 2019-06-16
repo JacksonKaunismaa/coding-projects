@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pygame as pg
 import colors
 import random
@@ -6,7 +8,7 @@ import cards
 import subprocess
 import elo
 import threading as th
-
+import os
 
 pg.init()
 pg.font.init()
@@ -16,10 +18,11 @@ TARGET = 60
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
+SCRIPT_LOC = os.path.dirname(os.path.realpath(__file__))
 gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
 clock = pg.time.Clock()
-elo_table = elo.EloTable("gui-24.elo")
+elo_table = elo.EloTable(f"{SCRIPT_LOC}/gui-24.elo")
 lock = th.Lock()
 th_event = th.Event()
 
@@ -29,7 +32,7 @@ def load_imgs():
     suits = ["hearts", "clubs", "diamonds", "spades"]
     for v in range(1, 14):
         for s in suits:
-            new_c = cards.Card(v, f"cards/light/{val_map[v]}_of_{s}.png")
+            new_c = cards.Card(v, f"{SCRIPT_LOC}/assets/cards/light/{val_map[v]}_of_{s}.png")
             new_c.hide()
             img_arr.append(new_c)
     return img_arr
@@ -123,7 +126,7 @@ def load_gui():
     names = ["undo.jpeg", "plus_sign.jpeg", "minus_sign.jpeg", "multiply_sign.jpeg", "divide_sign.jpeg", "redo.jpeg"]
     buttons = []
     for idx, name in enumerate(names):
-        new_b = cards.Card(idx, f"math_symbols/{name}", dark_flag=True)
+        new_b = cards.Card(idx, f"{SCRIPT_LOC}/assets/math_symbols/{name}", dark_flag=True)
         new_b.slot_below(WIDTH, HEIGHT, len(names), idx)
         buttons.append(new_b)
     buttons[0].darken()

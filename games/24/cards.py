@@ -132,7 +132,7 @@ class BorderedSprite(pg.sprite.Sprite):
 
 class Card(BorderedSprite):
     def __init__(self, value, im_name, dark_flag=False):
-        im_load = pg.image.load(f"./assets/{im_name}").convert_alpha()
+        im_load = pg.image.load(im_name).convert_alpha()
         super().__init__(im_load.get_rect())
 
         self.value = value
