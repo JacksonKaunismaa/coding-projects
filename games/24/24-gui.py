@@ -32,7 +32,7 @@ def load_imgs():
     suits = ["hearts", "clubs", "diamonds", "spades"]
     for v in range(1, 14):
         for s in suits:
-            new_c = cards.Card(v, f"{SCRIPT_LOC}/assets/cards/light/{val_map[v]}_of_{s}.png")
+            new_c = cards.Card(v, f"{SCRIPT_LOC}/../assets/cards/light/{val_map[v]}_of_{s}.png")
             new_c.hide()
             img_arr.append(new_c)
     return img_arr
@@ -126,7 +126,7 @@ def load_gui():
     names = ["undo.jpeg", "plus_sign.jpeg", "minus_sign.jpeg", "multiply_sign.jpeg", "divide_sign.jpeg", "redo.jpeg"]
     buttons = []
     for idx, name in enumerate(names):
-        new_b = cards.Card(idx, f"{SCRIPT_LOC}/assets/math_symbols/{name}", dark_flag=True)
+        new_b = cards.Card(idx, f"{SCRIPT_LOC}/../assets/math_symbols/{name}", dark_flag=True)
         new_b.slot_below(WIDTH, HEIGHT, len(names), idx)
         buttons.append(new_b)
     buttons[0].darken()
