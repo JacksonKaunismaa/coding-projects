@@ -9,15 +9,20 @@ from tensorflow.keras.models import Model
 import tensorflow.keras as ks
 from scipy.optimize import minimize
 from scipy.optimize import Bounds
+
 model = VGG19()
 SIZE = 224
-LR = 500.0
+#LR = 500.0
 SHOW = 1000
-DROP = 35
-IM_NAME = "./pebbles.jpg"
-HISTORY_SIZE = 20
-BETA_1 = 0.9
-BETA_2 = 0.999
+#DROP = 35
+STYLE_NAME = "./lights.jpeg"
+IM_NAME = "./krutik.jpg"
+#HISTORY_SIZE = 20
+#BETA_1 = 0.9
+#BETA_2 = 0.999
+CONTENT_WEIGHT = 1
+STYLE_WEIGHT = 700
+
 
 def prep_img(name):
     im_read = Image.open(name)
@@ -97,70 +102,76 @@ def compute_search_dir(grad_inpt):
     return search_dir
 
 
-arr_img = prep_img(IM_NAME)
+style_img = prep_img(STYLE_NAME)
+content_img = prep_img(IM_NAME)
 cnt = 0
 
-gradient_avg = 0.0
-velocity_avg = 0.0
+#gradient_avg = 0.0
+#velocity_avg = 0.0
 
 model = replace_intermediate_layer_in_keras(model, 3, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
 model = replace_intermediate_layer_in_keras(model, 6, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
 model = replace_intermediate_layer_in_keras(model, 11, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
 model = replace_intermediate_layer_in_keras(model, 16, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
 model = replace_intermediate_layer_in_keras(model, 21, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
-weights = np.array([1.0]*20)
 rand_img = np.expand_dims(np.random.uniform(low=0.0, high=255.0, size=[SIZE,SIZE,3]), axis=0).astype(np.float64)
 
 model_inpt = model.input
-layers = [model.layers[index].output for index in range(2, 22)]
-#layers = [model.layers[2].output,
-#            model.layers[3].output,
-#            model.layers[6].output,
-#         model.layers[11].output,
-#         model.layers[16].output,
-#         model.layers[5].output]
-grams = [gram_matrix(layer) for layer in layers]
+#layers = [model.layers[index].output for index in range(2, 22)]
+style_layers = [model.layers[1].output,
+            model.layers[4].output,
+            model.layers[7].output,
+         model.layers[12].output,
+         model.layers[17].output]
+grams = [gram_matrix(layer) for layer in style_layers]
 g1 = grams[0]
 g2 = grams[1]
 g3 = grams[2]
 g4 = grams[3]
 g5 = grams[4]
-g6 = grams[5]
-g7 = grams[6]
-g8 = grams[7]
-g9 = grams[8]
-g10 = grams[9]
-g11 = grams[10]
-g12 = grams[11]
-g13 = grams[12]
-g14 = grams[13]
-g15 = grams[14]
-g16 = grams[15]
-g17 = grams[16]
-g18 = grams[17]
-g19 = grams[18]
-g20 = grams[19]
+#g6 = grams[5]
+#g7 = grams[6]
+#g8 = grams[7]
+#g9 = grams[8]
+#g10 = grams[9]
+#g11 = grams[10]
+#g12 = grams[11]
+#g13 = grams[12]
+#g14 = grams[13]
+#g15 = grams[14]
+#g16 = grams[15]
+#g17 = grams[16]
+#g18 = grams[17]
+#g19 = grams[18]
+#g20 = grams[19]
 
-eval_func = K.function([model_inpt], [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20])
-#eval_func = K.function([model_inpt], [g1, g2, g3, g4, g5, g6])
-#eval_func = K.function([model_inpt], [tf.convert_to_tensor(grams)])
-targets = eval_func([arr_img])
+content_layers = [model.layers[13].output]
+f1 = content_layers[0]
 
-loss = tf.add_n([weights[i] * tf.reduce_sum(tf.square(targets[i] - grams[i])) for i in range(len(targets))])
-#partial_loss = tf.square(targets[0] - grams[0])
+weights = np.array([1.0/len(style_layers)]*len(style_layers))
+#eval_func = K.function([model_inpt], [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20])
+style_eval_func = K.function([model_inpt], [g1, g2, g3, g4, g5])
+content_eval_func = K.function([model_inpt], [f1])
+
+style_targets = style_eval_func([style_img])
+content_targets = content_eval_func([content_img])
+
+style_loss = tf.add_n([weights[i] * tf.reduce_sum(tf.square(style_targets[i] - grams[i])) for i in range(len(style_targets))])
+content_loss = tf.add_n([tf.reduce_sum(tf.square(content_targets[i] - content_layers[i])) for i in range(len(content_targets))])
+loss = STYLE_WEIGHT * style_loss + CONTENT_WEIGHT * content_loss
 grads = K.gradients(loss, model_inpt)[0]
 
 #div_grads = grads / (tf.sqrt(tf.reduce_mean(tf.square(grads))) + 1e-5)
-opt_func = K.function([model_inpt], [loss, grads, g1])
+#opt_func = K.function([model_inpt], [loss, grads, g1])
 
 
-first_loss, first_grads, first_gram = opt_func([rand_img])   # first thing it does it take a steepest descent step
+#first_loss, first_grads, first_gram = opt_func([rand_img])   # first thing it does it take a steepest descent step
 #prev_grad = first_grads
 #prev_img = rand_img
-gradient_avg = BETA_1 * gradient_avg + (1 - BETA_1) * first_grads
-velocity_avg = BETA_2 * velocity_avg + (1 - BETA_2) * np.square(first_grads)
-print("first_grad", np.shape(first_grads))
-rand_img = np.clip(rand_img - first_grads*LR, a_min=0.0, a_max=255.0)  # update image based on search_dir = -(H^-1#)g
+#gradient_avg = BETA_1 * gradient_avg + (1 - BETA_1) * first_grads
+#velocity_avg = BETA_2 * velocity_avg + (1 - BETA_2) * np.square(first_grads)
+#print("first_grad", np.shape(first_grads))
+#rand_img = np.clip(rand_img - first_grads*LR, a_min=0.0, a_max=255.0)  # update image based on search_dir = -(H^-1#)g
 #second_loss, second_grads, second_gram = opt_func([rand_img])  # then it recomputes gradients so we can make the first iteration of histories
 #print("second_grad", np.shape(second_grads))
 #print("diff", np.shape(second_grads-prev_grad))
@@ -170,7 +181,7 @@ rand_img = np.clip(rand_img - first_grads*LR, a_min=0.0, a_max=255.0)  # update 
 
 
 
-bfgs_search = K.function([model_inpt], [loss, grads])
+#bfgs_search = K.function([model_inpt], [loss, grads])
 
 
 
@@ -179,9 +190,9 @@ bfgs_search = K.function([model_inpt], [loss, grads])
 
 #immediate_grads = K.gradients(loss, layers[0])[0][0]
 #other_func = K.function([model_inpt], [loss, immediate_grads, layers[0], g1, partial_loss])
-lowest_loss = float("inf")
-since_last_drop = 0
-streak = 0
+#lowest_loss = float("inf")
+#since_last_drop = 0
+#streak = 0
 #grad_diffs = []
 #img_diffs = []
 loss_only = K.function([model_inpt], [tf.cast(loss, tf.float64)])
