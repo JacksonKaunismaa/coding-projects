@@ -14,7 +14,7 @@ def load_data(fname, im_size=16):
 def show_image(an_img):
     an_img += 1
     an_img /= 2.0
-    an_img *= 255
+    an_img *= 5
     im = Image.fromarray(np.uint8(an_img.reshape(16,16)), "L")
     im.show()
 
