@@ -13,8 +13,8 @@ import os
 pg.init()
 pg.font.init()
 WIDTH, HEIGHT = 1200, 1000
-CARDS_NUM = 5
-TARGET = 60
+CARDS_NUM = 4
+TARGET = 24
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
@@ -25,6 +25,17 @@ clock = pg.time.Clock()
 elo_table = elo.EloTable(f"{SCRIPT_LOC}/gui-24.elo")
 lock = th.Lock()
 th_event = th.Event()
+key_to_slot_num = {pg.K_1: 0,      # mappings between keyboard keys and the selected card
+                   pg.K_2: 1,
+                   pg.K_3: 2,
+                   pg.K_4: 3,
+                   pg.K_5: 4,
+                   pg.K_6: 5,
+                   pg.K_7: 6,
+                   pg.K_8: 7,
+                   pg.K_9: 8,
+                   pg.K_0: 9}
+op_keys = {pg.K_q:1, pg.K_w:2, pg.K_e:3, pg.K_r:4}   # mappings between keyboard keys and the selected op
 
 def load_imgs():
     img_arr = []
@@ -88,7 +99,7 @@ def one_left(deck):
     return card
 
 
-def continue_screen(txt_msg):
+def continue_screen(gs, txt_msg):
     t_msg = cards.TextBox(txt_msg, pg.Rect((WIDTH//2-(len(txt_msg)*20), HEIGHT//2), (len(txt_msg)*40, 100)))
     cont_msg = cards.TextBox("Click to continue", pg.Rect((WIDTH//2-(17*20), HEIGHT//2-200), (17*40, 100)))
     while True:
@@ -96,8 +107,8 @@ def continue_screen(txt_msg):
             if evt.type == pg.MOUSEBUTTONDOWN or evt.type == pg.KEYDOWN:
                 return 0
             elif evt.type == pg.QUIT:
-                pg.quit()
-                quit()
+                gs.keep_looping = False
+                return 0
         gd.fill(colors.WHITE)
         t_msg.draw(gd)
         cont_msg.draw(gd)
@@ -224,6 +235,20 @@ def mul_all(gs):
         do_operation(result, gs)
 
 
+def select_card_by_index(gs, idx):
+    cards_in_play = get_cards_in_play(gs)
+    correct_card = [c for c in cards_in_play if c.slot_num == idx]
+    if correct_card:
+        if not gs.card1:
+            gs.card1 = correct_card[0]
+            correct_card[0].select_it()
+        elif gs.op_selected:
+            do_operation(correct_card[0], gs)
+        elif gs.card1 != correct_card[0]:
+            gs.card1.deselect()
+            gs.card1 = correct_card[0]
+            correct_card[0].select_it()
+
 def handle_events(evt, gs):
     if evt.type == pg.QUIT:
         gs.keep_looping = False
@@ -235,29 +260,39 @@ def handle_events(evt, gs):
         elif evt.key == pg.K_ESCAPE:
             if gs.buttons[0].enabled:
                 handle_undo(gs)
-    elif evt.type == pg.MOUSEBUTTONDOWN:  # if button maybe clicked
+        elif evt.key in key_to_slot_num.keys():     # slightly better way of selecting cards by pressing keyboard keys using predefined dict (i could also use key - 48, but that's sketchier)
+            select_card_by_index(gs, key_to_slot_num[evt.key])
+        elif evt.key in op_keys.keys():
+            if gs.card1:
+                if gs.op_selected:
+                    gs.op_selected.deselect()
+                gs.op_selected = gs.buttons[op_keys[evt.key]]
+                gs.buttons[op_keys[evt.key]].select_it()
+        elif evt.key == pg.K_p:
+            gs.correct_flag = verify_no_solution(gs)
+    elif evt.type == pg.MOUSEBUTTONDOWN:  # if any button maybe clicked
         if gs.pass_btn.try_select(evt):      # claim no solution
             gs.correct_flag = verify_no_solution(gs)
         result = attempt_select(evt, gs.deck+gs.extra_cards)  # selecting other cars
         if result:
-            if not gs.card1:   # if card1 not already chosen
+            if not gs.card1:   # if any card1 not already chosen  (card1 = currently selected card)
                 gs.card1 = result
-            elif gs.op_selected:    # if op already chosen
+            elif gs.op_selected:    # if op already chosen + card1 already chosen
                 do_operation(result, gs)
             elif gs.card1 != result:   # if no op selected and another card clicked, change which card is selected
                 gs.card1.deselect()
                 gs.card1 = result
-        else:
+        else:              # card was not clicked so check if an op button was clicked
             if gs.card1:
                 op_result = attempt_select(evt, gs.buttons)
                 if op_result == gs.buttons[0]:  # undo
                     handle_undo(gs)
                 if op_result == gs.buttons[-1]:  # redo 
                     handle_redo(gs)
-                if op_result and op_result not in [gs.buttons[0], gs.buttons[-1]]:  # changing op chosen
-                    if gs.op_selected:
+                if op_result and op_result not in [gs.buttons[0], gs.buttons[-1]]:
+                    if gs.op_selected:                 # changing op chosen
                         gs.op_selected.deselect()
-                    gs.op_selected = op_result
+                    gs.op_selected = op_result         # selecting brand new op
                     gs.op_selected.select_it()
 
 
@@ -308,7 +343,7 @@ def handle_correct(gs):
     gs.score_box.update_text(gs.score)
     gs.start = time.time()
     gs.correct_flag = 0
-    gs.pf_box.update_text("%.3f"%elo_table.performance)
+    gs.pf_box.update_text("%.1f"%elo_table.performance)
     gs.solved_box.update_text(gs.correct)
     th_event.set()
 
@@ -328,10 +363,10 @@ def handle_wrong(gs):
     gs.score_box.update_text(gs.score)
     gs.start = time.time()
     gs.wrong += 1
-    continue_screen(f"A solution was {gs.correct_flag[:-1]}")
+    continue_screen(gs, f"A solution was {gs.correct_flag[:-1]}")
     gs.pass_btn.deselect()
     gs.correct_flag = 0
-    gs.pf_box.update_text("%.3f"%elo_table.performance)
+    gs.pf_box.update_text("%.1f"%elo_table.performance)
     gs.wrong_box.update_text(gs.wrong)
     th_event.set()
 
@@ -358,7 +393,7 @@ def game():
     gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-300, 60), (600, 60)), bsize=2)
 
     gs.pf_disp = cards.TextBox("Performance", pg.Rect((WIDTH//2-185, 130), (370, 60)), bsize=2)
-    gs.pf_box = cards.TextBox("1500", pg.Rect((WIDTH//2-150, 192), (300, 60)), bsize=2)
+    gs.pf_box = cards.TextBox("------", pg.Rect((WIDTH//2-150, 192), (300, 60)), bsize=2)
 
     gs.time_disp = cards.TextBox("Time", pg.Rect((0, 0), (150, 60)), bsize=2)
     gs.time_box = cards.TextBox("0", pg.Rect((0, 60), (150, 60)), bsize=2)
@@ -412,7 +447,8 @@ def game():
     th_event.set()
     try:
         lock.release()
-    except RuntimeError:
+    except RuntimeError as e:
+        print(e)
         pass
     elo_table.save()
     elo_table.record_save()

@@ -1,10 +1,11 @@
 import math
+import numpy as np
 
 class EloTable(object):
     def __init__(self, tname):
         self.tname = tname
         self.start_elo = 1500
-        self.start_volatility = 19
+        self.start_volatility = 25
         self.player_name = "player-elo"
         self.performance = 1500
         try:
@@ -22,11 +23,15 @@ class EloTable(object):
         except FileNotFoundError:
             self.records = {}
 
+    def get_rand_elo(self):
+        return np.random.normal(self.start_elo, 150)
+
+
     def get_elo(self, p):
         try:
             return self.table[p]
         except KeyError:
-            return self.start_elo
+            return self.get_rand_elo()
 
     def get_record(self, p):
         try:
@@ -39,7 +44,7 @@ class EloTable(object):
         for name, new_e in self.table.items():
             get_record = self.get_record(name)
             try:
-                round_new = float("%.3f" % new_e)
+                round_new = float("%.2f" % new_e)
             except TypeError:
                 print("name", name)
                 print("new_e", new_e)
@@ -48,9 +53,11 @@ class EloTable(object):
                 print("get_record", get_record)
                 raise
             if get_record is None:                                 # if new puzzle encountered that has no records so far, create new entry
-                record_write.append(f"{name}\t{'%.3f' % new_e}")
+                record_write.append(f"{name}\t{'%.2f' % new_e}")
             elif not math.isclose(self.get_record(name)[-1], round_new):   # if record exists and was encountered in session, append entry
-                self.records[name].append("%.3f" % new_e)
+                self.records[name].append("%.2f" % new_e)
+                record_write.append(f"{name}\t{','.join([str(x) for x in self.records[name]])}")
+            else:                                                       # in no changes made in elo table, we stil need to save it, just dont add a new entry
                 record_write.append(f"{name}\t{','.join([str(x) for x in self.records[name]])}")
         with open(self.tname+".record", "w") as f:
             f.write('\n'.join(record_write))
@@ -86,7 +93,6 @@ class EloTable(object):
         self.table[p2] = p2_new_elo
         self.save()
         return p1_new_elo, p2_new_elo
-
 
 
 
