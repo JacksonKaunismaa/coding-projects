@@ -4,7 +4,7 @@ import numpy as np
 class EloTable(object):
     def __init__(self, tname):
         self.tname = tname
-        self.start_elo = 1500
+        self.start_elo = 1550
         self.start_volatility = 25
         self.player_name = "player-elo"
         self.performance = 1500
@@ -24,7 +24,7 @@ class EloTable(object):
             self.records = {}
 
     def get_rand_elo(self):
-        return np.random.normal(self.start_elo, 150)
+        return np.random.normal(self.start_elo, 250)
 
 
     def get_elo(self, p):
