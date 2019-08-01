@@ -4,42 +4,39 @@ import os
 
 SIZE = 128
 BATCH_SIZE = 32
-LBP_SIZE = 1182
-FILTERS = [3, 64, 128, 256, 256]
-HIDDEN = [LBP_SIZE, 512, 256, 64, 1]
-KERNEL = 1
+LBP_SIZE = 216
+FILTERS = [3, 64, 128, 256]
+HIDDEN = [LBP_SIZE, 256, 128, 1]
+KERNEL = 7
 FINAL_SIZE = int(SIZE // (2**(len(FILTERS)-1)))
-LR = 0.001
+LR = 1e-3
 EPOCHS = 1000
 TRAIN_EPISODES = 600
 TEST_EPISODES = TRAIN_EPISODES//10
 SAVE_PATH = "./models"
 LOG_PATH = "./logs"
-PKEEP = 0.6  # means 40% of all logits will be 0
+PKEEP = 0.7  # means 40% of all logits will be 0
 
 assert len(HIDDEN) == len(FILTERS), "incorrect layer configuration (num fully_connected != num convolutional)"
-tf.enable_eager_execution()
 raw_train = tf.data.TFRecordDataset("./train.tfr")
 raw_test = tf.data.TFRecordDataset("./test.tfr")
 
 tfr_description = {"img_name": tf.FixedLenFeature([], tf.string),
                    "lbl": tf.FixedLenFeature([], tf.int64),
-                   "lbp": tf.FixedLenFeature([], tf.float32)}
+                   "lbp": tf.FixedLenFeature([LBP_SIZE], tf.float32)}
 
 def _parse_tfr(proto):
     return tf.parse_single_example(proto, tfr_description)
 
-#train_set = raw_train.map(_parse_tfr)
-#test_set = raw_test.map(_parse_tfr)
-for train_example in raw_train.take(5):
-    print(train_example)
-quit()
+train_set = raw_train.map(_parse_tfr)
+test_set = raw_test.map(_parse_tfr)
+
 def read_from_dataset(the_record):
     try:
         img_raw = tf.io.read_file(the_record['img_name'])
         img_load = tf.image.decode_image(img_raw)
-        img_load = tf.image.resize_bilinear(tf.expand_dims(img_load,0), [SIZE, SIZE])
-        img_scaled = tf.cast(img_load, tf.float32)/255.
+        img_resized = tf.image.resize_bilinear(tf.expand_dims(img_load,0), [SIZE, SIZE])
+        img_scaled = tf.cast(img_resized, tf.float32)/255.
         img_final = tf.reshape(img_scaled, [SIZE, SIZE, 3])
     except Exception as e:
         print(the_record)
@@ -68,7 +65,6 @@ def get_bias(name, shape):
     return bias
 
 def circular_pad(z, amount):
-    # Circular pad along axis one (by padsize1) and two (by padsize2)
     z = tf.concat(   #! first part pads the top with last few, second part pads the bottom
         (z[:, -amount:, :], z, z[:, :amount, :]),
         axis=1)
@@ -77,8 +73,6 @@ def circular_pad(z, amount):
         (z[:, :, -amount:], z, z[:, :, :amount]),
         axis=2)
     return z
-
-
 
 def convolve_down(input_tensor, convolver):
 #    input_tensor = circular_pad(input_tensor, (tf.shape(convolver)[0]-1)//2)
@@ -98,24 +92,39 @@ def fully_connected(input_tensor, weight_matrix, bias, activation):
 def discriminate(img_input, lbp_input):
     act_img = img_input
     act_lbp = tf.reshape(lbp_input, [-1, LBP_SIZE])
+    with tf.variable_scope("frequency", reuse=tf.AUTO_REUSE):
+        transposed = tf.transpose(img_input, [0, 3, 1, 2])    # turn [N, H, W, C] -> [N, C, H, W] (compute fft per batch and channel)
+        dfft_img_complex = tf.spectral.rfft2d(transposed, fft_length=[128,128])
+        fft_img = tf.transpose(tf.cast(dfft_img_complex, tf.float32), [0, 2, 3, 1])[:,:,1:,:]   # turn [N, C, H, W] -> [N, H, W, C]
+
     for idx, (in_channels, out_channels, in_hidden, out_hidden) in enumerate(zip(FILTERS, FILTERS[1:], HIDDEN, HIDDEN[1:])):
         with tf.variable_scope(f"layer-{idx}", reuse=tf.AUTO_REUSE):
             conv = get_theta("conv", [KERNEL, KERNEL, in_channels, out_channels])
             fc = get_theta("fc", [in_hidden, out_hidden])
             bias = get_bias("bias", [out_hidden])
-            act_img = convolve_down(act_img, conv)
-            act_lbp = fully_connected(act_lbp, fc, bias, tf.nn.relu)
-    with tf.variable_scope("final-layer-img", reuse=tf.AUTO_REUSE):
+            fft_conv = get_theta("fft_conv", [KERNEL, KERNEL, in_channels, out_channels])
 
+            fft_img = convolve_down(fft_img, fft_conv)
+            act_img = convolve_down(act_img, conv)
+            act_lbp = fully_connected(act_lbp, fc, bias, tf.nn.tanh)
+
+    with tf.variable_scope("final-layer-img", reuse=tf.AUTO_REUSE):
         act_img_final = tf.reshape(act_img, [-1, FINAL_SIZE*FINAL_SIZE*FILTERS[-1]])
         final_img_fc = get_theta("fc", [FINAL_SIZE*FINAL_SIZE*FILTERS[-1], 1])
         final_img_bias = get_bias("bias", [1])
-        final_img_logits =  fully_connected(act_img_final, final_img_fc, final_img_bias, tf.identity)
+        final_img =  fully_connected(act_img_final, final_img_fc, final_img_bias, tf.tanh)
+
+    with tf.variable_scope("final-layer-fft", reuse=tf.AUTO_REUSE):
+        act_fft_final = tf.reshape(fft_img, [-1, FINAL_SIZE*FINAL_SIZE*FILTERS[-1]//2])
+        final_fft_fc = get_theta("fft_fc", [FINAL_SIZE*FINAL_SIZE*FILTERS[-1]//2, 1])
+        final_fft_bias = get_bias("fft_bias", [1])
+        final_fft =  fully_connected(act_fft_final, final_fft_fc, final_fft_bias, tf.tanh)
 
     with tf.variable_scope("final-layer", reuse=tf.AUTO_REUSE):
         img_weight = get_theta("img_weight", [1])
         lbp_weight = get_theta("lbp_weight", [1])
-        final_logits = img_weight*final_img_logits + lbp_weight*act_lbp
+        fft_weight = get_theta("fft_weight", [1])
+        final_logits = img_weight*final_img + lbp_weight*act_lbp + fft_weight*final_fft
         return tf.nn.sigmoid(final_logits, name="classifier")
 
 with tf.variable_scope("main", reuse=tf.AUTO_REUSE):
@@ -137,8 +146,9 @@ with tf.variable_scope("main", reuse=tf.AUTO_REUSE):
     correct_predictions = tf.equal(tf.cast(tf.round(test_out), tf.int64), te_lbls)
     accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 
-weight_summary = [tf.summary.scalar("img_weight", get_theta("final-layer/lbp_weight", [1])),
-                  tf.summary.scalar("lbp_weight", get_theta("final-layer/img_weight", [1]))]
+weight_summary = [tf.summary.scalar("img_weight", get_theta("final-layer/lbp_weight", [1])[0]),
+                  tf.summary.scalar("lbp_weight", get_theta("final-layer/img_weight", [1])[0]),
+                 tf.summary.scalar("fft_weight", get_theta("final-layer/fft_weight", [1])[0])]
 test_summary = [tf.summary.scalar("accuracy", accuracy),
                 tf.summary.scalar("test_loss", test_loss)]
 train_summary = [tf.summary.scalar("train_loss", loss)]
@@ -162,22 +172,27 @@ with tf.Session() as sess:
         graph_writer = tf.summary.FileWriter("./graph", sess.graph)
         graph_writer.add_summary(tf.Summary(), 0)
     for j in range(EPOCHS):
+        epoch_train_loss = 0.0
         for i in range(TRAIN_EPISODES):
             try:
-                batch_loss_summ, _ = sess.run([loss, opt], feed_dict={pkeep:PKEEP, train_mode:True})
-                log_writer.add_summary(batch_loss_sum, get_step())
+                train_batch_loss, batch_loss_summ, _ = sess.run([loss, train_summary_op, opt], feed_dict={pkeep:PKEEP, train_mode:True})
+                log_writer.add_summary(batch_loss_summ, get_step())
+                epoch_train_loss += train_batch_loss
             except Exception as e:
                 print(j, i)
-        print(f"Completed training on epoch {j}")
+                raise
+        print(f"Completed training on epoch {j} with average loss per sample of {epoch_train_loss/(TRAIN_EPISODES*BATCH_SIZE)}")
         weighting_summary = sess.run(weight_summary_op)
         log_writer.add_summary(weighting_summary, get_step())
+        epoch_test_loss = 0.0
         for i in range(TEST_EPISODES):
             try:
-                batch_summ = sess.run(test_summary_op, feed_dict={pkeep:1.0, train_mode:False})
+                test_batch_loss, batch_summ = sess.run([test_loss, test_summary_op], feed_dict={pkeep:1.0, train_mode:False})
                 log_writer.add_summary(batch_summ, TEST_EPISODES*(get_step()//TRAIN_EPISODES) + i)
+                epoch_test_loss += test_batch_loss
             except Exception as e:
                 print(j, i)
-        print(f"Completed testing on epoch {j}")
+        print(f"Completed testing on epoch {j} with average loss per sample of {epoch_test_loss/(TEST_EPISODES*BATCH_SIZE)}")
         if j % 5 == 0:
-            saver.save(sess, os.path.join(SAVE_PATH, f"{epoch_loss}"))
+            saver.save(sess, os.path.join(SAVE_PATH, f"model-{get_step()}"))
 

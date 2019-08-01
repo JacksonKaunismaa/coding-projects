@@ -8,6 +8,17 @@ from mahotas.features.lbp import lbp
 from multiprocessing import Pool
 
 TEST_AMOUNT = 0.10
+LBP_SIZE = 216
+
+def local_binary(imname):
+    an_im = cv2.imread(imname, cv2.IMREAD_COLOR)
+    np_im = np.array(an_im)
+    result1 = lbp(np_im.max(axis=2), 3, 10)
+    result1 /= result1.sum()
+    result2 = lbp(np_im.mean(axis=2), 2, 10)
+    result2 /= result2.sum()
+    result = np.concatenate((result1, result2))
+    return result
 
 def _floats_feature(val):
     if isinstance(val, collections.Iterable):
@@ -29,13 +40,6 @@ def serialize_example_pyf(img_name, lbl, bin_pattern):
             "lbp": _floats_feature(bin_pattern)}
 	proto = tf.train.Example(features=tf.train.Features(feature=feature))
 	return proto.SerializeToString()
-
-def local_binary(imname):
-    an_im = cv2.imread(imname, cv2.IMREAD_COLOR)
-    np_im = np.array(an_im)
-    result = lbp(np_im.max(axis=2), 2, 14)
-    result /= result.sum()
-    return result
 
 def tf_serialize_example(img_name, lbl, bin_pattern):
     tf_string = tf.py_func(serialize_example_pyf, (img_name, lbl, bin_pattern), tf.string)
@@ -65,11 +69,14 @@ def prep_dataset(full):
 
 feature_description = {"img_name": tf.FixedLenFeature([], tf.string),
                        "lbl": tf.FixedLenFeature([], tf.int64),
-                       "lbp": tf.FixedLenFeature([], tf.float32)}
+                       "lbp": tf.FixedLenFeature([LBP_SIZE], tf.float32)}
 def _parse_function(example_proto):
-  # Parse the input tf.Example proto using the dictionary above.
-  return tf.parse_single_example(example_proto, feature_description)
-
+    # Parse the input tf.Example proto using the dictionary above.
+    try:
+        return tf.parse_single_example(example_proto, feature_description)
+    except Exception as e:
+        print(example_proto)
+        raise
 tf.enable_eager_execution()
 train_data1, test_data1 = load_directory("./texture")
 train_data2, test_data2 = load_directory("./non_texture")
@@ -81,25 +88,21 @@ train_data = train_data1 + train_data2
 test_data = test_data1 + test_data2
 random.shuffle(train_data)
 random.shuffle(test_data)
-train_data = prep_dataset(train_data)
+print("Generating local binary pattern (lbp) features for test...")
 test_data = prep_dataset(test_data)
-
+print("Generating local binary pattern (lbp) features for train...")
+train_data = prep_dataset(train_data)
 
 print("Creating base Datasets...")
 train_dataset = tf.data.Dataset.from_tensor_slices(train_data)
 test_dataset = tf.data.Dataset.from_tensor_slices(test_data)
 
 print("Mapping Datasets...")
-
-print("Generating local binary pattern (lbp) features for test...")
 test_dataset = test_dataset.map(tf_serialize_example)
-print("Showing example test records...")
+train_dataset = train_dataset.map(tf_serialize_example)
+print("Showing example records...")
 for final_record in test_dataset.take(5):
     print(_parse_function(final_record))
-
-print("Generating local binary pattern (lbp) features for train...")
-train_dataset = train_dataset.map(tf_serialize_example)
-print("Showing example train records...")
 for final_record in train_dataset.take(5):
     print(_parse_function(final_record))
 
