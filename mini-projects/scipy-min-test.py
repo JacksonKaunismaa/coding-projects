@@ -19,10 +19,11 @@ def grad(x,y):
     return grad_x, grad_y
 
 def grad_vec(x):
-    return np.array(grad(x[0], x[1]))
+    actual_grad = np.array(grad(x[0], x[1]))
+    return actual_grad
 
 def overall(x):
-    return rosen_vec(x), grad_vec(x)
+    return rosen_vec(x), 100.*grad_vec(x)
 
 count = 0
 def callback_func(x):

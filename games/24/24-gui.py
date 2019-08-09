@@ -334,7 +334,7 @@ def handle_correct(gs):
     gs.op_selected = None          # op chosen
 
     points_earned = MAX_SCORE/(time.time()-gs.start)+MIN_SCORE
-    score_earned = min(1,0.7+(points_earned-MIN_SCORE)/(10.0/3.0*float(MAX_SCORE)))
+    score_earned = max(1 - 0.05*((time.time() - gs.start)), 0.6)
 
     puzzle_name = get_puzzle_name(gs)
     gs.correct += 1

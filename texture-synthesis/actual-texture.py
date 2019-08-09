@@ -1,4 +1,6 @@
 from tensorflow.keras.applications.vgg19 import VGG19
+from tensorflow.keras.applications.vgg19 import preprocess_input
+from tensorflow.keras.applications.vgg19 import decode_predictions
 from PIL import Image
 import numpy as np
 from tensorflow.keras import backend as K
@@ -116,7 +118,56 @@ model = replace_intermediate_layer_in_keras(model, 16, ks.layers.AveragePooling2
 model = replace_intermediate_layer_in_keras(model, 21, ks.layers.AveragePooling2D(pool_size=(2,2), padding="valid", strides=(2,2)))
 rand_img = np.expand_dims(np.random.uniform(low=0.0, high=255.0, size=[SIZE,SIZE,3]), axis=0).astype(np.float64)
 
-model_inpt = model.input
+model_inpt = model.input              # CONCLUSION: NORMAL SCALE + PREPROCESS GIVES BEST RESULTS
+#dog1 = prep_img("./dog1.jpg")
+#dog2 = prep_img("./dog2.jpg")
+#dog3 = prep_img("./dog3.jpg")
+#car1 = prep_img("./car1.jpg")
+#car2 = prep_img("./car2.jpg")
+#car3 = prep_img("./car3.jpg")
+#print("DOGS NORMAL SCALE")
+#print(decode_predictions(model.predict(dog1))[0][0])
+#print(decode_predictions(model.predict(dog2))[0][0])
+#print(decode_predictions(model.predict(dog3))[0][0])
+#print("CARS NORMAL SCALE")
+#print(decode_predictions(model.predict(car1))[0][0])
+#print(decode_predictions(model.predict(car2))[0][0])
+#print(decode_predictions(model.predict(car3))[0][0])
+#print("DOGS /255 SCALE")
+#print(decode_predictions(model.predict(dog1/255.))[0][0])
+#print(decode_predictions(model.predict(dog2/255.))[0][0])
+#print(decode_predictions(model.predict(dog3/255.))[0][0])
+#print("CARS /255. SCALE")
+#print(decode_predictions(model.predict(car1/255.))[0][0])
+#print(decode_predictions(model.predict(car2/255.))[0][0])
+#print(decode_predictions(model.predict(car3/255.))[0][0])
+#dog1 = preprocess_input(dog1)
+#dog2 = preprocess_input(dog2)
+#dog3 = preprocess_input(dog3)
+#car1 = preprocess_input(car1)
+#car2 = preprocess_input(car2)
+#car3 = preprocess_input(car3)
+#print("PREPROCCESSED DOGS NORMAL SCALE")
+#print(decode_predictions(model.predict(dog1))[0][0])
+#print(decode_predictions(model.predict(dog2))[0][0])
+#print(decode_predictions(model.predict(dog3))[0][0])
+#print("PREPROCCESSED CARS NORMAL SCALE")
+#print(decode_predictions(model.predict(car1))[0][0])
+#print(decode_predictions(model.predict(car2))[0][0])
+#print(decode_predictions(model.predict(car3))[0][0])
+#print("PREPROCCESSED DOGS /255 SCALE")
+#print(decode_predictions(model.predict(dog1/255.))[0][0])
+#print(decode_predictions(model.predict(dog2/255.))[0][0])
+#print(decode_predictions(model.predict(dog3/255.))[0][0])
+#print("PREPROCCESSED CARS /255. SCALE")
+#print(decode_predictions(model.predict(car1/255.))[0][0])
+#print(decode_predictions(model.predict(car2/255.))[0][0])
+#print(decode_predictions(model.predict(car3/255.))[0][0])
+
+
+
+
+#quit()
 #layers = [model.layers[index].output for index in range(2, 22)]
 style_layers = [model.layers[1].output,
             model.layers[4].output,
