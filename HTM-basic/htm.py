@@ -13,16 +13,16 @@ NET_WIDTH = 25
 NET_HEIGHT = 25
 COL_HEIGHT = 4
 NETWORK_SIZE = NET_WIDTH * NET_HEIGHT * COL_HEIGHT
-MAX_SEGMENT_SIZE = 4
+MAX_SEGMENT_SIZE = 8
 MIN_SEGMENT_SIZE = 2
-NUM_PROXIMAL_INPUTS = 25
+NUM_PROXIMAL_INPUTS = 24
 NUM_COLUMNS = NET_HEIGHT * NET_WIDTH
-NUM_OUTPUTS_PER_CELL = 20
+NUM_OUTPUTS_PER_CELL = 32
 
-MIN_OVERLAP = 3
+MIN_FF_OVERLAP = 12
 MIN_PERM_CONNECTED = 0.5
-INHIBITION_RADIUS = 100    # it wraps circularly around for stastical reasons (although this is nonsensical in normal brains)
-DESIRED_ACTIVITY = 99     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
+INHIBITION_RADIUS = 64    # it wraps circularly around for stastical reasons (although this is nonsensical in normal brains)
+DESIRED_ACTIVITY = 48     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
 PERMANENCE_INC = 0.01
 BOOSTING_WEIGHT = 0.99    # (=> an input wil decay to having 0.01 significance after 
 BOOST_INC = 0.05
@@ -141,7 +141,7 @@ class DistalSegment:    # receiver node
         for syn in self.synapses:
             overlap += syn.activation
         overlap *= 2
-        if overlap > MIN_OVERLAP:
+        if overlap > MIN_FF_OVERLAP:
             self.activation = 1
         else:
             self.activation = 0
@@ -222,7 +222,7 @@ class Column:
 
     def overlap_input(self, inpt_idxs):
         overlap = self.proximal.get_overlap(inpt_idxs)
-        if overlap < MIN_OVERLAP:
+        if overlap < MIN_FF_OVERLAP:
             self.overlap = 0
             self.overlap_freq *= BOOSTING_WEIGHT
         else:
@@ -276,15 +276,24 @@ class Region:
         self.linked = False
         self.cells = np.empty(NETWORK_SIZE, dtype=Cell)
         full_neighbourhood = np.arange(NETWORK_SIZE)
+        print("Initializing network of size", NETWORK_SIZE, "...")
+        pct = 0.05
+        next_pct = 0.0
+        print(" "*6, end='', flush=True)
         for lin_loc in range(NETWORK_SIZE):  #self.grid is shape (HEIGHT*WIDTH*COL_HEIGHT, 3) so you do like grid[523]->(5, 5, 3) [523//(25*4), (523%100)//4, 523%4]
             neighbourhood = np.concatenate((full_neighbourhood[:lin_loc], full_neighbourhood[lin_loc+1:]), 0)
             post_cells = np.random.choice(neighbourhood, size=(NUM_OUTPUTS_PER_CELL), replace=True)
             self.cells[lin_loc] = Cell(lin_loc, self, post_cells, lin_loc//4)
-
+            if float(lin_loc)/NETWORK_SIZE >= next_pct:
+                print("\b\b\b\b\b\b# | %02d%%" % (int(100*float(lin_loc)/NETWORK_SIZE)), end='', flush=True)
+                next_pct += pct
+        print("\b\b\b\b\b\b# | 100%")
+        print("Linking distal connections...")
         self.link()
+        print("Pruning empty segments...")
         self.prune()
 
-        self.inputs_to_cells = None     # dictionary of which inputs lead to which cells  {input_idx: [cell_list]}  #TODO: implememnt this
+        self.inputs_to_cells = None
         cols_np = self.cells.reshape(NUM_COLUMNS, COL_HEIGHT)
         self.cols = np.empty(NUM_COLUMNS, dtype=Column)
         for i, col_np in enumerate(cols_np):
@@ -342,7 +351,8 @@ class Region:
     def link(self):
         if not self.linked:
             for cell in self.cells:
-                cell.link_distal()
+                #cell.link_distal()
+                pass
             self.linked = True
 
     def prune(self):
@@ -359,7 +369,7 @@ def main():
     #cell_region.cells[123].activation = 1
     #cell_region.cells[124].activation = 1
     #cell_region.cells[125].activation = 1
-    cell_region.apply_input([25,11,10,8,2])
+    cell_region.apply_input(np.random.choice(INPUT_SIZE, size=18, replace=False))
     #cell_region.visualize()
     #input()
     cell_region.inhibit()
