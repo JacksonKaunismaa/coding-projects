@@ -1,7 +1,7 @@
 import numpy as np
 import time
 from collections import Counter
-
+np.random.seed(12)
 def rand_choice_center(a, size, center):
     # DONT USE THIS (too slow)
     choices = np.random.normal(center, a/6, size=size).astype(np.uint8) % a
@@ -9,25 +9,28 @@ def rand_choice_center(a, size, center):
         choices = np.random.normal(center, a/6, size=size).astype(np.uint8) % a
     return choices
 
+#def rand_choice_center_fast(a, size, center):
+#    def sub_func():
+#        double_choices = np.random.normal(center, a/6, size=(2*size,)).astype(np.uint8) % a
+#        used = set()
+#        actual_choices = np.empty(size)
+#        current = 0
+#        for c in double_choices:
+#            if current != size:
+#                if c not in used:
+#                    used.add(c)
+#                    actual_choices[current] = c
+#                    current += 1
+#            else:
+#                break
+#        return actual_choices, current
+#    choices, actual_size =  sub_func()
+#    while actual_size != size:
+#        choices, actual_size =  sub_func()
+#    return choices
+
 def rand_choice_center_fast(a, size, center):
-    def sub_func():
-        double_choices = np.random.normal(center, a/6, size=(2*size,)).astype(np.uint8) % a
-        used = set()
-        actual_choices = np.empty(size)
-        current = 0
-        for c in double_choices:
-            if current != size:
-                if c not in used:
-                    used.add(c)
-                    actual_choices[current] = c
-                    current += 1
-            else:
-                break
-        return actual_choices, current
-    choices, actual_size =  sub_func()
-    while actual_size != size:
-        choices, actual_size =  sub_func()
-    return choices
+    return np.random.choice(a, size=size, replace=False)
 
 def truncated_normal_perms(center, inpts, inpt_size):
     return np.clip(np.random.normal(0.52-0.05*mod_dist(center, inpts, inpt_size)/float(inpt_size), 1e-2), 0.3, 0.7)

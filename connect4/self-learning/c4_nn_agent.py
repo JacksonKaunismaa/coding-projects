@@ -172,7 +172,7 @@ class Connect4NN(object):
                 self.py_writer = tf.summary.FileWriter(log_path)
             self.sess.run(tf.global_variables_initializer())  # init graph
             try:
-                self.loader.restore(self.sess, tf.train.latest_checkpoint(loc))  # load any models found
+                self.loader.restore(self.sess, tf.train.latest_checkpoint(os.path.join(os.path.dirname(__file__), loc)))  # load any models found
             except ValueError:
                 print("No models found, initializing random model...")
 
@@ -279,9 +279,51 @@ class Connect4NN(object):
             print("moves =", ["%.3f" % p for p in list(praedicatus[0][0])])  # display display policy and expected score (eval)
             print("eval =", praedicatus[1])
 
+    def play_combo(self):
+        import random
+        switch = bool(random.randint(0,1))
+        g = cb.BoardState()
+        tr = mc.MCTS()
+        pmove = 4
+        temperature = 1.75
+        for n in range(64):
+            if switch:
+                print(g.reverse())
+                combo_move = combo_engine(self, tr, 2400, 80, 4.0, temperature, g, pmove)
+                pmove = combo_move
+                try:
+                    print(f"eval = {tr.get_eval(g)}")
+                except KeyError:
+                    print("Unexpected move!")
+                if g.move_check(combo_move) == 1:
+                    print(g)
+                    print("You lost!")
+                    return
+            else:
+                print(g)
+                human_move = int(input("pick a move to play: "))
+                while human_move not in g.get_legal():
+                    print("Invalid move")
+                    human_move = int(input("pick a move to play: "))
+                g.move(human_move)
+                try:
+                    print(f"eval = {tr.get_eval(g)}")
+                except KeyError:
+                    print("Unexpected move!")
+                pmove = human_move
+                if g.move_check(human_move) == 1:
+                    print("You won!")
+                    print(g)
+                    return
+            switch = not switch
+            if n == 7:
+                temperature = 1e-5
+        print("You got a draw!")
+
+
     def play_human(self):
         import random
-        switch = False
+        switch = bool(random.randint(0,1))
         g = cb.BoardState()
         tr = mc.MCTS()
         pmove = 0
@@ -323,7 +365,7 @@ class Connect4NN(object):
 # noinspection PyPep8Naming
 def eval_AB(board_pos, last_move):
     output = subprocess.run(  # get AB move
-                    ["AB_with_eval.exe", cb.parse_board(board_pos), "W", str(last_move)],
+                    [os.path.join(os.path.dirname(__file__), "AB_with_eval.exe"), cb.parse_board(board_pos), "W", str(last_move)],
                     stdout=subprocess.PIPE)
     AB_eval = [int(v) for v in output.stdout.decode("utf-8").split()]  # get AB move, eval
     return AB_eval
@@ -339,7 +381,7 @@ def check_tactics(game_board, last_move):
 # noinspection PyPep8Naming
 def AB_move(board_pos, last_move):
     output = subprocess.run(  # get AB move
-        ["connect_4_AB.exe", cb.parse_board(board_pos.board), "W", str(last_move)],
+        [os.path.join(os.path.dirname(__file__), "connect_4_AB.exe"), cb.parse_board(board_pos.board), "W", str(last_move)],
         stdout=subprocess.PIPE)
     numeric_move = int(output.stdout.decode("utf-8"))  # get AB move
     if numeric_move in board_pos.get_legal():  # make sure the AB move is legal, otherwise play a random legal move
