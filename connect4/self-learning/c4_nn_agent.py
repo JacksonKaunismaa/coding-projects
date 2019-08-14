@@ -6,13 +6,13 @@ import connect4_base as cb
 import monte_carlo as mc
 import subprocess
 
-"""Actual NN agent that uses residual convolutional layers to compute a policy (probability distribution over the legal 
+"""Actual NN agent that uses residual convolutional layers to compute a policy (probability distribution over the legal
 moves of how likely that move is to lead to a win) and also a q score that can be interpreted as an expected score given
-a Connect 4 board state (although this same architecture would work with other games, you'd just have to program the 
-rules of those games, and leave this part (relatively) untouched. The overall architecture is an initial convolutional 
+a Connect 4 board state (although this same architecture would work with other games, you'd just have to program the
+rules of those games, and leave this part (relatively) untouched. The overall architecture is an initial convolutional
 layer to scale the board to the right size and number of channels, then a bunch of residual layers (further description
-below) and then another convolutional layer to scale board back down and to the right number of channels, and then 2 
-fully connected layers to flatten the input and combine the channels to produce 9 outputs (8 for the move 
+below) and then another convolutional layer to scale board back down and to the right number of channels, and then 2
+fully connected layers to flatten the input and combine the channels to produce 9 outputs (8 for the move
 distributions, and 1 more for the expected score q)"""
 
 
@@ -82,7 +82,7 @@ class Connect4NN(object):
                 scale_bn = tf.layers.batch_normalization(scale_conv, axis=-1, training=self.train_mode,
                                                          scale=False, center=True, name="scaling_up_bn")
                 act = tf.nn.relu(scale_bn, name="scaling_up_act")
-                inc_act = act  # save for summaries 
+                inc_act = act  # save for summaries
 
             for i in range(self.layers):  # all the residual layers
                 act = residual_block(act, f"layer-{i}")
@@ -320,7 +320,6 @@ class Connect4NN(object):
                 temperature = 1e-5
         print("You got a draw!")
 
-
     def play_human(self):
         import random
         switch = bool(random.randint(0,1))
@@ -448,7 +447,6 @@ def test():
         winner = "No one, yet"
         previous_move = 4  # dummy move needed for the poorly written AB engine
         game = cb.BoardState()  # generate a starting position
-        tree = mc.MCTS()  # init game tree for neural network (NN)
         combo_tree = mc.MCTS()
         switch = bool(random.getrandbits(1))  # pick a random player to go first
         temperature = 1.75

@@ -66,7 +66,7 @@ def play_AB(games):
                 draws += 1
 
         game_name = join("c4_games", f"{order}(v{NN.get_step()})-game-{int(time.time() * 100.)}-{winner}.pickle")
-        with open(game_name, "wb") as f:  # save the game 
+        with open(game_name, "wb") as f:  # save the game
             pickle.dump(game_data, f)
     nn_score = 1.0 * nn_wins + 0.5 * draws
     ab_score = games - nn_score
@@ -93,9 +93,9 @@ def deduplicate(train_data):
         else:
             found[the_hash][0] += 1  # num of times the position has been seen
             found[the_hash][1][1] = ((found[the_hash][1][1] * found[the_hash][0]) + sample[1]) / (
-            found[the_hash][0] + 1)  # average policy
+                                      found[the_hash][0] + 1)  # average policy
             found[the_hash][1][2] = ((found[the_hash][1][2] * found[the_hash][0]) + sample[2]) / (
-            found[the_hash][0] + 1)  # average reward
+                                      found[the_hash][0] + 1)  # average reward
     return [unique_sample[1] for unique_sample in
             found.values()]  # return a list of the deduplicated and averaged samples
 
@@ -225,7 +225,7 @@ def generate(games_num, window, c_val):
         with open(join("datasetts", "old_c4_games", f"training_data-{int(time.time()*1000)}.pickle"), "wb") as f:
             pickle.dump(move_this, f)
     except FileNotFoundError:
-        pass 
+        pass
     with open(join("datasetts", "c4_train_games", f"training_data-{window % window_size}.pickle"), "wb") as f:
         pickle.dump(global_training_data, f)
     print("\nDone getting training data, training model..")

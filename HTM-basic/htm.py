@@ -217,14 +217,19 @@ class Column:
     def boost(self, sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost):
         self.update_sliders(sliding_activity, sorted_activity, next_act)
         self.update_sliders(sliding_boost, sorted_boost, next_boost)
-
+        if sorted_activity[-1] > 0:
+            print(sliding_activity[-5:], sorted_activity[-5:])
+            print("%"*100)
+        if sorted_boost[-1] != 1.0:
+            print(sliding_boost[-5:], sorted_boost[-5:])
+            print("*"*100)
         min_activity = sorted_activity[-1] * 0.01
         if min_activity == 0:
             self.boost_factor = sorted_boost[-1]
         elif self.activity > min_activity:
             self.boost_factor = 1.0
         else:
-            self.boost_factor = self.activity * ((1 - sorted_boost[-1])/min_activity) + sorted_boost[-1] + BOOST_INC
+            self.boost_factor = self.activity * ((1 - sorted_boost[-1])/min_activity) + sorted_boost[-1] #+ BOOST_INC
 
         if self.overlap_freq < min_activity:    # to bring dead synapses back alive?
             for syn in self.proximal.synapses:
@@ -308,7 +313,7 @@ class Region:
             next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
             col.boost(sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost)
         INHIBITION_RADIUS = int(self.average_receptive_field())
-        DESIRED_ACTIVITY = int(0.92 * INHIBITION_RADIUS)
+        DESIRED_ACTIVITY = int(0.98 * INHIBITION_RADIUS)
 
     def average_receptive_field(self):
         total = 0
@@ -405,6 +410,7 @@ def main():
         cell_region.inhibit()
         cell_region.boost()
         print('inhib radius', INHIBITION_RADIUS)
+        print('activity desired', DESIRED_ACTIVITY)
         print('permanence', cell_region.average_permanence())
         print('overlap', cell_region.avg_col("overlap"))
         print('activity', cell_region.avg_col("activity"))

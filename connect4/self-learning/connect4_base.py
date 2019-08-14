@@ -27,7 +27,7 @@ class BoardState(object):
             self.board = np.zeros((2, 8, 8)).astype(np.float16)
 
     def infer_heights(self):
-        """If only the position of the pieces is known, infer_heights figures out what the heights should be so moves can be played 
+        """If only the position of the pieces is known, infer_heights figures out what the heights should be so moves can be played
         properly (used for importing boards and playing around with them based only the string represetation of one)"""
         p1 = self.board[0, :, :] + self.board[1, :, :]  # combine white and black pieces
         p2 = [p1[:, col] for col in range(8)]  # split into columns
