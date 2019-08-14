@@ -1,148 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Educational:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6319374c-f778-49da-859c-97958cd8dfdc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Educational_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/24-gui.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/24/gui-24.elo" beforeDir="false" afterPath="$PROJECT_DIR$/../games/24/gui-24.elo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/24/gui-24.elo.record" beforeDir="false" afterPath="$PROJECT_DIR$/../games/24/gui-24.elo.record" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/10_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/10_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/10_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/10_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/2_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/2_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/2_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/2_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/3_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/3_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/3_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/3_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/4_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/4_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/4_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/4_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/5_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/5_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/5_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/5_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/6_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/6_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/6_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/6_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/7_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/7_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/7_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/7_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/8_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/8_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/8_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/8_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/9_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/9_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/9_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/9_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/ace_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/ace_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/ace_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/ace_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/back@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/black_joker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/jack_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/jack_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/jack_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/jack_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/king_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/king_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/king_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/king_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/10_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/10_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/10_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/10_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/2_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/2_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/2_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/2_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/3_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/3_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/3_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/3_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/4_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/4_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/4_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/4_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/5_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/5_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/5_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/5_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/6_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/6_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/6_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/6_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/7_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/7_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/7_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/7_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/8_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/8_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/8_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/8_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/9_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/9_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/9_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/9_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/ace_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/ace_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/ace_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/ace_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/back@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/black_joker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/jack_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/jack_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/jack_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/jack_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/king_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/king_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/king_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/king_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/queen_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/queen_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/queen_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/queen_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/light/red_joker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/queen_of_clubs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/queen_of_diamonds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/queen_of_hearts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/queen_of_spades.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/red_joker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/cards/resize.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/divide_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/minus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/multiply_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/plus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/redo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy/undo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/divide_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/minus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/multiply_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/plus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/redo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/cpy2/undo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/divide_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/minus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/multiply_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/plus_sign.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/redo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/resize.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/assets/math_symbols/undo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/cards.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/colors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/elo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/gui-24.elo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../games/gui-24.elo.record" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Question_Text/next.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Question_Text/next.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Question_Text/what are vectors test" beforeDir="false" afterPath="$PROJECT_DIR$/Question_Text/what are vectors test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Educational/META-INF/Educational.kotlin_module" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -156,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Educational.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+            <state relative-caret-position="255">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="63" column="47" lean-forward="true" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+            <state relative-caret-position="720">
+              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -311,12 +180,42 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Educational_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Educational" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Educational" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="Educational" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,15 +267,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547783107678" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -396,7 +296,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.Educational.jar">
     <configuration name="Educational" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Educational" />
       <module name="Educational" />
@@ -404,8 +304,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Educational.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Educational_jar/Educational.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.Educational.jar" />
         <item itemvalue="Application.Educational" />
       </list>
     </recent_temporary>
@@ -426,7 +331,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18926397" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1936912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -435,7 +340,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4182015" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3261339" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3261339" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -832,8 +737,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Educational.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        <state relative-caret-position="255">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -850,26 +765,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="63" column="47" lean-forward="true" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Educational:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -917,7 +824,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
