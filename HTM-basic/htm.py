@@ -1,11 +1,10 @@
 import numpy as np
 import time
 from PIL import Image
-import cv2
+#import cv2
 import util_funcs
 import string
 import random
-import time
 np.set_printoptions(precision=3)
 np.random.seed(12)
 NL = "\n"
@@ -25,12 +24,12 @@ NUM_OUTPUTS_PER_CELL = 1
 MIN_FF_OVERLAP = 11.5
 MIN_PERM_CONNECTED = 0.5
 INHIBITION_RADIUS = 64    # it wraps circularly around for stastical reasons (although this is nonsensical in normal brains)
-DESIRED_ACTIVITY = 56     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
+DESIRED_ACTIVITY = 0.98     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
 PERMANENCE_INC = 0.02
 BOOSTING_WEIGHT = 0.9    # the lower this value, the quicker activities decay and the less important the past is (current is more importtant)
 BOOST_INC = 0.05
 
-
+KTH_HIGHEST = DESIRED_ACTIVITY * INHIBITION_RADIUS
 class ProximalSynapse:
     def __init__(self, inpt_idx, column=None):
         self.column = column
@@ -103,7 +102,7 @@ class ProximalSegment:
     def update_synapses(self):
         for syn in self.synapses:
             if syn.activation:                # should always be called after self.apply_input(), then update permanences (if synapses got activated, increase it, else, decrease it)
-                syn.increment_permanence()    # ie. should be newly added 
+                syn.increment_permanence()    # ie. should be newly added
             else:
                 syn.decrement_permanence()
 
@@ -141,7 +140,7 @@ class Cell:
 
     def link_distal(self):
         for post_loc in self.post_cells:   # for out in outputs
-            post_seg = self.region.cells[post_loc].next_segment()    # for segment to link up to 
+            post_seg = self.region.cells[post_loc].next_segment()    # for segment to link up to
             post_seg.link_inputs(self)     # since this is the outputting cell, it is the pre_cell
 
     def link_proximal(self, proximal_seg):
@@ -209,7 +208,7 @@ class Column:
 
     def inhibit(self, sliding_window, sorted_window, add_val):
         self.update_sliders(sliding_window, sorted_window, add_val)
-        if self.overlap and self.overlap >= sorted_window[DESIRED_ACTIVITY]:
+        if self.overlap and self.overlap >= sorted_window[KTH_HIGHEST]:
             self.activate()
         else:
             self.not_activate()
@@ -302,7 +301,7 @@ class Region:
             col.inhibit(sliding_window, sorted_window, add_val)
 
     def boost(self):
-        global INHIBITION_RADIUS, DESIRED_ACTIVITY
+        global INHIBITION_RADIUS, KTH_HIGHEST
         sliding_activity = [x.activity for x in np.take(self.cols, range(-INHIBITION_RADIUS//2, INHIBITION_RADIUS//2))]
         sorted_activity = list(sorted(sliding_activity))
 
@@ -313,7 +312,7 @@ class Region:
             next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
             col.boost(sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost)
         INHIBITION_RADIUS = int(self.average_receptive_field())
-        DESIRED_ACTIVITY = int(0.98 * INHIBITION_RADIUS)
+        KTH_HIGHEST = int(DESIRED_ACTIVITY * INHIBITION_RADIUS)
 
     def average_receptive_field(self):
         total = 0
@@ -382,21 +381,21 @@ def main():
     #    print(f"{'#'*100}\n"*3,end='')
     #    print("APPLYING INPUTS")
         cell_region.apply_input(letter_to_idxs[seq])
-     #   print(seq, letter_to_idxs[seq])
-     #   print(cell_region.cols)
-      #  print(f"{'#'*100}\n"*3,end='')
-      #  print("INHIBITING STUFF")
+    #   print(seq, letter_to_idxs[seq])
+    #print(cell_region.cols)
+    #  print(f"{'#'*100}\n"*3,end='')
+    #  print("INHIBITING STUFF")
         cell_region.inhibit()
-       # print(cell_region.cols)
-       # print(f"{'#'*100}\n"*3,end='')
-       # print("BOOSTING STUFF")
+    # print(cell_region.cols)
+    # print(f"{'#'*100}\n"*3,end='')
+    # print("BOOSTING STUFF")
         cell_region.boost()
         #print(INHIBITION_RADIUS)
         #print(cell_region.average_permanence())
         #print(cell_region.average_overlap())
         #print(cell_region.average_activity())
     #    cell_region.visualize()
-     #   input()
+    #   input()
     print("\n", end='', flush=True)
     #quit()
     print("total time:", time.time() - start)
@@ -410,7 +409,7 @@ def main():
         cell_region.inhibit()
         cell_region.boost()
         print('inhib radius', INHIBITION_RADIUS)
-        print('activity desired', DESIRED_ACTIVITY)
+        print('activity desired', KTH_HIGHEST)
         print('permanence', cell_region.average_permanence())
         print('overlap', cell_region.avg_col("overlap"))
         print('activity', cell_region.avg_col("activity"))
@@ -423,4 +422,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

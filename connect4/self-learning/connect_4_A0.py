@@ -9,17 +9,18 @@ import numpy as np
 import c4_nn_agent as c4_nn
 import connect4_base as cb
 import monte_carlo as mc
+import sys
 
 """Main file through which the training loop runs, including self play games, comparison against past iterations, comparison to an
 objective alpha beta (AB) engine (using fixed depth of 13 ply), and all necessary IO operations."""
 
 
-def play_AB(games):
+def play_AB(games, proc_id):
     """Compare the strength of the self-learning neural network agent to a traditional AB engine by playing some games"""
     nn_wins = 0
     ab_wins = 0
     draws = 0
-    NN = c4_nn.Connect4NN("./connect4_models")  # load the most current version of the network
+    NN = c4_nn.Connect4NN("./connect4_models", device=proc_id)  # load the most current version of the network
 
     for being_played in range(games):  # play 'games' num of games
         winner = "No one, yet"
@@ -37,7 +38,7 @@ def play_AB(games):
         for n in range(64):  # play out 64 moves
             if switch:
                 output = subprocess.run(  # get AB move
-                    ["connect_4_AB.exe", cb.parse_board(game.board), "W", str(previous_move)],
+                    ["./connect_4_AB.exe", cb.parse_board(game.board), "W", str(previous_move)],
                     stdout=subprocess.PIPE)
                 numeric_move = int(output.stdout.decode("utf-8"))  # get AB move
                 if numeric_move in game.get_legal():  # make sure the AB move is legal, otherwise play a random legal move
@@ -160,13 +161,14 @@ def compete(old, new, c_val, games=51, search_iters=1000, search_threads=50):
     return float(new_score) / games
 
 
-def try_training(games_num, c_val):
+def try_training(games_num, c_val, p_id=0, perf_list=None):
     """After training data through self play has been created, train the nn on it to see if any improvements can be made
     after the nn has been actually trained on the data, compare this 'new' version to the old, untrained version to make sure we
     are actually learning the right things"""
-    old_model = c4_nn.Connect4NN("./connect4_models")
+    old_model = c4_nn.Connect4NN("./connect4_models", device=p_id)
     new_model = c4_nn.Connect4NN("./connect4_models",
-                                 log_path="/tmp/tensorflow_logs/c4_new_head2")  # log some training info stuff
+                                 log_path="/tmp/tensorflow_logs/c4_new_head2",
+                                 device=p_id)  # log some training info stuff
     training_data = []  # get training data from past game generation iters
     games_loc = os.fsencode(
         join("datasetts", "c4_train_games"))  # load all training data files in the c4_train_games folder
@@ -182,23 +184,41 @@ def try_training(games_num, c_val):
     print("Done training model, comparing trained new model to old model...")
     new_performance = compete(old_model, new_model, c_val, games=games_num)  # compare the trained and old version
     print("Done comparing to old model..")
-    if new_performance >= 0.55:  # if the new version wins more than 55% of the games (assuming they are exactly equal, this happens over 51
-        print(
-            f"New model won by {new_performance}!")  # games about 7% of the time by pure chance), then it becomes the new model and is saved
-        new_model.save()
-        new_model.kill()
-        old_model.kill()
-    else:  # however if new made no significant improvement (didn't win more than 55%) then just keep the old version
-        print(f"Old model won by {1. - new_performance}")
-        old_model.save()
-        new_model.kill()
-        old_model.kill()
+    if perf_list is None:
+        if new_performance >= 0.55:  # if the new version wins more than 55% of the games (assuming they are exactly equal, this happens over 51
+            print(
+                f"New model won by {new_performance}!")  # games about 7% of the time by pure chance), then it becomes the new model and is saved
+            new_model.save()
+            new_model.kill()
+            old_model.kill()
+        else:  # however if new made no significant improvement (didn't win more than 55%) then just keep the old version
+            print(f"Old model won by {1. - new_performance}")
+            old_model.save()
+            new_model.kill()
+            old_model.kill()
+    else:
+        perf_list.append(new_performance)
+        if p_id == 0:
+            while len(perf_list) != proc_num:
+                time.sleep(0.08)
+            new_performance = sum(perf_list) / proc_num
+            if new_performance >= 0.55:  # if the new version wins more than 55% of the games (assuming they are exactly equal, this happens over 51
+                print(
+                    f"New model won by {new_performance}!")  # games about 7% of the time by pure chance), then it becomes the new model and is saved
+                new_model.save()
+                new_model.kill()
+                old_model.kill()
+            else:  # however if new made no significant improvement (didn't win more than 55%) then just keep the old version
+                print(f"Old model won by {1. - new_performance}")
+                old_model.save()
+                new_model.kill()
+                old_model.kill()
 
 
-def generate(games_num, window, c_val):
+def generate(games_num, window, c_val, proc_id=0):
     """Does one iteration of game generation (plays games_num games to generate training data), trains new_model on that
      and then if it does better than old_model, it new_model is saved, else old_model is saved"""
-    agent = c4_nn.Connect4NN('./connect4_models')  # load self play agent
+    agent = c4_nn.Connect4NN('./connect4_models', device=proc_id)  # load self play agent
     global_training_data = []  # store training data
     global_tree = mc.MCTS()  # tree that gets reused between games to improve simulations
     print("Getting training data...")
@@ -208,7 +228,7 @@ def generate(games_num, window, c_val):
         if pct <= float(_) / games_num:  # every 4% of 2048 ~= 82 games, save current training data
             print("#", end='', flush=True)
             pct += 0.04
-            with open(join("train_progress", f"train_dump-{int(pct*1000)}.pickle"), "wb") as f:
+            with open(join(f"train_progress", f"train_dump_{proc_id}_-{int(pct*1000)}.pickle"), "wb") as f:
                 pickle.dump(global_training_data, f)
         if pct_2 <= float(_) / games_num:
             global_tree = mc.MCTS()  # emtpy out global tree, to save memory every so often and also given an indicator of progress
@@ -220,13 +240,13 @@ def generate(games_num, window, c_val):
     agent.kill()  # free some memory
     window_size = 10
     try:  # relocate old trainng data so it isn't deleted
-        with open(join("datasetts", "c4_train_games", f"training_data-{window % window_size}.pickle"), "rb") as f:
+        with open(join("datasetts", "c4_train_games", f"training_data_{proc_id}_-{window % window_size}.pickle"), "rb") as f:
             move_this = pickle.load(f)
-        with open(join("datasetts", "old_c4_games", f"training_data-{int(time.time()*1000)}.pickle"), "wb") as f:
+        with open(join("datasetts", "old_c4_games", f"training_data_{proc_id}_-{int(time.time()*1000)}.pickle"), "wb") as f:
             pickle.dump(move_this, f)
     except FileNotFoundError:
         pass
-    with open(join("datasetts", "c4_train_games", f"training_data-{window % window_size}.pickle"), "wb") as f:
+    with open(join("datasetts", "c4_train_games", f"training_data_{proc_id}_-{window % window_size}.pickle"), "wb") as f:
         pickle.dump(global_training_data, f)
     print("\nDone getting training data, training model..")
 
@@ -253,16 +273,39 @@ def play_game(agent, global_tree, global_training, c_val, search_iters=1000, sea
 def main():
     my_c = 4.0
     for cnt in range(6, 40):
-        p = mp.Process(target=generate, args=(768, cnt, my_c,))  # do 768 games of self play
-        p.start()
-        p.join()
-        print(f"Total sessions completed: {cnt}")
-        p = mp.Process(target=try_training, args=(51, my_c,))  # try to train neural net on the games just played out
-        p.start()
-        p.join()  # its a process to manage memory efficiently (so gpu memory can be cleared)
-        p = mp.Process(target=play_AB, args=(25,))  # play 25 game matches against AB engine
-        p.start()
-        p.join()
+        if proc_num > 1:
+            pool = mp.Pool(proc_num)
+            manager = mp.Manager()
+
+            args = [(1024, cnt, my_c, i) for i in range(proc_num)]
+            pool.starmap(generate, args)
+            pool.close()
+
+            pool = mp.Pool(proc_num)
+            perf_list = manager.list()
+            args = [(100//proc_num, my_c, i, perf_list) for i in range(proc_num)]
+            pool.starmap(try_training, args)
+            pool.close()
+
+            pool = mp.Pool(proc_num)
+            args = [(25, i) for i in range(proc_num)]
+            pool.map(play_AB, [25]*proc_num)
+            pool.close()
+        else:
+            p = mp.Process(target=try_training, args=(21, my_c,))  # try to train neural net on the games just played out
+            p.start()
+            p.join()  # its a process to manage memory efficiently (so gpu memory can be cleared)
+            p = mp.Process(target=play_AB, args=(3,))  # play 25 game matches against AB engine
+            p.start()
+            p.join()
+            p = mp.Process(target=generate, args=(100, cnt, my_c,))  # do 768 games of self play
+            p.start()
+            p.join()
+            print(f"Total sessions completed: {cnt}")
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        proc_num = int(sys.argv[1])
+    else:
+        proc_num = 1
     main()

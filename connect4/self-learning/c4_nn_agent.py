@@ -17,9 +17,11 @@ distributions, and 1 more for the expected score q)"""
 
 
 class Connect4NN(object):
-    def __init__(self, loc, fs=5, layers=7, log_path=None):
+    def __init__(self, loc, fs=5, layers=7, log_path=None, device=0):
         self.graph = tf.Graph()
-        self.sess = tf.Session(graph=self.graph)
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
+        self.sess = tf.Session(graph=self.graph, config=config)
         self.fs = fs  # filter size for bottleneck layer
         self.layers = layers  # number of residual layers
         self.bottle = 32  # number of filters in bottleneck
@@ -28,156 +30,160 @@ class Connect4NN(object):
         self.dropout_p = 0.75  # dropout % for training
 
         # GRAPH/NN ARCHITECTURE
-        with self.graph.as_default():
-            with tf.name_scope("inputs"):
-                self.current_in = tf.placeholder(tf.float32, [None, 2, 8, 8], name="board_in")
-                self.board_shaped = tf.transpose(self.current_in, [0, 2, 3, 1],
-                                                 name="board_shaped")
-                self.train_mode = tf.placeholder(tf.bool, name='train_mode')
-                self.global_step_tensor = tf.Variable(0, trainable=False, name='global_step')
-                self.pi = tf.placeholder(tf.float64, [None, 8], name="improved_policy")
-                self.reward = tf.placeholder(tf.float32, [None], name="reward")
-                self.pkeep = tf.cond(self.train_mode, lambda: self.dropout_p, lambda: 1.0)
+        with tf.device(f"/device:GPU:{device}"):
+            with self.graph.as_default():
+                with tf.name_scope("inputs"):
+                    self.current_in = tf.placeholder(tf.float32, [None, 2, 8, 8], name="board_in")
+                    self.board_shaped = tf.transpose(self.current_in, [0, 2, 3, 1],
+                                                     name="board_shaped")
+                    self.train_mode = tf.placeholder(tf.bool, name='train_mode')
+                    self.global_step_tensor = tf.Variable(0, trainable=False, name='global_step')
+                    self.pi = tf.placeholder(tf.float64, [None, 8], name="improved_policy")
+                    self.reward = tf.placeholder(tf.float32, [None], name="reward")
+                    self.pkeep = tf.cond(self.train_mode, lambda: self.dropout_p, lambda: 1.0)
 
-            with tf.name_scope("in_out_weights"):
-                # weights used in input layers and output layers (not in residual head)
-                self.scale_up = tf.Variable(tf.truncated_normal([5, 5, 2, self.filters], stddev=0.1), name=f'scaler_up')
-                self.scale_down = tf.Variable(tf.truncated_normal([2, 2, self.filters, self.bottle], stddev=0.1),
-                                              name=f'scaler_down')
-                # the 2 final fully connected layers' weights
-                self.fc1 = tf.Variable(tf.truncated_normal([4 * 4 * self.bottle, self.fc_size], stddev=0.1), name='fc1')
-                self.fc_v = tf.Variable(tf.truncated_normal([self.fc_size, 1], stddev=0.1), name='fc_v')
-                self.fc_p = tf.Variable(tf.truncated_normal([self.fc_size, 8], stddev=0.1), name='fc_p')
+                with tf.name_scope("in_out_weights"):
+                    # weights used in input layers and output layers (not in residual head)
+                    self.scale_up = tf.Variable(tf.truncated_normal([5, 5, 2, self.filters], stddev=0.1), name=f'scaler_up')
+                    self.scale_down = tf.Variable(tf.truncated_normal([2, 2, self.filters, self.bottle], stddev=0.1),
+                                                  name=f'scaler_down')
+                    # the 2 final fully connected layers' weights
+                    self.fc1 = tf.Variable(tf.truncated_normal([4 * 4 * self.bottle, self.fc_size], stddev=0.1), name='fc1')
+                    self.fc_v = tf.Variable(tf.truncated_normal([self.fc_size, 1], stddev=0.1), name='fc_v')
+                    self.fc_p = tf.Variable(tf.truncated_normal([self.fc_size, 8], stddev=0.1), name='fc_p')
 
-            def convolve_getter(name, shape):
-                # weight getter for residual layers
-                weight = tf.get_variable(name, shape=shape)  # by default uses glorot_uniform initializer (pretty good)
-                return weight
+                def convolve_getter(name, shape):
+                    # weight getter for residual layers
+                    weight = tf.get_variable(name, shape=shape)  # by default uses glorot_uniform initializer (pretty good)
+                    return weight
 
-            def convolve_once(input_tensor, convolver):
-                # the most basic convolutional layer, including the convolution, batch norm, relu non-linearity
-                conv = tf.nn.conv2d(input_tensor, convolver, strides=[1, 1, 1, 1], padding="SAME")
-                conv_ = tf.layers.batch_normalization(conv, axis=-1, training=self.train_mode, scale=False, center=True)
-                return tf.nn.relu(conv_)
+                def convolve_once(input_tensor, convolver):
+                    # the most basic convolutional layer, including the convolution, batch norm, relu non-linearity
+                    conv = tf.nn.conv2d(input_tensor, convolver, strides=[1, 1, 1, 1], padding="SAME")
+                    conv_ = tf.layers.batch_normalization(conv, axis=-1, training=self.train_mode, scale=False, center=True)
+                    return tf.nn.relu(conv_)
 
-            def residual_block(input_tensor, layer_name):
-                # residual layer defintion, uses 3 parts, first reduces the number of channels, then some expensive
-                # convolutions using big filter sizes are done, then a final convolution to increase number of channels
-                with tf.variable_scope(layer_name):
-                    save_input = input_tensor  # save input to be added to the output later (residual/skip connectino)
-                    with tf.name_scope("weights"):
-                        dec = convolve_getter("dec_channels", [1, 1, self.filters, self.bottle])
-                        expensive = convolve_getter("convolve", [self.fs, self.fs, self.bottle, self.bottle])
-                        inc = convolve_getter("inc_channels", [1, 1, self.bottle, self.filters])
-                    with tf.name_scope("residual"):
-                        p1 = convolve_once(input_tensor, dec)  # actually compute the 3-layered convolutions
-                        p2 = convolve_once(p1, expensive)
-                        p3 = convolve_once(p2, inc)
-                    return tf.add(save_input, p3, name="act_out")  # residual connection
+                def residual_block(input_tensor, layer_name):
+                    # residual layer defintion, uses 3 parts, first reduces the number of channels, then some expensive
+                    # convolutions using big filter sizes are done, then a final convolution to increase number of channels
+                    with tf.variable_scope(layer_name):
+                        save_input = input_tensor  # save input to be added to the output later (residual/skip connectino)
+                        with tf.name_scope("weights"):
+                            dec = convolve_getter("dec_channels", [1, 1, self.filters, self.bottle])
+                            expensive = convolve_getter("convolve", [self.fs, self.fs, self.bottle, self.bottle])
+                            inc = convolve_getter("inc_channels", [1, 1, self.bottle, self.filters])
+                        with tf.name_scope("residual"):
+                            p1 = convolve_once(input_tensor, dec)  # actually compute the 3-layered convolutions
+                            p2 = convolve_once(p1, expensive)
+                            p3 = convolve_once(p2, inc)
+                        return tf.add(save_input, p3, name="act_out")  # residual connection
 
-            with tf.name_scope("inc_channels"):
-                # first part of the architecture, scales up the input board_state to have more channels
-                scale_conv = tf.nn.conv2d(self.board_shaped, self.scale_up, strides=[1, 1, 1, 1], padding="SAME",
-                                          name="scaling_up")
-                scale_bn = tf.layers.batch_normalization(scale_conv, axis=-1, training=self.train_mode,
-                                                         scale=False, center=True, name="scaling_up_bn")
-                act = tf.nn.relu(scale_bn, name="scaling_up_act")
-                inc_act = act  # save for summaries
+                with tf.name_scope("inc_channels"):
+                    # first part of the architecture, scales up the input board_state to have more channels
+                    scale_conv = tf.nn.conv2d(self.board_shaped, self.scale_up, strides=[1, 1, 1, 1], padding="SAME",
+                                              name="scaling_up")
+                    scale_bn = tf.layers.batch_normalization(scale_conv, axis=-1, training=self.train_mode,
+                                                             scale=False, center=True, name="scaling_up_bn")
+                    act = tf.nn.relu(scale_bn, name="scaling_up_act")
+                    inc_act = act  # save for summaries
 
-            for i in range(self.layers):  # all the residual layers
-                act = residual_block(act, f"layer-{i}")
+                for i in range(self.layers):  # all the residual layers
+                    act = residual_block(act, f"layer-{i}")
 
-            with tf.name_scope("dec_channels"):
-                # after residual layers, decrease the number of channels back down and reduce channel size
-                smaller = tf.nn.conv2d(act, self.scale_down, strides=[1, 2, 2, 1], padding="SAME", name="scaling_down")
-                smaller_bn = tf.layers.batch_normalization(smaller, axis=-1, training=self.train_mode,
-                                                           scale=False, center=True, name="scaling_down_bn")
-                smaller_act = tf.nn.relu(smaller_bn, name="scaling_down_act")
+                with tf.name_scope("dec_channels"):
+                    # after residual layers, decrease the number of channels back down and reduce channel size
+                    smaller = tf.nn.conv2d(act, self.scale_down, strides=[1, 2, 2, 1], padding="SAME", name="scaling_down")
+                    smaller_bn = tf.layers.batch_normalization(smaller, axis=-1, training=self.train_mode,
+                                                               scale=False, center=True, name="scaling_down_bn")
+                    smaller_act = tf.nn.relu(smaller_bn, name="scaling_down_act")
 
-            with tf.name_scope("fully_connected"):
-                # fully connected layers to reshape the convolutional channels into vectors
-                combine_filters = tf.matmul(tf.reshape(smaller_act, [-1, 4 * 4 * self.bottle]), self.fc1,
-                                            name='combine_filters')  # scale down
-                combine_filters_bn = tf.layers.batch_normalization(combine_filters, axis=-1, training=self.train_mode,
-                                                                   scale=False, center=True, name='combine_filters_bn')
-                combine_filters_a = tf.nn.relu(combine_filters_bn, name='combine_filters_a')
-                combine_filters_d = tf.nn.dropout(combine_filters_a, self.pkeep, name='combine_filters_d')
+                with tf.name_scope("fully_connected"):
+                    # fully connected layers to reshape the convolutional channels into vectors
+                    combine_filters = tf.matmul(tf.reshape(smaller_act, [-1, 4 * 4 * self.bottle]), self.fc1,
+                                                name='combine_filters')  # scale down
+                    combine_filters_bn = tf.layers.batch_normalization(combine_filters, axis=-1, training=self.train_mode,
+                                                                       scale=False, center=True, name='combine_filters_bn')
+                    combine_filters_a = tf.nn.relu(combine_filters_bn, name='combine_filters_a')
+                    combine_filters_d = tf.nn.dropout(combine_filters_a, self.pkeep, name='combine_filters_d')
 
-            with tf.name_scope("outputs"):
-                # final fully connected layer separated into a policy section and a value section
-                p_logits = tf.matmul(combine_filters_d, self.fc_p, name="policy_logits")
-                v_logits = tf.matmul(combine_filters_d, self.fc_v, name="value_logits")
-                self.weak_policy = tf.nn.softmax(tf.cast(p_logits, tf.float64), name="wp")  # move distribution
-                self.weak_value = tf.squeeze(tf.nn.tanh(v_logits, name='wv'))  # expected score in (-1, 1)
+                with tf.name_scope("outputs"):
+                    # final fully connected layer separated into a policy section and a value section
+                    p_logits = tf.matmul(combine_filters_d, self.fc_p, name="policy_logits")
+                    v_logits = tf.matmul(combine_filters_d, self.fc_v, name="value_logits")
+                    self.weak_policy = tf.nn.softmax(tf.cast(p_logits, tf.float64), name="wp")  # move distribution
+                    self.weak_value = tf.squeeze(tf.nn.tanh(v_logits, name='wv'))  # expected score in (-1, 1)
 
-            with tf.name_scope("loss_opt"):  # for training, define loss and optimization operations
-                self.eval_loss = tf.losses.mean_squared_error(self.reward, self.weak_value)  # expected reward loss
-                self.p_loss = tf.reduce_mean(
-                    tf.nn.softmax_cross_entropy_with_logits_v2(labels=self.pi, logits=p_logits))
-                self.reg_loss = tf.add_n([tf.nn.l2_loss(w) for w in tf.trainable_variables()])  # regularization loss
-                self.loss = 2. * self.eval_loss + 1. * self.p_loss + 5e-5 * self.reg_loss  # weighted sum of 3 losses
-                update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)  # batchnorm updates (alpha and beta)
-                with tf.control_dependencies(update_ops):  # as well as update population mean and std
-                    # actual optimizer, using a learning rate of 0.0002 and somewhat high epsilon (usually its 1e-8)
-                    self.optimizer = tf.train.AdamOptimizer(0.0002, name='opt', epsilon=1e-5).minimize(self.loss,
-                                                                                                       global_step=self.global_step_tensor)
+                with tf.name_scope("loss_opt"):  # for training, define loss and optimization operations
+                    self.eval_loss = tf.losses.mean_squared_error(self.reward, self.weak_value)  # expected reward loss
+                    self.p_loss = tf.reduce_mean(
+                        tf.nn.softmax_cross_entropy_with_logits_v2(labels=self.pi, logits=p_logits))
+                    self.reg_loss = tf.add_n([tf.nn.l2_loss(w) for w in tf.trainable_variables()])  # regularization loss
+                    self.loss = 2. * self.eval_loss + 1. * self.p_loss + 5e-5 * self.reg_loss  # weighted sum of 3 losses
+                    update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)  # batchnorm updates (alpha and beta)
+                    with tf.control_dependencies(update_ops):  # as well as update population mean and std
+                        # actual optimizer, using a learning rate of 0.0002 and somewhat high epsilon (usually its 1e-8)
+                        self.optimizer = tf.train.AdamOptimizer(0.0002, name='opt', epsilon=1e-5).minimize(self.loss,
+                                                                                                           global_step=self.global_step_tensor)
 
-            # Useless summaries of weight/activation distributions and histograms for debugging purposes
-            w_summaries = [tf.summary.histogram("inc_channels", self.scale_up),
-                           tf.summary.histogram("dec_channels", self.scale_down),
-                           tf.summary.histogram("fc_1", self.fc1),
-                           tf.summary.histogram("fc_v", self.fc_v),
-                           tf.summary.histogram("fc_p", self.fc_p)]
+                # Useless summaries of weight/activation distributions and histograms for debugging purposes
+                w_summaries = [tf.summary.histogram("inc_channels", self.scale_up),
+                               tf.summary.histogram("dec_channels", self.scale_down),
+                               tf.summary.histogram("fc_1", self.fc1),
+                               tf.summary.histogram("fc_v", self.fc_v),
+                               tf.summary.histogram("fc_p", self.fc_p)]
 
-            # more summaries
-            for i in range(self.layers):
-                with tf.variable_scope(f"layer-{i}", reuse=True):
-                    with tf.name_scope("weights"):
-                        dec_w = convolve_getter("dec_channels", [1, 1, self.filters, self.bottle])
-                        exp_w = convolve_getter("convolve", [self.fs, self.fs, self.bottle, self.bottle])
-                        inc_w = convolve_getter("inc_channels", [1, 1, self.bottle, self.filters])
-                layer_sum = [tf.summary.histogram(f"layer-{i}-dec", dec_w),
-                             tf.summary.histogram(f"layer-{i}-exp", exp_w),
-                             tf.summary.histogram(f"layer-{i}-inc", inc_w)]
-                w_summaries.append(layer_sum)
-            self.summ_w_op = tf.summary.merge(w_summaries)
+                # more summaries
+                for i in range(self.layers):
+                    with tf.variable_scope(f"layer-{i}", reuse=True):
+                        with tf.name_scope("weights"):
+                            dec_w = convolve_getter("dec_channels", [1, 1, self.filters, self.bottle])
+                            exp_w = convolve_getter("convolve", [self.fs, self.fs, self.bottle, self.bottle])
+                            inc_w = convolve_getter("inc_channels", [1, 1, self.bottle, self.filters])
+                    layer_sum = [tf.summary.histogram(f"layer-{i}-dec", dec_w),
+                                 tf.summary.histogram(f"layer-{i}-exp", exp_w),
+                                 tf.summary.histogram(f"layer-{i}-inc", inc_w)]
+                    w_summaries.append(layer_sum)
+                self.summ_w_op = tf.summary.merge(w_summaries)
 
-            act_summaries = [tf.summary.histogram("inc_channels_out", inc_act),
-                             tf.summary.histogram("residual_out", act),
-                             tf.summary.histogram("dec_channels_out", smaller_act),
-                             tf.summary.histogram("fc1_out", combine_filters_d),
-                             tf.summary.histogram("fc_v_out", v_logits),
-                             tf.summary.histogram("fc_p_out", p_logits),
-                             tf.summary.scalar("pkeep", self.pkeep)]
-            self.summ_act_op = tf.summary.merge(act_summaries)
+                act_summaries = [tf.summary.histogram("inc_channels_out", inc_act),
+                                 tf.summary.histogram("residual_out", act),
+                                 tf.summary.histogram("dec_channels_out", smaller_act),
+                                 tf.summary.histogram("fc1_out", combine_filters_d),
+                                 tf.summary.histogram("fc_v_out", v_logits),
+                                 tf.summary.histogram("fc_p_out", p_logits),
+                                 tf.summary.scalar("pkeep", self.pkeep)]
+                self.summ_act_op = tf.summary.merge(act_summaries)
 
-            train_summaries = [tf.summary.scalar("eval_loss", self.eval_loss),
-                               tf.summary.scalar("policy_loss", self.p_loss),
-                               tf.summary.scalar("reg_loss", self.reg_loss)]
-            test_summaries = [tf.summary.scalar("eval_loss_t", self.eval_loss),
-                              tf.summary.scalar("policy_loss_t", self.p_loss),
-                              tf.summary.scalar("reg_loss_t", self.reg_loss)]
-            self.summ_tr_op = tf.summary.merge(train_summaries)
-            self.summ_te_op = tf.summary.merge(test_summaries)
+                train_summaries = [tf.summary.scalar("eval_loss", self.eval_loss),
+                                   tf.summary.scalar("policy_loss", self.p_loss),
+                                   tf.summary.scalar("reg_loss", self.reg_loss)]
+                test_summaries = [tf.summary.scalar("eval_loss_t", self.eval_loss),
+                                  tf.summary.scalar("policy_loss_t", self.p_loss),
+                                  tf.summary.scalar("reg_loss_t", self.reg_loss)]
+                self.summ_tr_op = tf.summary.merge(train_summaries)
+                self.summ_te_op = tf.summary.merge(test_summaries)
 
-            self.full_summ = tf.summary.merge(w_summaries + act_summaries)
+                self.full_summ = tf.summary.merge(w_summaries + act_summaries)
 
-            # saving/loading parts for model checkpointing and comparison
-            self.saver = tf.train.Saver()
-            self.loader = tf.train.Saver()
-            if log_path is not None:
-                # pywriter = writer for any python variables you want to keep track of
-                # writer = writer for graph as well as activation and weight summaries
-                self.writer = tf.summary.FileWriter(log_path, self.sess.graph)
-                self.py_writer = tf.summary.FileWriter(log_path)
-            self.sess.run(tf.global_variables_initializer())  # init graph
-            try:
-                self.loader.restore(self.sess, tf.train.latest_checkpoint(os.path.join(os.path.dirname(__file__), loc)))  # load any models found
-            except ValueError:
-                print("No models found, initializing random model...")
+                # saving/loading parts for model checkpointing and comparison
+                self.saver = tf.train.Saver()
+                self.loader = tf.train.Saver()
+                if log_path is not None:
+                    # pywriter = writer for any python variables you want to keep track of
+                    # writer = writer for graph as well as activation and weight summaries
+                    self.writer = tf.summary.FileWriter(log_path, self.sess.graph)
+                    self.py_writer = tf.summary.FileWriter(log_path)
+                self.sess.run(tf.global_variables_initializer())  # init graph
+                try:
+                    self.loader.restore(self.sess, tf.train.latest_checkpoint(os.path.join(os.path.dirname(__file__), loc)))  # load any models found
+                except ValueError:
+                    print("No models found, initializing random model...")
 
     def test_update(self, test_data, batch_size):
-        batched_test = np.array_split(np.array(test_data), len(test_data) // batch_size)
+        if len(test_data) >= batch_size:
+            batched_test = np.array_split(np.array(test_data), len(test_data) // batch_size)
+        else:
+            batched_test = [np.array(test_data)]
         for idx, te in enumerate(batched_test):
             tr_cost, summary = self.sess.run([self.loss, self.summ_te_op],
                                              feed_dict={self.current_in: np.stack(te[:, 0]),
@@ -192,9 +198,14 @@ class Connect4NN(object):
         random.shuffle(train_data)
         test_data = train_data[:int(len(train_data) * test)]  # set aside 0.5% of data as testing data
         train_data = train_data[int(len(train_data) * test):]
+        print(len(test_data))
+        print(len(train_data))
         for j in range(epochs):
             random.shuffle(train_data)  # randomly shuffle data and split data into batches
-            batched_data = np.array_split(np.array(train_data), len(train_data) // batch_size)
+            if len(train_data) >= batch_size:
+                batched_data = np.array_split(np.array(train_data), len(train_data) // batch_size)
+            else:
+                batched_data = [np.array(train_data)]
             cost = 0  # to record the cost for a batch
             pct = 0.0  # for the progress bar
             for idx, tr in enumerate(batched_data):
@@ -220,7 +231,7 @@ class Connect4NN(object):
                                                  self.train_mode: False})
         return policy, value
 
-    def save(self, loc="C:\\Users\\Jack\\PycharmProjects\\tensorflowing\\connect4_models"):
+    def save(self, loc=os.path.join(os.path.dirname(__file__), "connect4_models")):
         # save the current model to the specified location
         self.saver.save(self.sess, os.path.join(loc,
                                                 f"agent-{self.get_step()}"))
