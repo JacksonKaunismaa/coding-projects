@@ -18,10 +18,15 @@ distributions, and 1 more for the expected score q)"""
 
 class Connect4NN(object):
     def __init__(self, loc, fs=5, layers=7, log_path=None, device=0):
+        device_name = f"/device:GPU:{device}"
         self.graph = tf.Graph()
-        config = tf.ConfigProto()
-        config.gpu_options.allow_growth = True
+
+        gpu_options = tf.GPUOptions()
+        gpu_options.allow_growth = True
+        gpu_options.visible_device_list = str(device)
+        config = tf.ConfigProto(gpu_options=gpu_options)
         self.sess = tf.Session(graph=self.graph, config=config)
+
         self.fs = fs  # filter size for bottleneck layer
         self.layers = layers  # number of residual layers
         self.bottle = 32  # number of filters in bottleneck
@@ -30,7 +35,7 @@ class Connect4NN(object):
         self.dropout_p = 0.75  # dropout % for training
 
         # GRAPH/NN ARCHITECTURE
-        with tf.device(f"/device:GPU:{device}"):
+        with tf.device(device_name):
             with self.graph.as_default():
                 with tf.name_scope("inputs"):
                     self.current_in = tf.placeholder(tf.float32, [None, 2, 8, 8], name="board_in")
@@ -312,10 +317,16 @@ class Connect4NN(object):
                     return
             else:
                 print(g)
-                human_move = int(input("pick a move to play: "))
+                try:
+                    human_move = int(input("pick a move to play: "))
+                except ValueError:
+                    human_move = -1
                 while human_move not in g.get_legal():
                     print("Invalid move")
-                    human_move = int(input("pick a move to play: "))
+                    try:
+                        human_move = int(input("pick a move to play: "))
+                    except ValueError:
+                        pass
                 g.move(human_move)
                 try:
                     print(f"eval = {tr.get_eval(g)}")
@@ -354,10 +365,16 @@ class Connect4NN(object):
                     return
             else:
                 print(g)
-                human_move = int(input("pick a move to play: "))
+                try:
+                    human_move = int(input("pick a move to play: "))
+                except ValueError:
+                    human_move = -1
                 while human_move not in g.get_legal():
                     print("Invalid move")
-                    human_move = int(input("pick a move to play: "))
+                    try:
+                        human_move = int(input("pick a move to play: "))
+                    except ValueError:
+                        pass
                 g.move(human_move)
                 try:
                     print(f"eval = {tr.get_eval(g)}")

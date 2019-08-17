@@ -272,7 +272,7 @@ def play_game(agent, global_tree, global_training, c_val, search_iters=1000, sea
 
 def main():
     my_c = 4.0
-    for cnt in range(6, 40):
+    for cnt in range(40):
         if proc_num > 1:
             pool = mp.Pool(proc_num)
             manager = mp.Manager()
@@ -280,17 +280,20 @@ def main():
             args = [(1024, cnt, my_c, i) for i in range(proc_num)]
             pool.starmap(generate, args)
             pool.close()
+            pool.join()
 
             pool = mp.Pool(proc_num)
             perf_list = manager.list()
-            args = [(100//proc_num, my_c, i, perf_list) for i in range(proc_num)]
+            args = [(128//proc_num, my_c, i, perf_list) for i in range(proc_num)]
             pool.starmap(try_training, args)
             pool.close()
+            pool.join()
 
             pool = mp.Pool(proc_num)
             args = [(25, i) for i in range(proc_num)]
             pool.map(play_AB, [25]*proc_num)
             pool.close()
+            pool.join()
         else:
             p = mp.Process(target=try_training, args=(21, my_c,))  # try to train neural net on the games just played out
             p.start()
