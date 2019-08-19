@@ -1,4 +1,7 @@
 import os
+import logging
+logging.getLogger("tensorflow").disabled = True
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import random
 import numpy as np
 import tensorflow as tf
@@ -226,7 +229,7 @@ class Connect4NN(object):
                     print("#", end='', flush=True)
                     pct += 0.025
                     self.test_update(test_data, batch_size)
-            print(f"\nTotal cost on epoch {j}: {cost}")  # test on the testing data to make sure cost is comparable
+            print(f"\nAverage cost on epoch {j}: {cost/len(train_data)}")  # test on the testing data to make sure cost is comparable
 
     def predict(self, inpt_game):
         """BoardState->policy, value, returns absolute prediction (without noise, isnan handling, and illegal moves)

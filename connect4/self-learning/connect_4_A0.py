@@ -26,7 +26,7 @@ def play_AB(games, proc_id):
         winner = "No one, yet"
         previous_move = 4  # dummy move needed for the poorly written AB engine
         game_data = []  # save game data to watch them later
-        print(being_played)  # to show progress
+#        print(being_played)  # to show progress
         game = cb.BoardState()  # generate a starting position
         tree = mc.MCTS()  # init game tree for neural network (NN)
         switch = bool(random.getrandbits(1))  # pick a random player to go first
