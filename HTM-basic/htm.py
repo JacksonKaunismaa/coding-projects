@@ -11,39 +11,46 @@ NL = "\n"
 TAB = "\t"
 
 INPUT_SIZE = 64
+INPUT_SPARSITY = 8
+
+NUM_PROXIMAL_INPUTS = 23    # gives approx 2.108% activation activated columns
 NET_WIDTH = 41
 NET_HEIGHT = 30
 COL_HEIGHT = 1
 NETWORK_SIZE = NET_WIDTH * NET_HEIGHT * COL_HEIGHT
 MAX_SEGMENT_SIZE = 8
 MIN_SEGMENT_SIZE = 2
-NUM_PROXIMAL_INPUTS = 20
 NUM_COLUMNS = NET_HEIGHT * NET_WIDTH
 NUM_OUTPUTS_PER_CELL = 1
 
-MIN_FF_OVERLAP = 11.5
+MIN_FF_OVERLAP = 5
 MIN_PERM_CONNECTED = 0.5
 INHIBITION_RADIUS = 64    # it wraps circularly around for stastical reasons (although this is nonsensical in normal brains)
 DESIRED_ACTIVITY = 0.98     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
 PERMANENCE_INC = 0.02
-BOOSTING_WEIGHT = 0.9    # the lower this value, the quicker activities decay and the less important the past is (current is more importtant)
+BOOSTING_DECAY = 0.9    # the lower this value, the quicker activities decay and the less important the past is (current is more importtant)
 BOOST_INC = 0.05
 
-KTH_HIGHEST = DESIRED_ACTIVITY * INHIBITION_RADIUS
+KTH_HIGHEST = int(DESIRED_ACTIVITY * INHIBITION_RADIUS)
 class ProximalSynapse:
     def __init__(self, inpt_idx, column=None):
         self.column = column
         self.idx = inpt_idx
-        self.activation = 0
-        self.connected = 0
+        #self.firing = 0          # if active input and valid synapse, this becomes true, however this is actually not need since we control the set of valid synapses for efficiency reasons
+        self.connected = 0           # if perm >= threshold, this is true
+        self.activation = 0      # if active input, this is true (regardless of valid or not)
         self.seg_ref = None
 
-    def activate(self, inpt_idx):
-        if self.idx == inpt_idx:# and self.connected:    # if it had a permanence value high enough and the input the synapse is linked to is activated, the synapse is activated
-            self.activation = 1  # we can assume its connected since we only allow connected synapses to call .activate()
-        else:
-            self.activation = 0
-        return self.activation
+    def activate(self):   # new implementation guarantees that the inpt_idx is correct
+        self.activation = 1    # no worries making overlap to large since when calculating overlap we only look at valid synapses' activations
+        #if self.idx == inpt_idx:# and self.connected:    # if it had a permanence value high enough and the input the synapse is linked to is activated, the synapse is activated
+        #    self.activation = 1  # we can assume its connected since we only allow connected synapses to call .activate()
+        #else:
+        #    self.activation = 0
+        #return self.activation
+
+    def deactivate(self):
+        self.activation = 0
 
     def increment_permanence(self):
         self.set_permanence(self.permanence + PERMANENCE_INC)
@@ -78,6 +85,7 @@ class ProximalSegment:
         self.idxs = util_funcs.rand_choice_center_fast(INPUT_SIZE, NUM_PROXIMAL_INPUTS, center)      #np.random.choice(INPUT_SIZE, num_connections, replace=False)
         perms = util_funcs.truncated_normal_perms(center, self.idxs, INPUT_SIZE)
         self.synapses = [ProximalSynapse(idx, column=self.column) for i, idx in enumerate(self.idxs)]
+        self.inpt_to_syn = {syn.idx: syn for syn in self.synapses}
         for syn, perm in zip(self.synapses, perms):
             syn.set_permanence(perm)
             syn.seg_ref = self
@@ -93,15 +101,21 @@ class ProximalSegment:
             overlap += syn.activation
         return overlap
 
+    def clear_inputs(self):
+        for syn in self.synapses:
+            syn.deactivate()
+
     def apply_input(self, inpt_idxs):
-        for syn in self.valid_synapses:
-            for inpt_idx in inpt_idxs:
-                if syn.activate(inpt_idx):
-                    break
+        self.clear_inputs()
+        for idx in inpt_idxs:    # changes O(w * q) -> O(w) (where w is the # of bits active in a given input)
+            try:
+                self.inpt_to_syn[idx].activate()
+            except KeyError:
+                pass
 
     def update_synapses(self):
-        for syn in self.synapses:
-            if syn.activation:                # should always be called after self.apply_input(), then update permanences (if synapses got activated, increase it, else, decrease it)
+        for syn in self.synapses:   # apply updates to all synapses (not just valid ones like before)
+            if syn.activation:                # should always be called after self.apply_input(), then update permanences (if synapse input bit was active, increase perm, else, decrease it)
                 syn.increment_permanence()    # ie. should be newly added
             else:
                 syn.decrement_permanence()
@@ -128,15 +142,16 @@ class Cell:
         self.segments = []
         self.loc = loc     # this is a 3-vector of (x, y, col_height)
         self.activation = 0     # can take values 0, 1e-8, 1  to be (inactive, predictive, active)
-        self.ff_act = 0
+        self.ff_act = 0        # the overlap (ie. connected_synapses.dot(input_bits))
 
     def next_segment(self):
-        for seg in self.segments:
-            if seg.size < MAX_SEGMENT_SIZE:
-                return seg
-        new_seg = DistalSegment(self)
-        self.segments.append(new_seg)
-        return new_seg
+        pass
+#        for seg in self.segments:
+#            if seg.size < MAX_SEGMENT_SIZE:
+#                return seg
+#        new_seg = DistalSegment(self)
+#        self.segments.append(new_seg)
+#        return new_seg
 
     def link_distal(self):
         for post_loc in self.post_cells:   # for out in outputs
@@ -170,7 +185,11 @@ class Column:
         self.region_ref = region_ref
         self.cells = cell_list
         self.loc = col_idx
-        self.overlap = 0
+
+        self.overlap = 0        # this is (connected_synapses.dot(input_bits), sum of firing synapses)
+        #self.inhibition_overlap = 0     # after inhibition overlap becomes (overlap*boost if overlap > min_overlap else 0, sum of firing synapses * boost (or 0) after inhibition)
+        #self.activation = 0    # this is 1 if the column is still winning after inhibtion, 0 else (however, we do this on the cell level, so technically Column itself never becomes "active")
+
         self.boost_factor = 1.0
         self.activity = 0    # activity should be in [0,1]
         self.overlap_freq = 0
@@ -185,19 +204,22 @@ class Column:
         self.overlap = self.proximal.get_overlap(inpt_idxs)
         if self.overlap < MIN_FF_OVERLAP:
             self.overlap = 0
-            self.overlap_freq *= BOOSTING_WEIGHT
+            self.overlap_freq *= BOOSTING_DECAY
         else:
-            self.overlap_freq = self.overlap_freq*BOOSTING_WEIGHT + (1-BOOSTING_WEIGHT)
+            self.overlap_freq = self.overlap_freq*BOOSTING_DECAY + (1-BOOSTING_DECAY)
             self.overlap *= self.boost_factor
 
     def activate(self):
         for cell in self.cells:
             cell.activation = 1
-            self.activity = self.activity*BOOSTING_WEIGHT + (1-BOOSTING_WEIGHT)
+        self.activity = self.activity*BOOSTING_DECAY + (1-BOOSTING_DECAY)
         self.proximal.update_synapses()
 
     def not_activate(self):
-        self.activity = self.activity*BOOSTING_WEIGHT
+        for cell in self.cells:
+            cell.activation = 0
+        # non-firing columns never do permanence updates
+        self.activity = self.activity*BOOSTING_DECAY
 
     def update_sliders(self, slide, sort, add):
         del_val = slide.pop(0)
@@ -216,12 +238,12 @@ class Column:
     def boost(self, sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost):
         self.update_sliders(sliding_activity, sorted_activity, next_act)
         self.update_sliders(sliding_boost, sorted_boost, next_boost)
-        if sorted_activity[-1] > 0:
-            print(sliding_activity[-5:], sorted_activity[-5:])
-            print("%"*100)
-        if sorted_boost[-1] != 1.0:
-            print(sliding_boost[-5:], sorted_boost[-5:])
-            print("*"*100)
+        #if sorted_activity[-1] > 0:
+        #    print(sliding_activity[-5:], sorted_activity[-5:])
+        #    print("%"*100)
+        #if sorted_boost[-1] != 1.0:
+        #    print(sliding_boost[-5:], sorted_boost[-5:])
+        #    print("*"*100)
         min_activity = sorted_activity[-1] * 0.01
         if min_activity == 0:
             self.boost_factor = sorted_boost[-1]
@@ -295,7 +317,7 @@ class Region:
 
     def inhibit(self):
         sliding_window = [x.overlap for x in np.take(self.cols, range(-INHIBITION_RADIUS//2, INHIBITION_RADIUS//2))]
-        sorted_window = list(sorted(sliding_window))
+        sorted_window = list(sorted(sliding_window))    # sliding and sorted window implement kmax algorithm (ie. find kth highest element) in O(log(n) + n))
         for loc, col in enumerate(self.cols):
             add_val = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].overlap
             col.inhibit(sliding_window, sorted_window, add_val)
@@ -350,7 +372,7 @@ class Region:
             cell.prune()
 
 def main():
-    letter_to_idxs = {letter: util_funcs.rand_choice_center_fast(INPUT_SIZE, 20, i) for i, letter in enumerate(string.ascii_lowercase)}
+    letter_to_idxs = {letter: util_funcs.rand_choice_center_fast(INPUT_SIZE, INPUT_SPARSITY, i) for i, letter in enumerate(string.ascii_lowercase)}
     #grid_region = np.mgrid[0:NET_WIDTH, 0:NET_HEIGHT, 0:COL_HEIGHT].reshape(3,-1).T#.swapaxes(0,-1).swapaxes(0,2).swapaxes(0,1)
     cell_region = Region()
     #print(cell_region.cells[49])

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
 
-
 void bitboard_parser(uint64_t* white, uint64_t* black, char* numpy_array)
 {
 	uint64_t pos = 63;
