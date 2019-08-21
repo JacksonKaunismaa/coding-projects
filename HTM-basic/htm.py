@@ -235,9 +235,10 @@ class Column:
         else:
             self.not_activate()
 
-    def boost(self, sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost):
+    def boost(self, sliding_activity, sorted_activity, next_act):
         self.update_sliders(sliding_activity, sorted_activity, next_act)
-        self.update_sliders(sliding_boost, sorted_boost, next_boost)
+        target_activity = np.mean(sliding_activity)
+        #self.update_sliders(sliding_boost, sorted_boost, next_boost)
         #if sorted_activity[-1] > 0:
         #    print(sliding_activity[-5:], sorted_activity[-5:])
         #    print("%"*100)
@@ -245,12 +246,13 @@ class Column:
         #    print(sliding_boost[-5:], sorted_boost[-5:])
         #    print("*"*100)
         min_activity = sorted_activity[-1] * 0.01
-        if min_activity == 0:
-            self.boost_factor = sorted_boost[-1]
-        elif self.activity > min_activity:
-            self.boost_factor = 1.0
-        else:
-            self.boost_factor = self.activity * ((1 - sorted_boost[-1])/min_activity) + sorted_boost[-1] #+ BOOST_INC
+        self.boost_factor = np.exp(target_activity - self.activity)
+        #if min_activity == 0:
+        #    self.boost_factor = sorted_boost[-1]
+        #elif self.activity > min_activity:
+        #    self.boost_factor = 1.0
+        #else:
+        #    self.boost_factor = self.activity * ((1 - sorted_boost[-1])/min_activity) + sorted_boost[-1] #+ BOOST_INC
 
         if self.overlap_freq < min_activity:    # to bring dead synapses back alive?
             for syn in self.proximal.synapses:
@@ -327,12 +329,12 @@ class Region:
         sliding_activity = [x.activity for x in np.take(self.cols, range(-INHIBITION_RADIUS//2, INHIBITION_RADIUS//2))]
         sorted_activity = list(sorted(sliding_activity))
 
-        sliding_boost = [x.boost_factor for x in np.take(self.cols, range(-INHIBITION_RADIUS//2, INHIBITION_RADIUS//2))]
-        sorted_boost = list(sorted(sliding_boost))
+        #sliding_boost = [x.boost_factor for x in np.take(self.cols, range(-INHIBITION_RADIUS//2, INHIBITION_RADIUS//2))]
+        #sorted_boost = list(sorted(sliding_boost))
         for loc, col in enumerate(self.cols):
             next_act = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].activity
-            next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
-            col.boost(sliding_activity, sorted_activity, sliding_boost, sorted_boost, next_act, next_boost)
+         #   next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
+            col.boost(sliding_activity, sorted_activity, next_act)
         INHIBITION_RADIUS = int(self.average_receptive_field())
         KTH_HIGHEST = int(DESIRED_ACTIVITY * INHIBITION_RADIUS)
 
