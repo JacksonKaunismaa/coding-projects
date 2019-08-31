@@ -1,15 +1,11 @@
 import tensorflow as tf
 import os
-#from tensorflow.keras.applications import VGG19
-#import tensorflow.keras.backend as K
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 tf.random.set_random_seed(12)
 SIZE = 128
-BATCH_SIZE = 32
-#LBP_SIZE = 216
+BATCH_SIZE = 4
 FILTERS = [3, 512, 256, 128, 64]
-#HIDDEN = [LBP_SIZE, 64, 32, 1]
 KERNEL = 8
 FINAL_SIZE = int(SIZE // (2**(len(FILTERS)-1)))
 
@@ -29,16 +25,12 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
 
-#K.set_session(sess)
-#model = VGG19()
 
-#assert len(HIDDEN) == len(FILTERS), "incorrect layer configuration (num fully_connected != num convolutional)"
 raw_train = tf.data.TFRecordDataset("./data/train-no-lbp.tfr")
 raw_test = tf.data.TFRecordDataset("./data/test-no-lbp.tfr")
 
 tfr_description = {"img_name": tf.FixedLenFeature([], tf.string),
                    "lbl": tf.FixedLenFeature([], tf.int64)}
-#                   "lbp": tf.FixedLenFeature([LBP_SIZE], tf.float32)}
 
 def _parse_tfr(proto):
     return tf.parse_single_example(proto, tfr_description)
@@ -57,7 +49,7 @@ def read_from_dataset(the_record):
         print(the_record)
         print(the_record['img_name'])
         raise
-    return img_final, the_record['lbl']#, the_record['lbp']*1e10
+    return img_final, the_record['lbl']
 
 train_data = train_set.map(read_from_dataset)
 test_data = test_set.map(read_from_dataset)
@@ -79,95 +71,55 @@ def get_bias(name, shape):
                            initializer=tf.constant_initializer(0.5))
     return bias
 
-def circular_pad(z, amount):
-    z = tf.concat(   #! first part pads the top with last few, second part pads the bottom
-        (z[:, -amount:, :], z, z[:, :amount, :]),
-        axis=1)
-
-    z = tf.concat(   #! same but left, then right gets padded
-        (z[:, :, -amount:], z, z[:, :, :amount]),
-        axis=2)
-    return z
-
 def convolve_down(input_tensor, convolver):
-#    input_tensor = circular_pad(input_tensor, (tf.shape(convolver)[0]-1)//2)
-    down_conv = tf.nn.conv2d(input_tensor, convolver, strides=[1, 2, 2, 1], padding="SAME")
+    down_conv = tf.nn.conv2d(input_tensor, convolver, strides=[1, 2, 2, 1], padding="VALID")
     down_conv_a = tf.nn.relu(down_conv)
     return down_conv_a
 
 
 def fully_connected(input_tensor, weight_matrix, bias, activation):
     logits = tf.matmul(input_tensor, weight_matrix) + bias
-    #batch_norm = tf.layers.batch_normalization(logits, axis=-1, training=train_mode,
-    #                                           scale=False, center=False)
     non_linear = activation(logits)
-    #dropped = tf.nn.dropout(non_linear, pkeep)
-    #return dropped
     return non_linear
 
-def discriminate(img_input):#, lbp_input):
-    #act_lbp = tf.reshape(lbp_input, [-1, LBP_SIZE])
+def discriminate(img_input):
     act_img = img_input
-#    with tf.variable_scope("frequency", reuse=tf.AUTO_REUSE):
-#        transposed = tf.transpose(img_input, [0, 3, 1, 2])    # turn [N, H, W, C] -> [N, C, H, W] (compute fft per batch and channel)
-#        dfft_img_complex = tf.spectral.rfft2d(transposed, fft_length=[128,128])
-#        fft_img = tf.transpose(tf.cast(dfft_img_complex, tf.float32), [0, 2, 3, 1])[:,:,1:,:]   # turn [N, C, H, W] -> [N, H, W, C]
 
-    for idx, (in_channels, out_channels) in enumerate(zip(FILTERS, FILTERS[1:])):#, HIDDEN, HIDDEN[1:])):
+    for idx, (in_channels, out_channels) in enumerate(zip(FILTERS, FILTERS[1:])):
         with tf.variable_scope(f"layer-{idx}", reuse=tf.AUTO_REUSE):
             conv = get_theta("conv", [KERNEL, KERNEL, in_channels, out_channels])
-            #fc = get_theta("fc", [in_hidden, out_hidden])
-            #bias = get_bias("bias", [out_hidden])
-#            fft_conv = get_theta("fft_conv", [KERNEL, KERNEL, in_channels, out_channels])
-
-#            fft_img = convolve_down(fft_img, fft_conv)
             act_img = convolve_down(act_img, conv)
-            #act_lbp = fully_connected(act_lbp, fc, bias, tf.nn.tanh)
 
     with tf.variable_scope("final-layer-img", reuse=tf.AUTO_REUSE):
         act_img_final = tf.reshape(act_img, [-1, FINAL_SIZE*FINAL_SIZE*FILTERS[-1]])
         final_img_fc = get_theta("fc", [FINAL_SIZE*FINAL_SIZE*FILTERS[-1], 1])
         final_img_bias = get_bias("bias", [1])
-        final_img = fully_connected(act_img_final, final_img_fc, final_img_bias, tf.nn.relu)
-
-#    with tf.variable_scope("final-layer-fft", reuse=tf.AUTO_REUSE):
-#        act_fft_final = tf.reshape(fft_img, [-1, FINAL_SIZE*FINAL_SIZE*FILTERS[-1]//2])
-#        final_fft_fc = get_theta("fft_fc", [FINAL_SIZE*FINAL_SIZE*FILTERS[-1]//2, 1])
-#        final_fft_bias = get_bias("fft_bias", [1])
-#        final_fft = fully_connected(act_fft_final, final_fft_fc, final_fft_bias, tf.tanh)
+        final_img = fully_connected(act_img_final, final_img_fc, final_img_bias, tf.identity)
 
     with tf.variable_scope("final-layer", reuse=tf.AUTO_REUSE):
-    #    img_weight = get_theta("img_weight", [1])
-        #lbp_weight = get_theta("lbp_weight", [1])
-#       fft_weight = get_theta("fft_weight", [1])
-        final_logits = final_img#*img_weight# + lbp_weight*act_lbp# + fft_weight*final_fft
+        final_logits = final_img
         return tf.nn.sigmoid(final_logits, name="classifier"), act_img, final_img
 
 with tf.variable_scope("main", reuse=tf.AUTO_REUSE):
     train_mode = tf.placeholder(tf.bool, name='train_mode')
     pkeep = tf.placeholder(tf.float32, name='pkeep')
     learn_rate = tf.placeholder(tf.float32, name="learn_rate")
-    #production_img = tf.placeholder(tf.float32, [None, SIZE, SIZE, 3], name='prod_img')
-    #production_lbp = tf.placeholder(tf.float32, [None, LBP_SIZE], name='prod_lbp')
-    #classified = tf.identity(discriminate(production_img, production_lbp), name="classify")
     global_step_tensor = tf.Variable(0, trainable=False, name='global_step')
 
-    imgs, lbls = next_tr#, lbps = next_tr
-    train_out, conv_out, fc_conv_out = discriminate(imgs)#, lbps)
+    imgs, lbls = next_tr
+    train_out, conv_out, fc_conv_out = discriminate(imgs)
     loss = tf.reduce_mean(tf.square(train_out - tf.cast(lbls, tf.float32)))
     opt = tf.train.AdamOptimizer(learning_rate=learn_rate).minimize(loss, global_step=global_step_tensor)
 
-    te_imgs, te_lbls = next_te#, te_lbps = next_te
-    test_out,____,________ = discriminate(te_imgs)#, te_lbps)
+    te_imgs, te_lbls = next_te
+    test_out,____,________ = discriminate(te_imgs)
     test_loss = tf.reduce_mean(tf.square(test_out - tf.cast(te_lbls, tf.float32)))
     correct_predictions = tf.equal(tf.cast(tf.round(test_out), tf.int64), te_lbls)
     accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 
-weight_summary = []#[tf.summary.scalar("img_weight", get_theta("final-layer/img_weight", [1])[0])]
+weight_summary = []
 with tf.variable_scope("main", reuse=tf.AUTO_REUSE):
     weight_summary.append(tf.summary.histogram("conv_weight", get_theta("layer-0/conv", [KERNEL, KERNEL, FILTERS[0], FILTERS[1]])))
-                  #tf.summary.scalar("lbp_weight", get_theta("final-layer/img_weight", [1])[0]),
-                  #tf.summary.scalar("fft_weight", get_theta("final-layer/fft_weight", [1])[0])]
 test_summary = [tf.summary.scalar("accuracy", accuracy),
                 tf.summary.scalar("test_loss", test_loss)]
 train_summary = [tf.summary.scalar("train_loss", loss)]
@@ -179,11 +131,12 @@ train_summary_op = tf.summary.merge(train_summary)
 sess.run(tf.global_variables_initializer())
 
 with tf.variable_scope("main", reuse=tf.AUTO_REUSE):
-    gr = tf.gradients(loss, get_theta("layer-3/conv", [KERNEL, KERNEL, FILTERS[3], FILTERS[4]]))
+    gr = tf.gradients(loss, tf.trainable_variables())
     #gr = tf.gradients(loss, get_theta("final-layer/img_weight", [1]))
-gr_res = sess.run(gr, feed_dict={pkeep:PKEEP, train_mode:True})[0]
-print(gr_res)
-print("mean", gr_res.mean())
+gr_res = sess.run(gr, feed_dict={pkeep:PKEEP, train_mode:True})
+print([x.mean() for x in gr_res])
+#print(gr_res)
+#print("mean", gr_res.mean())
 import numpy as np
 from PIL import Image
 

@@ -6,7 +6,7 @@ from PIL import Image
 def get_list(dirname):
     return [f"{dirname}/{x}" for x in os.listdir(dirname)]
 
-combo_list = (get_list("./texture") + get_list("./non_texture"))
+combo_list = (get_list("../texture") + get_list("../non_texture"))
 random.shuffle(combo_list)
 combo_list = combo_list[:int(sys.argv[1])]
 correct = 0

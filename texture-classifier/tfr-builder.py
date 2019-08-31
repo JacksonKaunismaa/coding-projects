@@ -1,24 +1,24 @@
 import tensorflow as tf
-import numpy as np
+#import numpy as np
 import random
 import os
 import collections
-import cv2
-from mahotas.features.lbp import lbp
-from multiprocessing import Pool
+#import cv2
+#from mahotas.features.lbp import lbp
+#from multiprocessing import Pool
 
 TEST_AMOUNT = 0.10
 LBP_SIZE = 216
 
-def local_binary(imname):
-    an_im = cv2.imread(imname, cv2.IMREAD_COLOR)
-    np_im = np.array(an_im)
-    result1 = lbp(np_im.max(axis=2), 3, 10)
-    result1 /= result1.sum()
-    result2 = lbp(np_im.mean(axis=2), 2, 10)
-    result2 /= result2.sum()
-    result = np.concatenate((result1, result2))
-    return result
+#def local_binary(imname):
+#    an_im = cv2.imread(imname, cv2.IMREAD_COLOR)
+#    np_im = np.array(an_im)
+#    result1 = lbp(np_im.max(axis=2), 3, 10)
+#    result1 /= result1.sum()
+#    result2 = lbp(np_im.mean(axis=2), 2, 10)
+#    result2 /= result2.sum()
+#    result = np.concatenate((result1, result2))
+#    return result
 
 def _floats_feature(val):
     if isinstance(val, collections.Iterable):
@@ -34,20 +34,20 @@ def _int64_feature(val):
     return tf.train.Feature(int64_list=tf.train.Int64List(value=[val]))
 
 
-def serialize_example_pyf(img_name, lbl, bin_pattern):
-	feature = {"img_name": _bytes_feature(img_name),
-            "lbl": _int64_feature(lbl),
-            "lbp": _floats_feature(bin_pattern)}
-	proto = tf.train.Example(features=tf.train.Features(feature=feature))
-	return proto.SerializeToString()
+def serialize_example_pyf(img_name, lbl):#, bin_pattern):
+    feature = {"img_name": _bytes_feature(img_name),
+               "lbl": _int64_feature(lbl)}
+                #"lbp": _floats_feature(bin_pattern)}
+    proto = tf.train.Example(features=tf.train.Features(feature=feature))
+    return proto.SerializeToString()
 
-def tf_serialize_example(img_name, lbl, bin_pattern):
-    tf_string = tf.py_func(serialize_example_pyf, (img_name, lbl, bin_pattern), tf.string)
+def tf_serialize_example(img_name, lbl):#, bin_pattern):
+    tf_string = tf.py_func(serialize_example_pyf, (img_name, lbl), tf.string)#, bin_pattern), tf.string)
     return tf.reshape(tf_string, ())
 
 def load_directory(dirname):
     img_files = os.listdir(dirname)
-    absolute_img_files = [f"./{dirname}/{x}" for x in img_files]
+    absolute_img_files = [f"./{dirname}/{x}" for x in img_files][:8000]
     print(f"Found {dirname} dataset with {len(img_files)} images...")
     random.shuffle(absolute_img_files)
     test_size = int(len(img_files)*TEST_AMOUNT)
@@ -64,17 +64,17 @@ def prep_dataset(full):
             build.append(1)
         else:
             build.append(0)
-    pool = Pool(8)
-    return full, build, pool.map(local_binary, full)
+    #pool = Pool(8)
+    return full, build#, pool.map(local_binary, full)
 
 feature_description = {"img_name": tf.FixedLenFeature([], tf.string),
-                       "lbl": tf.FixedLenFeature([], tf.int64),
-                       "lbp": tf.FixedLenFeature([LBP_SIZE], tf.float32)}
+                       "lbl": tf.FixedLenFeature([], tf.int64)}
+                       #"lbp": tf.FixedLenFeature([LBP_SIZE], tf.float32)}
 def _parse_function(example_proto):
     # Parse the input tf.Example proto using the dictionary above.
     try:
         return tf.parse_single_example(example_proto, feature_description)
-    except Exception as e:
+    except Exception:
         print(example_proto)
         raise
 tf.enable_eager_execution()

@@ -60,7 +60,18 @@ class Plot(object):
                     except IndexError:
                         pass
 
+    def img_fill(self, loc, img):
+        shape = img.shape
+        loc[0] -= shape[0]//2
+        loc[1] -= shape[1]//2
+        x_start = max(0,loc[0])
+        y_start = max(0,loc[1])
+        x_extent = min(self.res, loc[0]+shape[0]) - x_start
+        y_extent = min(self.res, loc[1]+shape[1]) - y_start
+        self.img[x_start:x_start+x_extent, y_start:y_start+y_extent, :] = img[:x_extent, :y_extent, :]
+
     def scale(self, loc):
+        # translates real coordinates like (-7.3, 2.5) into actual usable indices on the img grid
         locx = int(self.res * (loc[0] - self.minx) / (self.maxx - self.minx))
         locy = int(self.res * (loc[1] - self.miny) / (self.maxy - self.miny))
         return [locx, locy]
@@ -70,19 +81,29 @@ class Plot(object):
         self.hollow_fill(loc_scl, cmap['black'], 8)
         self.solid_fill(loc_scl, list(cmap.values())[clr], 7)
 
+    def plot_points(self, data, cats):
+        for p, c in zip(data, cats):
+            self.plot_point(p, c)
+
+    def plot_img(self, loc, img):
+        loc_scl = self.scale(loc)
+        self.img_fill(loc_scl, img)
+
+    def plot_imgs(self, locs, imgs):
+        self.set_frame(locs)
+        self.shape_grid()
+        for loc, img in zip(locs, imgs):
+            self.plot_img(loc, img)
+
+    def plot_means(self, means):
+        for c, p in enumerate(means):
+            self.cross_fill(self.scale(p), list(cmap.values())[c], 12)
+
     def sl(self, val):
         return val * (1 - 0.01 * np.sign(val)) - 0.1
 
     def sr(self, val):
         return val * (1 + 0.01 * np.sign(val)) + 0.1
-
-    def plot_points(self, data, cats):
-        for p, c in zip(data, cats):
-            self.plot_point(p, c)
-
-    def plot_means(self, means):
-        for c, p in enumerate(means):
-            self.cross_fill(self.scale(p), list(cmap.values())[c], 12)
 
     def set_frame(self, data):
         self.minx, self.miny = self.sl(np.min(data[:, 0])), self.sl(np.min(data[:, 1]))
@@ -116,9 +137,13 @@ class Plot(object):
 
     def save(self, name):
         im = Image.fromarray(self.img, "RGB")
-        if not os.path.exists(os.path.join("./kmviz", self.timename)):
-            os.mkdir(os.path.join("./kmviz", self.timename))
-        im.save(os.path.join("./kmviz", self.timename, name + '.png'))
+        if os.path.exists(name):
+            raise FileExistsError("File {} already exists!".format(name))
+        try:
+            im.save(name)
+        except ValueError:
+            print(f"Unknown image format for image called {name}")
+            raise
 
 
 

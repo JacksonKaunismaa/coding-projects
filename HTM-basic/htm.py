@@ -11,9 +11,9 @@ NL = "\n"
 TAB = "\t"
 
 INPUT_SIZE = 64
-INPUT_SPARSITY = 8
+INPUT_SPARSITY = 16
 
-NUM_PROXIMAL_INPUTS = 23    # gives approx 2.108% activation activated columns
+NUM_PROXIMAL_INPUTS = 27   # can't really use hypergeometric to get % active cuz boosting and learning make it so its always around 2% accurate
 NET_WIDTH = 41
 NET_HEIGHT = 30
 COL_HEIGHT = 1
@@ -23,13 +23,14 @@ MIN_SEGMENT_SIZE = 2
 NUM_COLUMNS = NET_HEIGHT * NET_WIDTH
 NUM_OUTPUTS_PER_CELL = 1
 
-MIN_FF_OVERLAP = 5
+MIN_FF_OVERLAP = 10
 MIN_PERM_CONNECTED = 0.5
 INHIBITION_RADIUS = 64    # it wraps circularly around for stastical reasons (although this is nonsensical in normal brains)
 DESIRED_ACTIVITY = 0.98     # its a winning col if its score is greater than score of 10th greatest column in inhibition radius
 PERMANENCE_INC = 0.02
 BOOSTING_DECAY = 0.9    # the lower this value, the quicker activities decay and the less important the past is (current is more importtant)
 BOOST_INC = 0.05
+MAX_BOOST = 10.0
 
 KTH_HIGHEST = int(DESIRED_ACTIVITY * INHIBITION_RADIUS)
 class ProximalSynapse:
@@ -123,6 +124,7 @@ class ProximalSegment:
     def get_receptive_field(self):
         try:
             return util_funcs.modular_radius(self.valid_synapses, INPUT_SIZE, key=lambda x: x.idx)
+            #return util_funcs.simple_recptive_size(self.valid_synapses, self.column, INPUT_SIZE, key=lambda x: x.idx)
         except IndexError:
             print("WORTHLESS COLUMN", self)
             return 0
@@ -252,7 +254,7 @@ class Column:
         #elif self.activity > min_activity:
         #    self.boost_factor = 1.0
         #else:
-        #    self.boost_factor = self.activity * ((1 - sorted_boost[-1])/min_activity) + sorted_boost[-1] #+ BOOST_INC
+        #    self.boost_factor = self.activity * ((1 - MAX_BOOST)/min_activity) + MAX_BOOST
 
         if self.overlap_freq < min_activity:    # to bring dead synapses back alive?
             for syn in self.proximal.synapses:
@@ -333,16 +335,18 @@ class Region:
         #sorted_boost = list(sorted(sliding_boost))
         for loc, col in enumerate(self.cols):
             next_act = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].activity
-         #   next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
+        #   next_boost = self.cols[(loc+INHIBITION_RADIUS//2)%len(self.cols)].boost_factor
             col.boost(sliding_activity, sorted_activity, next_act)
         INHIBITION_RADIUS = int(self.average_receptive_field())
         KTH_HIGHEST = int(DESIRED_ACTIVITY * INHIBITION_RADIUS)
 
     def average_receptive_field(self):
-        total = 0
+        total_dist = 0
+        #total_valid = 0
         for col in self.cols:
-            total += col.get_receptive_field()
-        return float(total) / NUM_COLUMNS
+            total_dist += col.get_receptive_field()
+            #  total_valid += len(col.proximal.valid_synapses)
+        return float(total_dist) / NUM_COLUMNS#float(total_valid)
 
 
     def avg_col(self, attr):

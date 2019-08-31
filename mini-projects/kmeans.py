@@ -1,6 +1,8 @@
 import numpy as np
 import matimg
 import matplotlib.pyplot as pyplt
+import os
+import time
 
 """Simple kmeans classifier that also includes some functions to generate random data for testing"""
 
@@ -20,7 +22,7 @@ def rand_part(x, k):
 
 
 class KMeans(object):
-    def __init__(self, k, data, init_method=rand_part):
+    def __init__(self, k, data, logdir=f"./kmviz/{time.time()}",init_method=rand_part):
         self.k = k
         self.init_method = init_method
         self.data = data
@@ -28,6 +30,9 @@ class KMeans(object):
         self.N = data.shape[1]
         self.means = init_method(self.data, self.k)
         self.plt = matimg.Plot(res=2000, block=15)
+        self.logdir = logdir
+        if not os.path.exists(self.logdir):
+            os.makedirs(self.logdir)
 
     def almost_equal(self, old, new, abs_eps=1e-8, rel_eps=1e-10):
         diff = abs(new-old)
@@ -51,7 +56,7 @@ class KMeans(object):
         self.plt.colorize(self.means)
         self.plt.plot_points(self.data, cats)
         self.plt.plot_means(self.means)
-        self.plt.save(str(it))
+        self.plt.save(os.path.join(self.logdir, "%04d.png" % it))
 
     def train(self, rec=False):
         old_means = self.means.copy()

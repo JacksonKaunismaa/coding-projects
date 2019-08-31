@@ -56,10 +56,10 @@ def _binary_insert(l, lo, hi, val, old_mid):
             return mid
 #    print("lo", l[lo], "hi", l[hi], "val", val, "mid", l[mid])
     if val <= l[mid]:
- #       print("first path")
+#       print("first path")
         return _binary_insert(l, lo, mid, val, mid)
     else:
-  #      print("second path")
+#      print("second path")
         return _binary_insert(l, mid, hi, val, mid)
 
 def binary_insert(l , val, key=None):
@@ -67,7 +67,7 @@ def binary_insert(l , val, key=None):
         l_actual = list(map(key, l))
         try:
             val = key(val)
-        except Exception as e:
+        except Exception:
             pass
         return _binary_insert(l_actual, 0, len(l)-1, val, -1) + 1
     return _binary_insert(l, 0, len(l)-1, val, -1) + 1
@@ -78,7 +78,7 @@ def binary_find(l, val, key=None):
     try:
         if res == 1 and key(val) <= key(l[0]):     # this is the only difference between binary insert and binary find
             return 0
-    except Exception as e:
+    except Exception:
         if res == 1 and val <= key(l[0]):
             return 0
     return res
@@ -95,9 +95,17 @@ def modular_radius(vals, mod, key=None):
     #print(vals_actual)
     lowest = mod
     for x,y in zip(vals_actual, vals_actual[1:]):
-     #   print(x,y, "=>", mod - (y-x)%mod)
+    #   print(x,y, "=>", mod - (y-x)%mod)
         lowest = min(lowest, mod - (y-x)%mod)
     return lowest
+
+def simple_recptive_size(vals, col, mod, key=None):    # depreceated since it gives values that are too large which leads to issues
+    if key is not None:
+        vals_actual = np.array(list(map(key, vals)))
+    else:
+        vals_actual = np.array(vals)
+    return np.square(mod_dist(vals_actual, col, mod)).sum()
+
 
 def main():
     np.set_printoptions(precision=3)
