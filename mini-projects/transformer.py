@@ -5,10 +5,10 @@ import numpy as np
 
 
 def f1(x,y):
-    return x*y
+    return y**2
 
 def f2(x,y):
-    return x+y
+    return y
 
 
 pg.init()
@@ -64,7 +64,9 @@ def val_to_idx(points):
     p_cpy[:,0] -= x_range[0]
     p_cpy[:,1] -= y_range[0]
     p_cpy[:,0] *= SIZE/x_size
-    p_cpy[:,1] *= SIZE/y_size
+
+    p_cpy[:,1] *= -SIZE/y_size    # saying p -> scale - p*scale
+    p_cpy[:,1] += SIZE
     return p_cpy.astype(np.int32)
 
 
@@ -115,7 +117,6 @@ while running:
 
     horz_color(4, horz_axis_start, horz_axis_dir, current, pixels, colors.WHITE)
     vert_color(4, vert_axis_start, vert_axis_dir, current, pixels, colors.WHITE)
-
     del pixels                     # surface is unlocked
     current = min(1.0,current+step)
     pg.display.update()
