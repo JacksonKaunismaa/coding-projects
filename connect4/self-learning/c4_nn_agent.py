@@ -20,7 +20,7 @@ distributions, and 1 more for the expected score q)"""
 
 
 class Connect4NN(object):
-    def __init__(self, loc, fs=5, layers=7, log_path=None, device=0):
+    def __init__(self, loc, fs=6, layers=11, log_path=None, device=0):
         device_name = f"/device:GPU:{device}"
         self.graph = tf.Graph()
 
@@ -32,9 +32,9 @@ class Connect4NN(object):
 
         self.fs = fs  # filter size for bottleneck layer
         self.layers = layers  # number of residual layers
-        self.bottle = 32  # number of filters in bottleneck
-        self.filters = 64  # number of filters between residual blocks
-        self.fc_size = 256  # second last (fully connected) layer size
+        self.bottle = 64  # number of filters in bottleneck
+        self.filters = 128  # number of filters between residual blocks
+        self.fc_size = 512  # second last (fully connected) layer size
         self.dropout_p = 0.75  # dropout % for training
 
         # GRAPH/NN ARCHITECTURE

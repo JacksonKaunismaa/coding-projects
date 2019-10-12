@@ -1,6 +1,6 @@
 import pygame as pg
 import colors
-import random
+#import random
 
 
 class GameState(object):
@@ -87,7 +87,7 @@ class BorderedSprite(pg.sprite.Sprite):
         self.visible = True
         self.selected = False
         if s in range(CARDS_NUM):
-            self.move((self.rect.width+((WIDTH-3*self.rect.width)//(CARDS_NUM-1))*s, HEIGHT//2-self.rect.height//2))
+            self.move((self.rect.width//1.2+((WIDTH-2*self.rect.width)//(CARDS_NUM-1))*s, HEIGHT//2-self.rect.height//3))
             self.slot_num = s
         else:
             raise ValueError(f"Slot value must be in the range [0,{CARDS_NUM-1}]")
@@ -96,7 +96,7 @@ class BorderedSprite(pg.sprite.Sprite):
         self.visible = True
         self.selected = False
         if s in range(buttons_num):
-            self.move((self.rect.width*3+((WIDTH-7*self.rect.width)//(buttons_num-1))*s, int(HEIGHT-self.rect.height*4.5) ))
+            self.move((self.rect.width*1.5+((WIDTH-3.5*self.rect.width)//(buttons_num-1))*s, int(HEIGHT-self.rect.height*2)))
             self.slot_num = s
         else:
             raise ValueError(f"Slot below value must be in the range [0,{buttons_num-1}]")
@@ -131,8 +131,10 @@ class BorderedSprite(pg.sprite.Sprite):
 
 
 class Card(BorderedSprite):
-    def __init__(self, value, im_name, dark_flag=False):
+    def __init__(self, value, im_name, sz=None, dark_flag=False):
         im_load = pg.image.load(im_name).convert_alpha()
+        if sz is not None:
+            im_load = pg.transform.scale(im_load, sz)
         super().__init__(im_load.get_rect())
 
         self.value = value
@@ -273,11 +275,11 @@ class MathFraction(object):
 
 
 class Fraction(BorderedSprite):
-    def __init__(self, value, sz):
+    def __init__(self, value, sz, fontsize=80):
         super().__init__(sz)
         self.sz = sz.copy()
         self.value = value
-        self.font = pg.font.SysFont("Comic Sans MS", 80)
+        self.font = pg.font.SysFont("Comic Sans MS", fontsize)
 
     def draw(self, gd):
         text = repr(self)
@@ -300,11 +302,14 @@ class Fraction(BorderedSprite):
 
 
 class TextBox(BorderedSprite):
-    def __init__(self, txt, sz, bsize=None):
+    def __init__(self, txt, sz, fsize=None, bsize=None):
         super().__init__(sz, bsize=bsize)
         self.sz = sz.copy()
         self.txt = txt
-        self.font = pg.font.SysFont("Comic Sans MS", 80)
+        if fsize is not None:
+            self.font = pg.font.SysFont("Comic Sans MS", fsize)
+        else:
+            self.font = pg.font.SysFont("Comic Sans MS", 80)
         self.unhide()
 
     def draw(self, gd):

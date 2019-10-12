@@ -12,12 +12,19 @@ import os
 
 pg.init()
 pg.font.init()
-WIDTH, HEIGHT = 1200, 1000
+WIDTH, HEIGHT = 400, 300     # 1200, 1000
 CARDS_NUM = 4
 TARGET = 24
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
+font_size = 20           # 80
+frac_font = 40
+card_size = (70, 85)     # 133, 194
+button_size = (40, 40)   # 75, 75
+gui_size = (45, 30)      # X, X
+wide_gui_size = (100, 25)
+big_wide_gui_size = (160, 25)
 SCRIPT_LOC = os.path.dirname(os.path.realpath(__file__))
 gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
@@ -43,7 +50,7 @@ def load_imgs():
     suits = ["hearts", "clubs", "diamonds", "spades"]
     for v in range(1, 14):
         for s in suits:
-            new_c = cards.Card(v, f"{SCRIPT_LOC}/../assets/cards/light/{val_map[v]}_of_{s}.png")
+            new_c = cards.Card(v, f"{SCRIPT_LOC}/../assets/cards/light/{val_map[v]}_of_{s}.png", sz=card_size)
             new_c.hide()
             img_arr.append(new_c)
     return img_arr
@@ -100,8 +107,8 @@ def one_left(deck):
 
 
 def continue_screen(gs, txt_msg):
-    t_msg = cards.TextBox(txt_msg, pg.Rect((WIDTH//2-(len(txt_msg)*20), HEIGHT//2), (len(txt_msg)*40, 100)))
-    cont_msg = cards.TextBox("Click to continue", pg.Rect((WIDTH//2-(17*20), HEIGHT//2-200), (17*40, 100)))
+    t_msg = cards.TextBox(txt_msg, pg.Rect(WIDTH//2-(len(txt_msg)*font_size//4), HEIGHT//2, len(txt_msg)*font_size//2, font_size*1.25), fsize=font_size)
+    cont_msg = cards.TextBox("Click to continue", pg.Rect(WIDTH//2-(17*font_size//4), HEIGHT//2-font_size*2.0, 17*font_size//2, font_size*1.25), fsize=font_size)
     while True:
         for evt in pg.event.get():
             if evt.type == pg.MOUSEBUTTONDOWN or evt.type == pg.KEYDOWN:
@@ -137,7 +144,7 @@ def load_gui():
     names = ["undo.jpeg", "plus_sign.jpeg", "minus_sign.jpeg", "multiply_sign.jpeg", "divide_sign.jpeg", "redo.jpeg"]
     buttons = []
     for idx, name in enumerate(names):
-        new_b = cards.Card(idx, f"{SCRIPT_LOC}/../assets/math_symbols/{name}", dark_flag=True)
+        new_b = cards.Card(idx, f"{SCRIPT_LOC}/../assets/math_symbols/{name}", sz=button_size, dark_flag=True)
         new_b.slot_below(WIDTH, HEIGHT, len(names), idx)
         buttons.append(new_b)
     buttons[0].darken()
@@ -157,7 +164,7 @@ def do_operation(result, gs):
     else:
         res_val = cards.MathFraction(result.value, 1)
     new_val = do_op(gs.op_selected.value, c1_val, res_val)
-    new_card = cards.Fraction(new_val, gs.card1.rect)
+    new_card = cards.Fraction(new_val, gs.card1.rect, fontsize=frac_font)
     sp_cpy = gs.sp+3  # if overwriting stack, delete everything above overwrite point
     try:
         while True:
@@ -187,15 +194,15 @@ def handle_undo(gs):
         gs.op_selected = None
         gs.buttons[0].deselect()
     else:
-         gs.stack[gs.sp-1].hide()  # delete newest card
-         gs.stack[gs.sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
-         gs.stack[gs.sp-3].reslot(WIDTH, HEIGHT, CARDS_NUM)
-         gs.stack[gs.sp-2].unhide()
-         gs.stack[gs.sp-3].unhide()
-         gs.stack[gs.sp-2].select_it()
-         gs.card1.deselect()
-         gs.card1 = gs.stack[gs.sp-2]
-         gs.sp -= 3
+        gs.stack[gs.sp-1].hide()  # delete newest card
+        gs.stack[gs.sp-2].reslot(WIDTH, HEIGHT, CARDS_NUM)
+        gs.stack[gs.sp-3].reslot(WIDTH, HEIGHT, CARDS_NUM)
+        gs.stack[gs.sp-2].unhide()
+        gs.stack[gs.sp-3].unhide()
+        gs.stack[gs.sp-2].select_it()
+        gs.card1.deselect()
+        gs.card1 = gs.stack[gs.sp-2]
+        gs.sp -= 3
 
 
 def handle_redo(gs):
@@ -287,7 +294,7 @@ def handle_events(evt, gs):
                 op_result = attempt_select(evt, gs.buttons)
                 if op_result == gs.buttons[0]:  # undo
                     handle_undo(gs)
-                if op_result == gs.buttons[-1]:  # redo 
+                if op_result == gs.buttons[-1]:  # redo
                     handle_redo(gs)
                 if op_result and op_result not in [gs.buttons[0], gs.buttons[-1]]:
                     if gs.op_selected:                 # changing op chosen
@@ -389,22 +396,22 @@ def game():
     solver_thread = th.Thread(target=async_check, args=(gs,))
     solver_thread.start()
 
-    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH//2-100, 0), (200, 60)), bsize=2)
-    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH//2-300, 60), (600, 60)), bsize=2)
+    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH-wide_gui_size[0])//2, 0, *wide_gui_size), bsize=2, fsize=font_size)
+    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1], *wide_gui_size), bsize=2, fsize=font_size)
 
-    gs.pf_disp = cards.TextBox("Performance", pg.Rect((WIDTH//2-185, 130), (370, 60)), bsize=2)
-    gs.pf_box = cards.TextBox("------", pg.Rect((WIDTH//2-150, 192), (300, 60)), bsize=2)
+    gs.pf_disp = cards.TextBox("Performance", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1]*2, *wide_gui_size), bsize=2, fsize=font_size)
+    gs.pf_box = cards.TextBox("------", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1]*3, *wide_gui_size), bsize=2, fsize=font_size)
 
-    gs.time_disp = cards.TextBox("Time", pg.Rect((0, 0), (150, 60)), bsize=2)
-    gs.time_box = cards.TextBox("0", pg.Rect((0, 60), (150, 60)), bsize=2)
+    gs.time_disp = cards.TextBox("Time", pg.Rect(0, 0, *gui_size), bsize=2, fsize=font_size)
+    gs.time_box = cards.TextBox("0", pg.Rect(0, gui_size[1], *gui_size), bsize=2, fsize=font_size)
 
-    gs.solved_disp = cards.TextBox("Solved", pg.Rect((0, 130), (200, 60)), bsize=2)
-    gs.solved_box = cards.TextBox("0", pg.Rect((0, 192), (200, 60)), bsize=2)
+    gs.solved_disp = cards.TextBox("Solved", pg.Rect(0, gui_size[1]*2, *gui_size), bsize=2, fsize=font_size)
+    gs.solved_box = cards.TextBox("0", pg.Rect(0, gui_size[1]*3, *gui_size), bsize=2, fsize=font_size)
 
-    gs.wrong_disp = cards.TextBox("Wrong", pg.Rect((WIDTH-180, 130), (180, 60)), bsize=2)
-    gs.wrong_box = cards.TextBox("0", pg.Rect((WIDTH-180, 192), (180, 60)), bsize=2)
+    gs.wrong_disp = cards.TextBox("Wrong", pg.Rect(WIDTH-gui_size[0], 0, *gui_size), bsize=2, fsize=font_size)
+    gs.wrong_box = cards.TextBox("0", pg.Rect(WIDTH-gui_size[0], gui_size[1], *gui_size), bsize=2, fsize=font_size)
 
-    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH//2-250, HEIGHT-90), (500, 80)), bsize=2)
+    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH-big_wide_gui_size[0])//2, HEIGHT-big_wide_gui_size[1], *big_wide_gui_size), bsize=2, fsize=font_size)
 
     gs.correct_flag = 0
     gs.stack = {}
