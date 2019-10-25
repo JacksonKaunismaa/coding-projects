@@ -8,6 +8,8 @@ import tensorflow as tf
 import connect4_base as cb
 import monte_carlo as mc
 import subprocess
+import warnings
+warnings.filterwarnings("ignore")
 
 """Actual NN agent that uses residual convolutional layers to compute a policy (probability distribution over the legal
 moves of how likely that move is to lead to a win) and also a q score that can be interpreted as an expected score given
