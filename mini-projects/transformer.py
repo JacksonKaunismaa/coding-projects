@@ -5,10 +5,10 @@ import numpy as np
 
 
 def f1(x,y):
-    return np.sin(abs(x*y))
+    return np.sin(y)
 
 def f2(x,y):
-    return np.cos(abs(x+y))
+    return np.cos(x)
 
 
 pg.init()

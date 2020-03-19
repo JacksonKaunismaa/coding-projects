@@ -12,17 +12,17 @@ import os
 
 pg.init()
 pg.font.init()
-WIDTH, HEIGHT = 400, 300     # 1200, 1000
+WIDTH, HEIGHT = 400, 300     # 1200, 1000  #400, 300
 CARDS_NUM = 4
 TARGET = 24
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
-font_size = 20           # 80
+font_size = 20           # 80   # 20
 frac_font = 40
-card_size = (70, 85)     # 133, 194
-button_size = (40, 40)   # 75, 75
-gui_size = (45, 30)      # X, X
+card_size = (70, 85)     # 133, 194    #70, 85
+button_size = (40, 40)   # 75, 75     # 40, 40
+gui_size = (45, 30)      # X, X    #45, 30
 wide_gui_size = (100, 25)
 big_wide_gui_size = (160, 25)
 SCRIPT_LOC = os.path.dirname(os.path.realpath(__file__))
