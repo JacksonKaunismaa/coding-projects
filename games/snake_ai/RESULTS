@@ -1,0 +1,9452 @@
+starting
+[2J[0;0HS+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 0
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(0, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+[2J[0;0HS+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 0
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(0, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 0)
+[(0 0), (0 0), ]
+0 9 9 0 
+
+
+hdir1:-1, hdir2:-1
+0 0 9 9 
+
+4th
+[2J[0;0H+S++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 1
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(1, 0)
+SNEK TAIL	(1, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 0)
+[(1 0), (1 0), ]
+0 8 9 1 
+
+
+hdir1:1, hdir2:-1
+0 1 8 9 
+
+picked 1st option
+[2J[0;0H++S+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 2
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(2, 0)
+SNEK TAIL	(2, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 0)
+[(2 0), (2 0), ]
+0 7 9 2 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H+++S++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 3
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(3, 0)
+SNEK TAIL	(3, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 0)
+[(3 0), (3 0), ]
+0 6 9 3 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 4
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(4, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 0)
+[(4 0), (4 0), ]
+0 5 9 4 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H+++++S++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 5
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(5, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 0)
+[(5 0), (5 0), ]
+0 4 9 5 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++S+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 6
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(6, 0)
+LENGTH 	1
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (6 0), ]
+FOODLOC: (8, 5)
+0 1 1 1 
+
+
+
+
+
+xxxxxxSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 1 2 3 0 
+
+hdists: 6 6 8 2147483647 
+
+
+
+
+
+xxxxxxxSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 1 2 3 0 
+
+hdists: 5 5 7 2147483647 
+
+
+
+
+
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 1 3 0 
+
+hdists: 4 6 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 3 5 5 5 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 2 4 4 4 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 1 3 3 3 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxxxxxXx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 0 2 2 2 
+
+
+
+[1, 1, 2, 2, 2, 2, 2, ]
+[2J[0;0H+++++++S++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 7
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(7, 0)
+LENGTH 	1
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 8
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(8, 0)
+LENGTH 	1
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 9
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(8, 1)
+LENGTH 	1
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++S+
+++++++++++
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 10
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(8, 2)
+LENGTH 	1
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++++++++
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 11
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(8, 3)
+LENGTH 	1
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++++++X+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 12
+YOU HAVE EATEN 0 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(8, 4)
+LENGTH 	1
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 33
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(8, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+5 1 4 8 
+
+
+hdir1:-1, hdir2:-1
+1 4 5 8 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 34
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 5)
+SNEK TAIL	(8, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 5)
+[(9 5), (8 5), ]
+5 0 4 9 
+
+
+hdir1:1, hdir2:-1
+0 4 5 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 35
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(9, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 4)
+[(9 4), (9 5), ]
+4 0 5 9 
+
+
+hdir1:0, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 36
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 3)
+SNEK TAIL	(9, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 3)
+[(9 3), (9 4), ]
+3 0 6 9 
+
+
+hdir1:0, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 37
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 2)
+SNEK TAIL	(9, 3)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 2)
+[(9 2), (9 3), ]
+2 0 7 9 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 38
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 1)
+SNEK TAIL	(9, 2)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 1)
+[(9 1), (9 2), ]
+1 0 8 9 
+
+
+hdir1:0, hdir2:0
+0 1 8 9 
+
+trying 3rd option
+5th
+[2J[0;0H+++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 39
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 0)
+SNEK TAIL	(9, 1)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 0)
+[(9 0), (9 1), ]
+0 0 9 9 
+
+
+hdir1:0, hdir2:0
+0 0 9 9 
+
+5th
+5th
+5th
+[2J[0;0H+++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 40
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 1)
+SNEK TAIL	(9, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 1)
+[(9 1), (9 0), ]
+1 0 8 9 
+
+
+hdir1:2, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 41
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 2)
+SNEK TAIL	(9, 1)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 2)
+[(9 2), (9 1), ]
+2 0 7 9 
+
+
+hdir1:2, hdir2:2
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 42
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 3)
+SNEK TAIL	(9, 2)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 3)
+[(9 3), (9 2), ]
+3 0 6 9 
+
+
+hdir1:2, hdir2:2
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 43
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(9, 3)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 4)
+[(9 4), (9 3), ]
+4 0 5 9 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 44
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(9, 5)
+SNEK TAIL	(9, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 5)
+[(9 5), (9 4), ]
+5 0 4 9 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+trying 3rd option
+choosing way1 3
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 45
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(9, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 5)
+[(8 5), (9 5), ]
+5 1 4 8 
+
+
+hdir1:3, hdir2:2
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 46
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(7, 5)
+SNEK TAIL	(8, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 5)
+[(7 5), (8 5), ]
+5 2 4 7 
+
+
+hdir1:3, hdir2:3
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++SS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 47
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(6, 5)
+SNEK TAIL	(7, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 5)
+[(6 5), (7 5), ]
+5 3 4 6 
+
+
+hdir1:3, hdir2:3
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++SS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 48
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 5)
+SNEK TAIL	(6, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 5)
+[(5 5), (6 5), ]
+5 4 4 5 
+
+
+hdir1:3, hdir2:3
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++SS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 49
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(4, 5)
+SNEK TAIL	(5, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 5)
+[(4 5), (5 5), ]
+5 5 4 4 
+
+
+hdir1:3, hdir2:3
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++SS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 50
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(3, 5)
+SNEK TAIL	(4, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 5)
+[(3 5), (4 5), ]
+5 6 4 3 
+
+
+hdir1:3, hdir2:3
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++SS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 51
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(2, 5)
+SNEK TAIL	(3, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 5)
+[(2 5), (3 5), ]
+5 7 4 2 
+
+
+hdir1:3, hdir2:3
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++SS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 52
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(1, 5)
+SNEK TAIL	(2, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 5)
+[(1 5), (2 5), ]
+5 8 4 1 
+
+
+hdir1:3, hdir2:3
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 53
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 5)
+SNEK TAIL	(1, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 5)
+[(0 5), (1 5), ]
+5 9 4 0 
+
+
+hdir1:3, hdir2:3
+0 4 5 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 54
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 4)
+SNEK TAIL	(0, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 4)
+[(0 4), (0 5), ]
+4 9 5 0 
+
+
+hdir1:0, hdir2:3
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 55
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 3)
+SNEK TAIL	(0, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 3)
+[(0 3), (0 4), ]
+3 9 6 0 
+
+
+hdir1:0, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 56
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 2)
+SNEK TAIL	(0, 3)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 2)
+[(0 2), (0 3), ]
+2 9 7 0 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 57
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 1)
+SNEK TAIL	(0, 2)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 1)
+[(0 1), (0 2), ]
+1 9 8 0 
+
+
+hdir1:0, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HS+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 58
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(0, 1)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 0)
+[(0 0), (0 1), ]
+0 9 9 0 
+
+
+hdir1:0, hdir2:0
+0 0 9 9 
+
+5th
+5th
+[2J[0;0HSS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 59
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(1, 0)
+SNEK TAIL	(0, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 0)
+[(1 0), (0 0), ]
+0 8 9 1 
+
+
+hdir1:1, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0H+SS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 60
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(2, 0)
+SNEK TAIL	(1, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 0)
+[(2 0), (1 0), ]
+0 7 9 2 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++SS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 61
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(3, 0)
+SNEK TAIL	(2, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 0)
+[(3 0), (2 0), ]
+0 6 9 3 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H+++SS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 62
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(3, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 0)
+[(4 0), (3 0), ]
+0 5 9 4 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++SS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 63
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(4, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 0)
+[(5 0), (4 0), ]
+0 4 9 5 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H+++++SS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 64
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(5, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (5 0), ]
+0 3 9 6 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++SS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 65
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(6, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 0)
+[(7 0), (6 0), ]
+0 2 9 7 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H+++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 66
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(7, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 0)
+[(8 0), (7 0), ]
+0 1 9 8 
+
+
+hdir1:1, hdir2:1
+0 1 8 9 
+
+trying 3rd option
+choosing way1 2
+[2J[0;0H++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 67
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(8, 0)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 1)
+[(8 1), (8 0), ]
+1 1 8 8 
+
+
+hdir1:2, hdir2:1
+1 1 8 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 68
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(8, 1)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 2)
+[(8 2), (8 1), ]
+2 1 7 8 
+
+
+hdir1:2, hdir2:2
+1 2 7 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 69
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(8, 2)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 3)
+[(8 3), (8 2), ]
+3 1 6 8 
+
+
+hdir1:2, hdir2:2
+1 3 6 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 70
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(8, 3)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 4)
+[(8 4), (8 3), ]
+4 1 5 8 
+
+
+hdir1:2, hdir2:2
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 71
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(8, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 5)
+[(8 5), (8 4), ]
+5 1 4 8 
+
+
+hdir1:2, hdir2:2
+1 4 5 8 
+
+trying 3rd option
+choosing way1 3
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 72
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(7, 5)
+SNEK TAIL	(8, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 5)
+[(7 5), (8 5), ]
+5 2 4 7 
+
+
+hdir1:3, hdir2:2
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++SS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 73
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(6, 5)
+SNEK TAIL	(7, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 5)
+[(6 5), (7 5), ]
+5 3 4 6 
+
+
+hdir1:3, hdir2:3
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++SS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 74
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 5)
+SNEK TAIL	(6, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 5)
+[(5 5), (6 5), ]
+5 4 4 5 
+
+
+hdir1:3, hdir2:3
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++SS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 75
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(4, 5)
+SNEK TAIL	(5, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 5)
+[(4 5), (5 5), ]
+5 5 4 4 
+
+
+hdir1:3, hdir2:3
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++SS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 76
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(3, 5)
+SNEK TAIL	(4, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 5)
+[(3 5), (4 5), ]
+5 6 4 3 
+
+
+hdir1:3, hdir2:3
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++SS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 77
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(2, 5)
+SNEK TAIL	(3, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 5)
+[(2 5), (3 5), ]
+5 7 4 2 
+
+
+hdir1:3, hdir2:3
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++SS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 78
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(1, 5)
+SNEK TAIL	(2, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 5)
+[(1 5), (2 5), ]
+5 8 4 1 
+
+
+hdir1:3, hdir2:3
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 79
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 5)
+SNEK TAIL	(1, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 5)
+[(0 5), (1 5), ]
+5 9 4 0 
+
+
+hdir1:3, hdir2:3
+0 4 5 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 80
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 4)
+SNEK TAIL	(0, 5)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 4)
+[(0 4), (0 5), ]
+4 9 5 0 
+
+
+hdir1:0, hdir2:3
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 81
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 3)
+SNEK TAIL	(0, 4)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 3)
+[(0 3), (0 4), ]
+3 9 6 0 
+
+
+hdir1:0, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 82
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 2)
+SNEK TAIL	(0, 3)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 2)
+[(0 2), (0 3), ]
+2 9 7 0 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 83
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(0, 1)
+SNEK TAIL	(0, 2)
+LENGTH 	2
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 1)
+[(0 1), (0 2), ]
+FOODLOC: (5, 6)
+1 1 1 0 
+
+
+
+
+
+xxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 2 0 3 
+
+hdists: 9 9 11 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 1 2 0 3 
+
+hdists: 8 8 10 10 
+
+
+
+
+
+xxxxxxxxxx
+xSSxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 1 2 0 3 
+
+hdists: 7 7 9 9 
+
+
+
+
+
+xxxxxxxxxx
+xxSSxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 1 2 0 3 
+
+hdists: 6 6 8 8 
+
+
+
+
+
+xxxxxxxxxx
+xxxSSxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 1 2 0 3 
+
+hdists: 5 5 7 7 
+
+
+
+
+
+xxxxxxxxxx
+xxxxSSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 4 6 6 6 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 3 5 5 5 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 2 4 4 4 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxxxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 1 3 3 3 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxXxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 0 1 3 
+
+hdists: 0 2 2 2 
+
+
+
+[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, ]
+[2J[0;0H++++++++++
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 84
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(1, 1)
+SNEK TAIL	(0, 1)
+LENGTH 	2
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++++
++SS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 85
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(2, 1)
+SNEK TAIL	(1, 1)
+LENGTH 	2
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++SS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 86
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(3, 1)
+SNEK TAIL	(2, 1)
+LENGTH 	2
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
++++SS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 87
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(4, 1)
+SNEK TAIL	(3, 1)
+LENGTH 	2
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++SS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 88
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 1)
+SNEK TAIL	(4, 1)
+LENGTH 	2
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
++++++S++++
++++++S++++
+++++++++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 89
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 2)
+SNEK TAIL	(5, 1)
+LENGTH 	2
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
++++++S++++
++++++S++++
+++++++++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 90
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 3)
+SNEK TAIL	(5, 2)
+LENGTH 	2
+CURR FRAME 7 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++++S++++
++++++S++++
+++++++++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 91
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 4)
+SNEK TAIL	(5, 3)
+LENGTH 	2
+CURR FRAME 8 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++S++++
++++++S++++
++++++X++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 92
+YOU HAVE EATEN 1 MOOGLES
+
+SNEK HEAD	(5, 5)
+SNEK TAIL	(5, 4)
+LENGTH 	2
+CURR FRAME 9 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
++++++S++++
++++++S++++
++++++S++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 113
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(5, 6)
+SNEK TAIL	(5, 4)
+LENGTH 	3
+CURR FRAME 0 vs TIME OUT 54
+6 4 3 5 
+
+
+hdir1:-1, hdir2:-1
+3 4 5 6 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
++++++S++++
++++++S++++
++++++S++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 114
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(5, 7)
+SNEK TAIL	(5, 5)
+LENGTH 	3
+CURR FRAME 1 vs TIME OUT 54
+HEADLOC: (5, 7)
+[(5 7), (5 6), (5 5), ]
+FOODLOC: (4, 3)
+0 1 1 1 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 3 1 2 0 
+
+hdists: 4 6 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxSxxxx
+xxxxSSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 0 2 3 1 
+
+hdists: 3 5 5 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxSxxxxx
+xxxxSSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 0 1 3 2 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxSxxxxx
+xxxxSxxxxx
+xxxxSxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 0 1 3 2 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxSxxxxx
+xxxxSxxxxx
+xxxxSxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 0 1 3 2 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 0, 0, 0, 0, ]
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
++++++S++++
+++++SS++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 115
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(4, 7)
+SNEK TAIL	(5, 6)
+LENGTH 	3
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+++++S+++++
+++++SS++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 116
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(4, 6)
+SNEK TAIL	(5, 7)
+LENGTH 	3
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 117
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(4, 5)
+SNEK TAIL	(4, 7)
+LENGTH 	3
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 118
+YOU HAVE EATEN 2 MOOGLES
+
+SNEK HEAD	(4, 4)
+SNEK TAIL	(4, 6)
+LENGTH 	3
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 139
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(4, 3)
+SNEK TAIL	(4, 6)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+3 5 6 4 
+
+
+hdir1:-1, hdir2:-1
+3 4 5 6 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 140
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(4, 2)
+SNEK TAIL	(4, 5)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 2)
+[(4 2), (4 3), (4 4), (4 5), ]
+2 5 7 4 
+
+
+hdir1:0, hdir2:-1
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 141
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(4, 1)
+SNEK TAIL	(4, 4)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 1)
+[(4 1), (4 2), (4 3), (4 4), ]
+1 5 8 4 
+
+
+hdir1:0, hdir2:0
+1 4 5 8 
+
+trying 3rd option
+choosing way1 1
+[2J[0;0H++++++++++
+++++SS++++
+++++S+++++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 142
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(5, 1)
+SNEK TAIL	(4, 3)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 1)
+[(5 1), (4 1), (4 2), (4 3), ]
+1 4 8 5 
+
+
+hdir1:1, hdir2:0
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++SSS+++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 143
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(6, 1)
+SNEK TAIL	(4, 2)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 1)
+[(6 1), (5 1), (4 1), (4 2), ]
+1 3 8 6 
+
+
+hdir1:1, hdir2:1
+1 3 6 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++SSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 144
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(7, 1)
+SNEK TAIL	(4, 1)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 1)
+[(7 1), (6 1), (5 1), (4 1), ]
+1 2 8 7 
+
+
+hdir1:1, hdir2:1
+1 2 7 8 
+
+picked 1st option
+[2J[0;0H++++++++++
++++++SSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 145
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(5, 1)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 1)
+[(8 1), (7 1), (6 1), (5 1), ]
+1 1 8 8 
+
+
+hdir1:1, hdir2:1
+1 1 8 8 
+
+trying 3rd option
+choosing way1 2
+[2J[0;0H++++++++++
+++++++SSS+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 146
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(6, 1)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 2)
+[(8 2), (8 1), (7 1), (6 1), ]
+2 1 7 8 
+
+
+hdir1:2, hdir2:1
+1 2 7 8 
+
+picked 1st option
+[2J[0;0H++++++++++
++++++++SS+
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 147
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(7, 1)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 3)
+[(8 3), (8 2), (8 1), (7 1), ]
+3 1 6 8 
+
+
+hdir1:2, hdir2:2
+1 3 6 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++S+
+++++++++S+
+++++X+++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 148
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(8, 1)
+LENGTH 	4
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 4)
+[(8 4), (8 3), (8 2), (8 1), ]
+FOODLOC: (4, 3)
+0 1 1 1 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxxxxxSx
+xxxxXxxxSx
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 3 1 2 0 
+
+hdists: 4 6 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxSx
+xxxxXxxxSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 0 3 2 1 
+
+hdists: 3 3 5 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxSSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxSSxx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXSSSxx
+xxxxxxxSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 0, 3, 3, 3, ]
+[2J[0;0H++++++++++
+++++++++++
+++++++++S+
+++++X+++S+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 149
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(7, 4)
+SNEK TAIL	(8, 2)
+LENGTH 	4
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 150
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(7, 3)
+SNEK TAIL	(8, 3)
+LENGTH 	4
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++X+SS++
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 151
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(6, 3)
+SNEK TAIL	(8, 4)
+LENGTH 	4
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++XSSS++
++++++++S++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 152
+YOU HAVE EATEN 3 MOOGLES
+
+SNEK HEAD	(5, 3)
+SNEK TAIL	(7, 4)
+LENGTH 	4
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++SSSS++
++++++++S++
+++++++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 173
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(4, 3)
+SNEK TAIL	(7, 4)
+LENGTH 	5
+CURR FRAME 0 vs TIME OUT 54
+3 5 6 4 
+
+
+hdir1:-1, hdir2:-1
+3 4 5 6 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++S+++++
+++++SSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 174
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(4, 2)
+SNEK TAIL	(7, 3)
+LENGTH 	5
+CURR FRAME 1 vs TIME OUT 54
+HEADLOC: (4, 2)
+[(4 2), (4 3), (5 3), (6 3), (7 3), ]
+FOODLOC: (0, 8)
+1 1 0 1 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxSxxxxx
+xxxxSSSSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 9 11 11 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSSxxxxx
+xxxxSSSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 8 8 10 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSSxxxxx
+xxxSSSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 7 7 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSSxxxxx
+xxxSSxxxxx
+xxxSxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 6 6 8 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSSxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 5 5 7 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxxxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 4 4 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+Xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 3 3 5 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+XxxSxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 3 1 2 0 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+XxSSxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxSxxxxxx
+xxxSxxxxxx
+XSSSxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 2, 2, 2, 2, 2, 2, 3, 3, 3, ]
+[2J[0;0H++++++++++
+++++++++++
++++SS+++++
+++++SSS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 175
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 2)
+SNEK TAIL	(6, 3)
+LENGTH 	5
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
++++SS+++++
++++SSS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 176
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 3)
+SNEK TAIL	(5, 3)
+LENGTH 	5
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
++++SS+++++
++++SS+++++
++++S++++++
+++++++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 177
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 4)
+SNEK TAIL	(4, 3)
+LENGTH 	5
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
++++SS+++++
++++S++++++
++++S++++++
++++S++++++
+++++++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 178
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 5)
+SNEK TAIL	(4, 2)
+LENGTH 	5
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
++++S++++++
++++S++++++
++++S++++++
++++S++++++
++++S++++++
+++++++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 179
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 6)
+SNEK TAIL	(3, 2)
+LENGTH 	5
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++S++++++
++++S++++++
++++S++++++
++++S++++++
++++S++++++
+X+++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 180
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 7)
+SNEK TAIL	(3, 3)
+LENGTH 	5
+CURR FRAME 7 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++S++++++
++++S++++++
++++S++++++
++++S++++++
+X++S++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 181
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(3, 8)
+SNEK TAIL	(3, 4)
+LENGTH 	5
+CURR FRAME 8 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++S++++++
++++S++++++
++++S++++++
+X+SS++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 182
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(2, 8)
+SNEK TAIL	(3, 5)
+LENGTH 	5
+CURR FRAME 9 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++S++++++
++++S++++++
+XSSS++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 183
+YOU HAVE EATEN 4 MOOGLES
+
+SNEK HEAD	(1, 8)
+SNEK TAIL	(3, 6)
+LENGTH 	5
+CURR FRAME 10 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++S++++++
++++S++++++
+SSSS++++++
+++++++++++
+
+
+SCORE: 204
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(0, 8)
+SNEK TAIL	(3, 6)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+8 9 1 0 
+
+
+hdir1:-1, hdir2:-1
+0 1 8 9 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++S++++++
+SSSS++++++
+S+++++++++
+
+
+SCORE: 205
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(0, 9)
+SNEK TAIL	(3, 7)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 9)
+[(0 9), (0 8), (1 8), (2 8), (3 8), (3 7), ]
+9 9 0 0 
+
+
+hdir1:2, hdir2:-1
+0 0 9 9 
+
+5th
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSSS++++++
+SS++++++++
+
+
+SCORE: 206
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(1, 9)
+SNEK TAIL	(3, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 9)
+[(1 9), (0 9), (0 8), (1 8), (2 8), (3 8), ]
+9 8 0 1 
+
+
+hdir1:1, hdir2:2
+0 1 8 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSS+++++++
+SSS+++++++
+
+
+SCORE: 207
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(2, 9)
+SNEK TAIL	(2, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 9)
+[(2 9), (1 9), (0 9), (0 8), (1 8), (2 8), ]
+9 7 0 2 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SS++++++++
+SSSS++++++
+
+
+SCORE: 208
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(3, 9)
+SNEK TAIL	(1, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 9)
+[(3 9), (2 9), (1 9), (0 9), (0 8), (1 8), ]
+9 6 0 3 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+S+++++++++
+SSSSS+++++
+
+
+SCORE: 209
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(4, 9)
+SNEK TAIL	(0, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 9)
+[(4 9), (3 9), (2 9), (1 9), (0 9), (0 8), ]
+9 5 0 4 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+
+
+SCORE: 210
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(5, 9)
+SNEK TAIL	(0, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 9)
+[(5 9), (4 9), (3 9), (2 9), (1 9), (0 9), ]
+9 4 0 5 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSS+++
+
+
+SCORE: 211
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(6, 9)
+SNEK TAIL	(1, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 9)
+[(6 9), (5 9), (4 9), (3 9), (2 9), (1 9), ]
+9 3 0 6 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++SSSSSS++
+
+
+SCORE: 212
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(7, 9)
+SNEK TAIL	(2, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 9)
+[(7 9), (6 9), (5 9), (4 9), (3 9), (2 9), ]
+9 2 0 7 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++SSSSSS+
+
+
+SCORE: 213
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(8, 9)
+SNEK TAIL	(3, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 9)
+[(8 9), (7 9), (6 9), (5 9), (4 9), (3 9), ]
+9 1 0 8 
+
+
+hdir1:1, hdir2:1
+0 1 8 9 
+
+trying 3rd option
+choosing way2 0
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++S+
+++++SSSSS+
+
+
+SCORE: 214
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(8, 8)
+SNEK TAIL	(4, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 8)
+[(8 8), (8 9), (7 9), (6 9), (5 9), (4 9), ]
+8 1 1 8 
+
+
+hdir1:0, hdir2:1
+1 1 8 8 
+
+trying 3rd option
+choosing way1 1
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++SS
++++++SSSS+
+
+
+SCORE: 215
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 8)
+SNEK TAIL	(5, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 8)
+[(9 8), (8 8), (8 9), (7 9), (6 9), (5 9), ]
+8 0 1 9 
+
+
+hdir1:1, hdir2:0
+0 1 8 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
+++++++++SS
+++++++SSS+
+
+
+SCORE: 216
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 7)
+SNEK TAIL	(6, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 7)
+[(9 7), (9 8), (8 8), (8 9), (7 9), (6 9), ]
+7 0 2 9 
+
+
+hdir1:0, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
+++++++++SS
++++++++SS+
+
+
+SCORE: 217
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 6)
+SNEK TAIL	(7, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 6)
+[(9 6), (9 7), (9 8), (8 8), (8 9), (7 9), ]
+6 0 3 9 
+
+
+hdir1:0, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
++++++++++S
+++++++++SS
+++++++++S+
+
+
+SCORE: 218
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 5)
+SNEK TAIL	(8, 9)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 5)
+[(9 5), (9 6), (9 7), (9 8), (8 8), (8 9), ]
+5 0 4 9 
+
+
+hdir1:0, hdir2:0
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++SS
+++++++++++
+
+
+SCORE: 219
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(8, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 4)
+[(9 4), (9 5), (9 6), (9 7), (9 8), (8 8), ]
+4 0 5 9 
+
+
+hdir1:0, hdir2:0
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++++++++S
++++++++++S
++++++++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+
+
+SCORE: 220
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 3)
+SNEK TAIL	(9, 8)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 3)
+[(9 3), (9 4), (9 5), (9 6), (9 7), (9 8), ]
+3 0 6 9 
+
+
+hdir1:0, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
++++++++++S
++++++++++S
++++++++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+
+
+SCORE: 221
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 2)
+SNEK TAIL	(9, 7)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 2)
+[(9 2), (9 3), (9 4), (9 5), (9 6), (9 7), ]
+2 0 7 9 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
++++++++++S
+++++X++++S
++++++++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 222
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(9, 1)
+SNEK TAIL	(9, 6)
+LENGTH 	6
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 1)
+[(9 1), (9 2), (9 3), (9 4), (9 5), (9 6), ]
+FOODLOC: (4, 2)
+1 0 0 1 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxS
+xxxxXxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 5 7 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSS
+xxxxXxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 4 4 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSS
+xxxxXxxxSS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 3 2 0 1 
+
+hdists: 3 5 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSS
+xxxxXxxSSS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSS
+xxxxXxSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxSS
+xxxxXSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 2, 3, 3, 3, 3, ]
+[2J[0;0H++++++++++
+++++++++SS
+++++X++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 223
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(9, 5)
+LENGTH 	6
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++SS
+++++X+++SS
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 224
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(9, 4)
+LENGTH 	6
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++SS
+++++X++SSS
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 225
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(7, 2)
+SNEK TAIL	(9, 3)
+LENGTH 	6
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++SS
+++++X+SSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 226
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(6, 2)
+SNEK TAIL	(9, 2)
+LENGTH 	6
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++SS
+++++XSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 227
+YOU HAVE EATEN 5 MOOGLES
+
+SNEK HEAD	(5, 2)
+SNEK TAIL	(9, 1)
+LENGTH 	6
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++SS
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 248
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(4, 2)
+SNEK TAIL	(9, 1)
+LENGTH 	7
+CURR FRAME 0 vs TIME OUT 54
+2 5 7 4 
+
+
+hdir1:-1, hdir2:-1
+2 4 5 7 
+
+4th
+[2J[0;0H++++++++++
+++++S+++S+
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 249
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(4, 1)
+SNEK TAIL	(8, 1)
+LENGTH 	7
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 1)
+[(4 1), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), ]
+1 5 8 4 
+
+
+hdir1:0, hdir2:-1
+1 4 5 8 
+
+trying 3rd option
+choosing way1 1
+[2J[0;0H++++++++++
+++++SS++++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 250
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(5, 1)
+SNEK TAIL	(8, 2)
+LENGTH 	7
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 1)
+[(5 1), (4 1), (4 2), (5 2), (6 2), (7 2), (8 2), ]
+1 4 8 5 
+
+
+hdir1:1, hdir2:0
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H+X++++++++
+++++SSS+++
+++++SSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 251
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(6, 1)
+SNEK TAIL	(7, 2)
+LENGTH 	7
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 1)
+[(6 1), (5 1), (4 1), (4 2), (5 2), (6 2), (7 2), ]
+FOODLOC: (1, 0)
+1 1 0 0 
+
+
+
+
+
+xXxxxxxxxx
+xxxxSSSxxx
+xxxxSSSSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 0 
+
+dirs: 0 1 2 3 
+
+hdists: 5 7 2147483647 2147483647 
+
+
+
+
+
+xXxxxxSxxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 1 
+
+dirs: 3 1 0 2 
+
+hdists: 4 6 2147483647 2147483647 
+
+
+
+
+
+xXxxxSSxxx
+xxxxSSSxxx
+xxxxSSxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 3 2147483647 2147483647 2147483647 
+
+
+
+
+
+xXxxSSSxxx
+xxxxSSSxxx
+xxxxSxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 2 2147483647 2147483647 2147483647 
+
+
+
+
+
+xXxSSSSxxx
+xxxxSSSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 3 2 0 1 
+
+hdists: 1 3 2147483647 2147483647 
+
+
+
+
+
+xXSSSSSxxx
+xxxxxSSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 3 2 0 1 
+
+hdists: 0 2 2147483647 2147483647 
+
+
+
+[0, 3, 3, 3, 3, 3, ]
+[2J[0;0H+X++++S+++
+++++SSS+++
+++++SSS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 252
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(6, 2)
+LENGTH 	7
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+X+++SS+++
+++++SSS+++
+++++SS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 253
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(5, 2)
+LENGTH 	7
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H+X++SSS+++
+++++SSS+++
+++++S+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 254
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(4, 2)
+LENGTH 	7
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H+X+SSSS+++
+++++SSS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 255
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(3, 0)
+SNEK TAIL	(4, 1)
+LENGTH 	7
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H+XSSSSS+++
++++++SS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 256
+YOU HAVE EATEN 6 MOOGLES
+
+SNEK HEAD	(2, 0)
+SNEK TAIL	(5, 1)
+LENGTH 	7
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H+SSSSSS+++
++++++SS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 317
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(1, 0)
+SNEK TAIL	(5, 1)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+0 8 9 1 
+
+
+hdir1:-1, hdir2:-1
+0 1 8 9 
+
+4th
+[2J[0;0HSSSSSSS+++
+++++++S+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 318
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(6, 1)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 0)
+[(0 0), (1 0), (2 0), (3 0), (4 0), (5 0), (6 0), (6 1), ]
+0 9 9 0 
+
+
+hdir1:3, hdir2:-1
+0 0 9 9 
+
+5th
+5th
+5th
+[2J[0;0HSSSSSSS+++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 319
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 1)
+SNEK TAIL	(6, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 1)
+[(0 1), (0 0), (1 0), (2 0), (3 0), (4 0), (5 0), (6 0), ]
+1 9 8 0 
+
+
+hdir1:2, hdir2:3
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HSSSSSS++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 320
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 2)
+SNEK TAIL	(5, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 2)
+[(0 2), (0 1), (0 0), (1 0), (2 0), (3 0), (4 0), (5 0), ]
+2 9 7 0 
+
+
+hdir1:2, hdir2:2
+0 2 7 9 
+
+picked 1st option
+[2J[0;0HSSSSS+++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 321
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 3)
+SNEK TAIL	(4, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 3)
+[(0 3), (0 2), (0 1), (0 0), (1 0), (2 0), (3 0), (4 0), ]
+3 9 6 0 
+
+
+hdir1:2, hdir2:2
+0 3 6 9 
+
+picked 1st option
+[2J[0;0HSSSS++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 322
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 4)
+SNEK TAIL	(3, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 4)
+[(0 4), (0 3), (0 2), (0 1), (0 0), (1 0), (2 0), (3 0), ]
+4 9 5 0 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+picked 1st option
+[2J[0;0HSSS+++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 323
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(0, 5)
+SNEK TAIL	(2, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 5)
+[(0 5), (0 4), (0 3), (0 2), (0 1), (0 0), (1 0), (2 0), ]
+5 9 4 0 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+trying 3rd option
+choosing way2 1
+[2J[0;0HSS++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S++++++++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 324
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(1, 5)
+SNEK TAIL	(1, 0)
+LENGTH 	8
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 5)
+[(1 5), (0 5), (0 4), (0 3), (0 2), (0 1), (0 0), (1 0), ]
+FOODLOC: (9, 4)
+1 1 1 0 
+
+
+
+
+
+SSxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+SxxxxxxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 0 1 2 3 
+
+hdists: 8 8 10 2147483647 
+
+
+
+
+
+Sxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+SSxxxxxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 0 
+
+dirs: 1 0 2 3 
+
+hdists: 7 9 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+SSSxxxxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 6 8 8 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+Sxxxxxxxxx
+Sxxxxxxxxx
+SSSSxxxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 5 7 7 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+Sxxxxxxxxx
+SSSSSxxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 4 6 6 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+SSSSSSxxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 3 5 5 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xSSSSSSxxX
+SSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xSSSSSSSxX
+xSxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xSSSSSSSSX
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 0 
+
+dirs: 1 0 2 3 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[0, 1, 1, 1, 1, 1, 1, 1, 1, ]
+[2J[0;0HS+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SS+++++++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 325
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(1, 4)
+SNEK TAIL	(0, 0)
+LENGTH 	8
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSS++++++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 326
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(2, 4)
+SNEK TAIL	(0, 1)
+LENGTH 	8
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+SSSS+++++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 327
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(3, 4)
+SNEK TAIL	(0, 2)
+LENGTH 	8
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+S+++++++++
+SSSSS++++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 328
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(4, 4)
+SNEK TAIL	(0, 3)
+LENGTH 	8
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSSSSS+++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 329
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(5, 4)
+SNEK TAIL	(0, 4)
+LENGTH 	8
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSS++X
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 330
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(6, 4)
+SNEK TAIL	(0, 5)
+LENGTH 	8
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSSS+X
++S++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 331
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(7, 4)
+SNEK TAIL	(1, 5)
+LENGTH 	8
+CURR FRAME 7 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSSSSX
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 332
+YOU HAVE EATEN 7 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(1, 4)
+LENGTH 	8
+CURR FRAME 8 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 353
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(1, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+4 0 5 9 
+
+
+hdir1:-1, hdir2:-1
+0 4 5 9 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
++++++++++S
+++SSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 354
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 3)
+SNEK TAIL	(2, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 3)
+[(9 3), (9 4), (8 4), (7 4), (6 4), (5 4), (4 4), (3 4), (2 4), ]
+3 0 6 9 
+
+
+hdir1:0, hdir2:-1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
++++++++++S
++++++++++S
++++SSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 355
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 2)
+SNEK TAIL	(3, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 2)
+[(9 2), (9 3), (9 4), (8 4), (7 4), (6 4), (5 4), (4 4), (3 4), ]
+2 0 7 9 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
++++++++++S
++++++++++S
++++++++++S
+++++SSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 356
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 1)
+SNEK TAIL	(4, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 1)
+[(9 1), (9 2), (9 3), (9 4), (8 4), (7 4), (6 4), (5 4), (4 4), ]
+1 0 8 9 
+
+
+hdir1:0, hdir2:0
+0 1 8 9 
+
+trying 3rd option
+5th
+[2J[0;0H+++++++++S
++++++++++S
++++++++++S
++++++++++S
++++++SSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 357
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 0)
+SNEK TAIL	(5, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 0)
+[(9 0), (9 1), (9 2), (9 3), (9 4), (8 4), (7 4), (6 4), (5 4), ]
+0 0 9 9 
+
+
+hdir1:0, hdir2:0
+0 0 9 9 
+
+5th
+5th
+5th
+5th
+[2J[0;0H++++++++SS
++++++++++S
++++++++++S
++++++++++S
+++++++SSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 358
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(6, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 0)
+[(8 0), (9 0), (9 1), (9 2), (9 3), (9 4), (8 4), (7 4), (6 4), ]
+0 1 9 8 
+
+
+hdir1:3, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0H+++++++SSS
++++++++++S
++++++++++S
++++++++++S
++++++++SSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 359
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(7, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 0)
+[(7 0), (8 0), (9 0), (9 1), (9 2), (9 3), (9 4), (8 4), (7 4), ]
+0 2 9 7 
+
+
+hdir1:3, hdir2:3
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++SSSS
++++++++++S
++++++++++S
++++++++++S
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 360
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(8, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (7 0), (8 0), (9 0), (9 1), (9 2), (9 3), (9 4), (8 4), ]
+0 3 9 6 
+
+
+hdir1:3, hdir2:3
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H+++++SSSSS
++++++++++S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 361
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(9, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 0)
+[(5 0), (6 0), (7 0), (8 0), (9 0), (9 1), (9 2), (9 3), (9 4), ]
+0 4 9 5 
+
+
+hdir1:3, hdir2:3
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++SSSSSS
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 362
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(9, 3)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 0)
+[(4 0), (5 0), (6 0), (7 0), (8 0), (9 0), (9 1), (9 2), (9 3), ]
+0 5 9 4 
+
+
+hdir1:3, hdir2:3
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H+++SSSSSSS
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 363
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(3, 0)
+SNEK TAIL	(9, 2)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 0)
+[(3 0), (4 0), (5 0), (6 0), (7 0), (8 0), (9 0), (9 1), (9 2), ]
+0 6 9 3 
+
+
+hdir1:3, hdir2:3
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++SSSSSSSS
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 364
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(2, 0)
+SNEK TAIL	(9, 1)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 0)
+[(2 0), (3 0), (4 0), (5 0), (6 0), (7 0), (8 0), (9 0), (9 1), ]
+0 7 9 2 
+
+
+hdir1:3, hdir2:3
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H+SSSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 365
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(1, 0)
+SNEK TAIL	(9, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 0)
+[(1 0), (2 0), (3 0), (4 0), (5 0), (6 0), (7 0), (8 0), (9 0), ]
+0 8 9 1 
+
+
+hdir1:3, hdir2:3
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HSSSSSSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 366
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(8, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 0)
+[(0 0), (1 0), (2 0), (3 0), (4 0), (5 0), (6 0), (7 0), (8 0), ]
+0 9 9 0 
+
+
+hdir1:3, hdir2:3
+0 0 9 9 
+
+5th
+5th
+5th
+[2J[0;0HSSSSSSSS++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 367
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 1)
+SNEK TAIL	(7, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 1)
+[(0 1), (0 0), (1 0), (2 0), (3 0), (4 0), (5 0), (6 0), (7 0), ]
+1 9 8 0 
+
+
+hdir1:2, hdir2:3
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HSSSSSSS+++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 368
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 2)
+SNEK TAIL	(6, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 2)
+[(0 2), (0 1), (0 0), (1 0), (2 0), (3 0), (4 0), (5 0), (6 0), ]
+2 9 7 0 
+
+
+hdir1:2, hdir2:2
+0 2 7 9 
+
+picked 1st option
+[2J[0;0HSSSSSS++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 369
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 3)
+SNEK TAIL	(5, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 3)
+[(0 3), (0 2), (0 1), (0 0), (1 0), (2 0), (3 0), (4 0), (5 0), ]
+3 9 6 0 
+
+
+hdir1:2, hdir2:2
+0 3 6 9 
+
+picked 1st option
+[2J[0;0HSSSSS+++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 370
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 4)
+SNEK TAIL	(4, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 4)
+[(0 4), (0 3), (0 2), (0 1), (0 0), (1 0), (2 0), (3 0), (4 0), ]
+4 9 5 0 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+picked 1st option
+[2J[0;0HSSSS++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 371
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(0, 5)
+SNEK TAIL	(3, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 5)
+[(0 5), (0 4), (0 3), (0 2), (0 1), (0 0), (1 0), (2 0), (3 0), ]
+5 9 4 0 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+trying 3rd option
+choosing way2 1
+[2J[0;0HSSS+++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 372
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(1, 5)
+SNEK TAIL	(2, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 5)
+[(1 5), (0 5), (0 4), (0 3), (0 2), (0 1), (0 0), (1 0), (2 0), ]
+5 8 4 1 
+
+
+hdir1:1, hdir2:2
+1 4 5 8 
+
+picked 1st option
+[2J[0;0HSS++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 373
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(2, 5)
+SNEK TAIL	(1, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 5)
+[(2 5), (1 5), (0 5), (0 4), (0 3), (0 2), (0 1), (0 0), (1 0), ]
+5 7 4 2 
+
+
+hdir1:1, hdir2:1
+2 4 5 7 
+
+picked 1st option
+[2J[0;0HS+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 374
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(3, 5)
+SNEK TAIL	(0, 0)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 5)
+[(3 5), (2 5), (1 5), (0 5), (0 4), (0 3), (0 2), (0 1), (0 0), ]
+5 6 4 3 
+
+
+hdir1:1, hdir2:1
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSSS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 375
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(4, 5)
+SNEK TAIL	(0, 1)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 5)
+[(4 5), (3 5), (2 5), (1 5), (0 5), (0 4), (0 3), (0 2), (0 1), ]
+5 5 4 4 
+
+
+hdir1:1, hdir2:1
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSSSS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 376
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(5, 5)
+SNEK TAIL	(0, 2)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 5)
+[(5 5), (4 5), (3 5), (2 5), (1 5), (0 5), (0 4), (0 3), (0 2), ]
+5 4 4 5 
+
+
+hdir1:1, hdir2:1
+4 4 5 5 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+SSSSSSS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 377
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(6, 5)
+SNEK TAIL	(0, 3)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 5)
+[(6 5), (5 5), (4 5), (3 5), (2 5), (1 5), (0 5), (0 4), (0 3), ]
+5 3 4 6 
+
+
+hdir1:1, hdir2:1
+3 4 5 6 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+S+++++++++
+SSSSSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 378
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(7, 5)
+SNEK TAIL	(0, 4)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 5)
+[(7 5), (6 5), (5 5), (4 5), (3 5), (2 5), (1 5), (0 5), (0 4), ]
+5 2 4 7 
+
+
+hdir1:1, hdir2:1
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSSSSSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 379
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(0, 5)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 5)
+[(8 5), (7 5), (6 5), (5 5), (4 5), (3 5), (2 5), (1 5), (0 5), ]
+5 1 4 8 
+
+
+hdir1:1, hdir2:1
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 380
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 5)
+SNEK TAIL	(1, 5)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 5)
+[(9 5), (8 5), (7 5), (6 5), (5 5), (4 5), (3 5), (2 5), (1 5), ]
+5 0 4 9 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++X+++++S
+++SSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 381
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(2, 5)
+LENGTH 	9
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 4)
+[(9 4), (9 5), (8 5), (7 5), (6 5), (5 5), (4 5), (3 5), (2 5), ]
+FOODLOC: (3, 4)
+1 0 0 1 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXxxxxxS
+xxSSSSSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 5 7 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXxxxxSS
+xxxSSSSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 4 6 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXxxxSSS
+xxxxSSSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 3 5 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXxxSSSS
+xxxxxSSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 2 4 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXxSSSSS
+xxxxxxSSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxXSSSSSS
+xxxxxxxSSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 3, 3, 3, 3, 3, ]
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++X++++SS
++++SSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 382
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(3, 5)
+LENGTH 	9
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++X+++SSS
+++++SSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 383
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(7, 4)
+SNEK TAIL	(4, 5)
+LENGTH 	9
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++X++SSSS
++++++SSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 384
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(6, 4)
+SNEK TAIL	(5, 5)
+LENGTH 	9
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++X+SSSSS
+++++++SSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 385
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(5, 4)
+SNEK TAIL	(6, 5)
+LENGTH 	9
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++XSSSSSS
++++++++SSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 386
+YOU HAVE EATEN 8 MOOGLES
+
+SNEK HEAD	(4, 4)
+SNEK TAIL	(7, 5)
+LENGTH 	9
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++++SSSSSSS
++++++++SSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 407
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(3, 4)
+SNEK TAIL	(7, 5)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+4 6 5 3 
+
+
+hdir1:-1, hdir2:-1
+3 4 5 6 
+
+4th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+++SSSSSSSS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 408
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(2, 4)
+SNEK TAIL	(8, 5)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 4)
+[(2 4), (3 4), (4 4), (5 4), (6 4), (7 4), (8 4), (9 4), (9 5), (8 5), ]
+4 7 5 2 
+
+
+hdir1:3, hdir2:-1
+2 4 5 7 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
++SSSSSSSSS
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 409
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(1, 4)
+SNEK TAIL	(9, 5)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 4)
+[(1 4), (2 4), (3 4), (4 4), (5 4), (6 4), (7 4), (8 4), (9 4), (9 5), ]
+4 8 5 1 
+
+
+hdir1:3, hdir2:3
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+++++++++++
+SSSSSSSSSS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 410
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(0, 4)
+SNEK TAIL	(9, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 4)
+[(0 4), (1 4), (2 4), (3 4), (4 4), (5 4), (6 4), (7 4), (8 4), (9 4), ]
+4 9 5 0 
+
+
+hdir1:3, hdir2:3
+0 4 5 9 
+
+5th
+[2J[0;0H++++++++++
+++++++++++
+++++++++++
+S+++++++++
+SSSSSSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 411
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(0, 3)
+SNEK TAIL	(8, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 3)
+[(0 3), (0 4), (1 4), (2 4), (3 4), (4 4), (5 4), (6 4), (7 4), (8 4), ]
+3 9 6 0 
+
+
+hdir1:0, hdir2:3
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+++++++++++
+S+++++++++
+S+++++++++
+SSSSSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 412
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(0, 2)
+SNEK TAIL	(7, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 2)
+[(0 2), (0 3), (0 4), (1 4), (2 4), (3 4), (4 4), (5 4), (6 4), (7 4), ]
+2 9 7 0 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSSSSS+++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 413
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(0, 1)
+SNEK TAIL	(6, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 1)
+[(0 1), (0 2), (0 3), (0 4), (1 4), (2 4), (3 4), (4 4), (5 4), (6 4), ]
+1 9 8 0 
+
+
+hdir1:0, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HS+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSSSS++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 414
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(0, 0)
+SNEK TAIL	(5, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (0, 0)
+[(0 0), (0 1), (0 2), (0 3), (0 4), (1 4), (2 4), (3 4), (4 4), (5 4), ]
+0 9 9 0 
+
+
+hdir1:0, hdir2:0
+0 0 9 9 
+
+5th
+5th
+[2J[0;0HSS++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSSS+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 415
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(1, 0)
+SNEK TAIL	(4, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (1, 0)
+[(1 0), (0 0), (0 1), (0 2), (0 3), (0 4), (1 4), (2 4), (3 4), (4 4), ]
+0 8 9 1 
+
+
+hdir1:1, hdir2:0
+0 1 8 9 
+
+picked 1st option
+[2J[0;0HSSS+++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSSS++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 416
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(2, 0)
+SNEK TAIL	(3, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (2, 0)
+[(2 0), (1 0), (0 0), (0 1), (0 2), (0 3), (0 4), (1 4), (2 4), (3 4), ]
+0 7 9 2 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0HSSSS++++++
+S+++++++++
+S+++++++++
+S+++++++++
+SSS+++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 417
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(3, 0)
+SNEK TAIL	(2, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 0)
+[(3 0), (2 0), (1 0), (0 0), (0 1), (0 2), (0 3), (0 4), (1 4), (2 4), ]
+0 6 9 3 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0HSSSSS+++++
+S+++++++++
+S+++++++++
+S+++++++++
+SS++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 418
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(1, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 0)
+[(4 0), (3 0), (2 0), (1 0), (0 0), (0 1), (0 2), (0 3), (0 4), (1 4), ]
+0 5 9 4 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0HSSSSSS++++
+S+++++++++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 419
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(0, 4)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 0)
+[(5 0), (4 0), (3 0), (2 0), (1 0), (0 0), (0 1), (0 2), (0 3), (0 4), ]
+0 4 9 5 
+
+
+hdir1:1, hdir2:1
+0 4 5 9 
+
+picked 1st option
+[2J[0;0HSSSSSSS+++
+S+++++++++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 420
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(0, 3)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (5 0), (4 0), (3 0), (2 0), (1 0), (0 0), (0 1), (0 2), (0 3), ]
+0 3 9 6 
+
+
+hdir1:1, hdir2:1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0HSSSSSSSS++
+S+++++++++
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 421
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(0, 2)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 0)
+[(7 0), (6 0), (5 0), (4 0), (3 0), (2 0), (1 0), (0 0), (0 1), (0 2), ]
+0 2 9 7 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0HSSSSSSSSS+
+S+++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 422
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(0, 1)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 0)
+[(8 0), (7 0), (6 0), (5 0), (4 0), (3 0), (2 0), (1 0), (0 0), (0 1), ]
+0 1 9 8 
+
+
+hdir1:1, hdir2:1
+0 1 8 9 
+
+trying 3rd option
+choosing way1 2
+[2J[0;0HSSSSSSSSS+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 423
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(0, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 1)
+[(8 1), (8 0), (7 0), (6 0), (5 0), (4 0), (3 0), (2 0), (1 0), (0 0), ]
+1 1 8 8 
+
+
+hdir1:2, hdir2:1
+1 1 8 8 
+
+picked 1st option
+[2J[0;0H+SSSSSSSS+
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 424
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(1, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 2)
+[(8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (4 0), (3 0), (2 0), (1 0), ]
+2 1 7 8 
+
+
+hdir1:2, hdir2:2
+1 2 7 8 
+
+picked 1st option
+[2J[0;0H++SSSSSSS+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 425
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(2, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 3)
+[(8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (4 0), (3 0), (2 0), ]
+3 1 6 8 
+
+
+hdir1:2, hdir2:2
+1 3 6 8 
+
+picked 1st option
+[2J[0;0H+++SSSSSS+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 426
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(3, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 4)
+[(8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (4 0), (3 0), ]
+4 1 5 8 
+
+
+hdir1:2, hdir2:2
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++SSSSS+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 427
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(4, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 5)
+[(8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (4 0), ]
+5 1 4 8 
+
+
+hdir1:2, hdir2:2
+1 4 5 8 
+
+trying 3rd option
+choosing way1 3
+[2J[0;0H+++++SSSS+
+++++++X+S+
+++++++++S+
+++++++++S+
+++++++++S+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 428
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 5)
+SNEK TAIL	(5, 0)
+LENGTH 	10
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 5)
+[(7 5), (8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), ]
+FOODLOC: (6, 1)
+1 0 1 1 
+
+
+
+
+
+xxxxxSSSSx
+xxxxxxXxSx
+xxxxxxxxSx
+xxxxxxxxSx
+xxxxxxxxSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 0 3 2 1 
+
+hdists: 4 4 6 2147483647 
+
+
+
+
+
+xxxxxxSSSx
+xxxxxxXxSx
+xxxxxxxxSx
+xxxxxxxxSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 0 3 1 2 
+
+hdists: 3 3 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxSSx
+xxxxxxXxSx
+xxxxxxxxSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 0 3 1 2 
+
+hdists: 2 2 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxSx
+xxxxxxXxSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 0 3 1 2 
+
+hdists: 1 1 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxXSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[0, 0, 0, 0, 3, ]
+[2J[0;0H++++++SSS+
+++++++X+S+
+++++++++S+
+++++++++S+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 429
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 4)
+SNEK TAIL	(6, 0)
+LENGTH 	10
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+++++++SS+
+++++++X+S+
+++++++++S+
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 430
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 3)
+SNEK TAIL	(7, 0)
+LENGTH 	10
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++++S+
+++++++X+S+
++++++++SS+
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 431
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 2)
+SNEK TAIL	(8, 0)
+LENGTH 	10
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++XSS+
++++++++SS+
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 432
+YOU HAVE EATEN 9 MOOGLES
+
+SNEK HEAD	(7, 1)
+SNEK TAIL	(8, 1)
+LENGTH 	10
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++++++++
+++++++SSS+
++++++++SS+
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 453
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(6, 1)
+SNEK TAIL	(8, 1)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+1 3 8 6 
+
+
+hdir1:-1, hdir2:-1
+1 3 6 8 
+
+4th
+[2J[0;0H++++++S+++
+++++++SS++
++++++++SS+
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 454
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(8, 2)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (6 1), (7 1), (7 2), (7 3), (7 4), (7 5), (8 5), (8 4), (8 3), (8 2), ]
+0 3 9 6 
+
+
+hdir1:0, hdir2:-1
+0 3 6 9 
+
+5th
+5th
+[2J[0;0H++++++SS++
+++++++SS++
++++++++S++
++++++++SS+
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 455
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(8, 3)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 0)
+[(7 0), (6 0), (6 1), (7 1), (7 2), (7 3), (7 4), (7 5), (8 5), (8 4), (8 3), ]
+0 2 9 7 
+
+
+hdir1:1, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++SS++
++++++++S++
++++++++S++
++++++++SS+
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 456
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(8, 4)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 0)
+[(8 0), (7 0), (6 0), (6 1), (7 1), (7 2), (7 3), (7 4), (7 5), (8 5), (8 4), ]
+0 1 9 8 
+
+
+hdir1:1, hdir2:1
+0 1 8 9 
+
+trying 3rd option
+choosing way1 2
+[2J[0;0H++++++SSS+
+++++++SSS+
++++++++S++
++++++++S++
++++++++S++
++++++++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 457
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(8, 5)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 1)
+[(8 1), (8 0), (7 0), (6 0), (6 1), (7 1), (7 2), (7 3), (7 4), (7 5), (8 5), ]
+1 1 8 8 
+
+
+hdir1:2, hdir2:1
+1 1 8 8 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++SSS+
++++++++SS+
++++++++S++
++++++++S++
++++++++S++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 458
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(7, 5)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 2)
+[(8 2), (8 1), (8 0), (7 0), (6 0), (6 1), (7 1), (7 2), (7 3), (7 4), (7 5), ]
+2 1 7 8 
+
+
+hdir1:2, hdir2:2
+1 2 7 8 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++SSS+
++++++++SS+
++++++++SS+
++++++++S++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 459
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(7, 4)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 3)
+[(8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (6 1), (7 1), (7 2), (7 3), (7 4), ]
+3 1 6 8 
+
+
+hdir1:2, hdir2:2
+1 3 6 8 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++SSS+
++++++++SS+
++++++++SS+
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 460
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 4)
+SNEK TAIL	(7, 3)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 4)
+[(8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (6 1), (7 1), (7 2), (7 3), ]
+4 1 5 8 
+
+
+hdir1:2, hdir2:2
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++SSS+
++++++++SS+
+++++++++S+
+++++++++SX
+++++++++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 461
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(8, 5)
+SNEK TAIL	(7, 2)
+LENGTH 	11
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 5)
+[(8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (6 1), (7 1), (7 2), ]
+FOODLOC: (9, 4)
+0 1 1 1 
+
+
+
+
+
+xxxxxxSSSx
+xxxxxxSSSx
+xxxxxxxSSx
+xxxxxxxxSx
+xxxxxxxxSX
+xxxxxxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 1 2 3 0 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxSSSx
+xxxxxxSSSx
+xxxxxxxxSx
+xxxxxxxxSx
+xxxxxxxxSX
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 0 
+
+dirs: 0 2 1 3 
+
+hdists: 0 2 2147483647 2147483647 
+
+
+
+[1, 0, ]
+[2J[0;0H++++++SSS+
+++++++SSS+
+++++++++S+
+++++++++S+
+++++++++SX
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 462
+YOU HAVE EATEN 10 MOOGLES
+
+SNEK HEAD	(9, 5)
+SNEK TAIL	(7, 1)
+LENGTH 	11
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H++++++SSS+
+++++++SSS+
+++++++++S+
+++++++++S+
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 483
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(9, 4)
+SNEK TAIL	(7, 1)
+LENGTH 	12
+CURR FRAME 0 vs TIME OUT 54
+4 0 5 9 
+
+
+hdir1:-1, hdir2:-1
+0 4 5 9 
+
+4th
+[2J[0;0H++++++SSS+
+++++++S+S+
+++++++++S+
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 484
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(9, 3)
+SNEK TAIL	(6, 1)
+LENGTH 	12
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 3)
+[(9 3), (9 4), (9 5), (8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (6 1), ]
+3 0 6 9 
+
+
+hdir1:0, hdir2:-1
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H++++++SSS+
+++++++++S+
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 485
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(9, 2)
+SNEK TAIL	(6, 0)
+LENGTH 	12
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 2)
+[(9 2), (9 3), (9 4), (9 5), (8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), ]
+2 0 7 9 
+
+
+hdir1:0, hdir2:0
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H+++++++SS+
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 486
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(9, 1)
+SNEK TAIL	(7, 0)
+LENGTH 	12
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 1)
+[(9 1), (9 2), (9 3), (9 4), (9 5), (8 5), (8 4), (8 3), (8 2), (8 1), (8 0), (7 0), ]
+1 0 8 9 
+
+
+hdir1:0, hdir2:0
+0 1 8 9 
+
+trying 3rd option
+5th
+[2J[0;0H++++++++SS
+++++++++SS
++++X++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 487
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(9, 0)
+SNEK TAIL	(8, 0)
+LENGTH 	12
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (9, 0)
+[(9 0), (9 1), (9 2), (9 3), (9 4), (9 5), (8 5), (8 4), (8 3), (8 2), (8 1), (8 0), ]
+FOODLOC: (3, 2)
+0 0 0 1 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 7 2147483647 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 6 6 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 5 5 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 0 1 1 
+
+dirs: 3 2 0 1 
+
+hdists: 4 6 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxxSSS
+xxxxxxxxxS
+xxxxxxxxSS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 3 5 5 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxxSSSS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxSS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXxSSSSS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxSS
+xxxxxxxxSS
+xxxXSSSSSS
+xxxxxxxxxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[3, 2, 2, 3, 3, 3, 3, 3, ]
+[2J[0;0H+++++++++S
+++++++++SS
++++X++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 488
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(8, 1)
+LENGTH 	12
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++X++++SS
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 489
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(8, 2)
+LENGTH 	12
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++X+++++S
+++++++++SS
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 490
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(8, 3)
+LENGTH 	12
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++X+++S+S
++++++++++S
+++++++++SS
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 491
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(7, 2)
+SNEK TAIL	(8, 4)
+LENGTH 	12
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++X++SS+S
++++++++++S
++++++++++S
+++++++++SS
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 492
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(6, 2)
+SNEK TAIL	(8, 5)
+LENGTH 	12
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++X+SSS+S
++++++++++S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 493
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(5, 2)
+SNEK TAIL	(9, 5)
+LENGTH 	12
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++XSSSS+S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 494
+YOU HAVE EATEN 11 MOOGLES
+
+SNEK HEAD	(4, 2)
+SNEK TAIL	(9, 4)
+LENGTH 	12
+CURR FRAME 7 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++++++++S
++++SSSSS+S
++++++++++S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 515
+YOU HAVE EATEN 12 MOOGLES
+
+SNEK HEAD	(3, 2)
+SNEK TAIL	(9, 4)
+LENGTH 	13
+CURR FRAME 0 vs TIME OUT 54
+2 6 7 3 
+
+
+hdir1:-1, hdir2:-1
+2 3 6 7 
+
+4th
+[2J[0;0H+++++++++S
++++S+X+++S
++++SSSSS+S
++++++++++S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 516
+YOU HAVE EATEN 12 MOOGLES
+
+SNEK HEAD	(3, 1)
+SNEK TAIL	(9, 3)
+LENGTH 	13
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (3, 1)
+[(3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), (8 0), (9 0), (9 1), (9 2), (9 3), ]
+FOODLOC: (5, 1)
+1 1 0 1 
+
+
+
+
+
+xxxxxxxxxS
+xxxSxXxxxS
+xxxSSSSSxS
+xxxxxxxxxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 1 
+
+dirs: 1 0 3 2 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxxxxxS
+xxxSSXxxxS
+xxxSSSSSxS
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 0 
+
+dirs: 1 0 2 3 
+
+hdists: 0 2 2147483647 2147483647 
+
+
+
+[1, 1, ]
+[2J[0;0H+++++++++S
++++SSX+++S
++++SSSSS+S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 517
+YOU HAVE EATEN 12 MOOGLES
+
+SNEK HEAD	(4, 1)
+SNEK TAIL	(9, 2)
+LENGTH 	13
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+++++++++S
++++SSS+++S
++++SSSSS+S
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 538
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(5, 1)
+SNEK TAIL	(9, 2)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+1 4 8 5 
+
+
+hdir1:-1, hdir2:-1
+1 4 5 8 
+
+4th
+[2J[0;0H+++++S+++S
++++SSS+++S
++++SSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 539
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(9, 1)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 0)
+[(5 0), (5 1), (4 1), (3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), (8 0), (9 0), (9 1), ]
+0 4 9 5 
+
+
+hdir1:0, hdir2:-1
+0 4 5 9 
+
+5th
+5th
+[2J[0;0H+++++SS++S
++++SSS++++
++++SSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 540
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(9, 0)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 0)
+[(6 0), (5 0), (5 1), (4 1), (3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), (8 0), (9 0), ]
+0 3 9 6 
+
+
+hdir1:1, hdir2:0
+0 3 6 9 
+
+picked 1st option
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 541
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(8, 0)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (7, 0)
+[(7 0), (6 0), (5 0), (5 1), (4 1), (3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), (8 0), ]
+0 2 9 7 
+
+
+hdir1:1, hdir2:1
+0 2 7 9 
+
+picked 1st option
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSSSS++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 542
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(8, 0)
+SNEK TAIL	(8, 1)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 0)
+[(8 0), (7 0), (6 0), (5 0), (5 1), (4 1), (3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), (8 1), ]
+0 1 9 8 
+
+
+hdir1:1, hdir2:1
+0 1 8 9 
+
+trying 3rd option
+choosing way1 2
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSSSS++
+++++X+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 543
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(8, 1)
+SNEK TAIL	(8, 2)
+LENGTH 	14
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (8, 1)
+[(8 1), (8 0), (7 0), (6 0), (5 0), (5 1), (4 1), (3 1), (3 2), (4 2), (5 2), (6 2), (7 2), (8 2), ]
+FOODLOC: (4, 3)
+1 1 1 1 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSSSSSxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 5 5 7 7 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSSSSSSx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 1 1 
+
+dirs: 2 3 0 1 
+
+hdists: 4 4 6 6 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSSSSxSx
+xxxxXxxxSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 3 1 2 0 
+
+hdists: 3 5 5 2147483647 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSSSxxSx
+xxxxXxxSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSSxxxSx
+xxxxXxSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxxSSSxx
+xxxSSSxxxx
+xxxSxxxxSx
+xxxxXSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[2, 2, 3, 3, 3, 3, ]
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSSSS++
+++++X+++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 544
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(8, 2)
+SNEK TAIL	(7, 2)
+LENGTH 	14
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSSS+++
+++++X+++S+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 545
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(8, 3)
+SNEK TAIL	(6, 2)
+LENGTH 	14
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H+++++SSS++
++++SSS++++
++++SSS++++
+++++X++SS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 546
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(7, 3)
+SNEK TAIL	(5, 2)
+LENGTH 	14
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H+++++SSS++
++++SSS++++
++++SS+++++
+++++X+SSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 547
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(6, 3)
+SNEK TAIL	(4, 2)
+LENGTH 	14
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H+++++SSS++
++++SSS++++
++++S++++++
+++++XSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 548
+YOU HAVE EATEN 13 MOOGLES
+
+SNEK HEAD	(5, 3)
+SNEK TAIL	(3, 2)
+LENGTH 	14
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H+++++SSS++
++++SSS++++
++++S++++++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 609
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(4, 3)
+SNEK TAIL	(3, 2)
+LENGTH 	15
+CURR FRAME 0 vs TIME OUT 54
+3 5 6 4 
+
+
+hdir1:-1, hdir2:-1
+3 4 5 6 
+
+4th
+[2J[0;0H+++++SSS++
++++SSS++++
+++++S+++++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+++++++++++
+
+
+SCORE: 610
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(4, 2)
+SNEK TAIL	(3, 1)
+LENGTH 	15
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 2)
+[(4 2), (4 3), (5 3), (6 3), (7 3), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (5 1), (4 1), (3 1), ]
+2 5 7 4 
+
+
+hdir1:0, hdir2:-1
+2 4 5 7 
+
+5th
+5th
+[2J[0;0H+++++SSS++
+++++SS++++
+++++SS++++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 611
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(5, 2)
+SNEK TAIL	(4, 1)
+LENGTH 	15
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 2)
+[(5 2), (4 2), (4 3), (5 3), (6 3), (7 3), (8 3), (8 2), (8 1), (8 0), (7 0), (6 0), (5 0), (5 1), (4 1), ]
+FOODLOC: (4, 7)
+0 1 0 0 
+
+
+
+
+
+xxxxxSSSxx
+xxxxSSxxxx
+xxxxSSxxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 0 
+
+dirs: 1 0 2 3 
+
+hdists: 7 2147483647 2147483647 2147483647 
+
+
+
+
+
+xxxxxSSSxx
+xxxxxSxxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 1 0 0 
+
+dirs: 0 1 2 3 
+
+hdists: 8 8 2147483647 2147483647 
+
+
+
+
+
+xxxxxSSSxx
+xxxxxxSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 1 
+
+dirs: 3 1 0 2 
+
+hdists: 7 9 2147483647 2147483647 
+
+
+
+
+
+xxxxxxSSxx
+xxxxxSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 3 0 1 2 
+
+hdists: 6 8 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxSxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 0 1 
+
+dirs: 0 3 1 2 
+
+hdists: 7 7 2147483647 2147483647 
+
+
+
+
+
+xxxxSxxxxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 1 
+
+dirs: 1 3 0 2 
+
+hdists: 8 8 2147483647 2147483647 
+
+
+
+
+
+xxxxSSxxxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 0 
+
+dirs: 1 0 2 3 
+
+hdists: 9 2147483647 2147483647 2147483647 
+
+
+
+
+
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 0 0 
+
+dirs: 1 0 2 3 
+
+hdists: 10 2147483647 2147483647 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSxxx
+xxxxSSSxxx
+xxxxSSSSSx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 0 
+
+dirs: 2 1 0 3 
+
+hdists: 9 11 2147483647 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSxxx
+xxxxSSSSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 0 
+
+dirs: 2 1 0 3 
+
+hdists: 8 10 2147483647 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 0 
+
+dirs: 2 1 0 3 
+
+hdists: 7 9 2147483647 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSxSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 6 6 8 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSxxSxx
+xxxxxxxSxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 5 5 7 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxxxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 4 4 6 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxxSSSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxXxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 2 3 1 0 
+
+hdists: 3 3 5 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxxxSSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxXxxSxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 0 1 1 1 
+
+dirs: 3 1 2 0 
+
+hdists: 2 4 4 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSSSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxXxSSxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 1 3 3 2147483647 
+
+
+
+
+
+xxxxSSSSxx
+xxxxSSxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxXSSSxx
+xxxxxxxxxx
+xxxxxxxxxx
+
+
+ways: 1 0 1 1 
+
+dirs: 3 0 2 1 
+
+hdists: 0 2 2 2147483647 
+
+
+
+[1, 0, 3, 3, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, ]
+[2J[0;0H+++++SSS++
++++++S++++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 612
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(6, 2)
+SNEK TAIL	(5, 1)
+LENGTH 	15
+CURR FRAME 1 vs TIME OUT 54
+[2J[0;0H+++++SSS++
+++++++S+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 613
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(6, 1)
+SNEK TAIL	(5, 0)
+LENGTH 	15
+CURR FRAME 2 vs TIME OUT 54
+[2J[0;0H++++++SS++
++++++SS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 614
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(5, 1)
+SNEK TAIL	(6, 0)
+LENGTH 	15
+CURR FRAME 3 vs TIME OUT 54
+[2J[0;0H+++++++S++
+++++SSS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 615
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(4, 1)
+SNEK TAIL	(7, 0)
+LENGTH 	15
+CURR FRAME 4 vs TIME OUT 54
+[2J[0;0H++++S+++++
+++++SSS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 616
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(4, 0)
+SNEK TAIL	(8, 0)
+LENGTH 	15
+CURR FRAME 5 vs TIME OUT 54
+[2J[0;0H++++SS++++
+++++SSS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 617
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(5, 0)
+SNEK TAIL	(8, 1)
+LENGTH 	15
+CURR FRAME 6 vs TIME OUT 54
+[2J[0;0H++++SSS+++
+++++SSS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 618
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(6, 0)
+SNEK TAIL	(8, 2)
+LENGTH 	15
+CURR FRAME 7 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSS+++
+++++SSS+++
+++++SSSSS+
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 619
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 0)
+SNEK TAIL	(8, 3)
+LENGTH 	15
+CURR FRAME 8 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++SSS+++
+++++SSSS++
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 620
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 1)
+SNEK TAIL	(7, 3)
+LENGTH 	15
+CURR FRAME 9 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++SSSS++
+++++SSS+++
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 621
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 2)
+SNEK TAIL	(6, 3)
+LENGTH 	15
+CURR FRAME 10 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++SSSS++
+++++SS+S++
+++++++++++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 622
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 3)
+SNEK TAIL	(5, 3)
+LENGTH 	15
+CURR FRAME 11 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++SSSS++
+++++S++S++
++++++++S++
+++++++++++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 623
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 4)
+SNEK TAIL	(4, 3)
+LENGTH 	15
+CURR FRAME 12 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++SSSS++
++++++++S++
++++++++S++
++++++++S++
+++++++++++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 624
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 5)
+SNEK TAIL	(4, 2)
+LENGTH 	15
+CURR FRAME 13 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
++++++SSS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++X+++++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 625
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 6)
+SNEK TAIL	(5, 2)
+LENGTH 	15
+CURR FRAME 14 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
+++++++SS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++X++S++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 626
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(7, 7)
+SNEK TAIL	(6, 2)
+LENGTH 	15
+CURR FRAME 15 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SSSS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++X+SS++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 627
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(6, 7)
+SNEK TAIL	(6, 1)
+LENGTH 	15
+CURR FRAME 16 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SS+S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++XSSS++
+++++++++++
+++++++++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 628
+YOU HAVE EATEN 14 MOOGLES
+
+SNEK HEAD	(5, 7)
+SNEK TAIL	(5, 1)
+LENGTH 	15
+CURR FRAME 17 vs TIME OUT 54
+[2J[0;0H++++SSSS++
+++++SS+S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++SSSS++
+++++++++++
+++++++++++
+
+
+SCORE: 649
+YOU HAVE EATEN 15 MOOGLES
+
+SNEK HEAD	(4, 7)
+SNEK TAIL	(5, 1)
+LENGTH 	16
+CURR FRAME 0 vs TIME OUT 54
+7 5 2 4 
+
+
+hdir1:-1, hdir2:-1
+2 4 5 7 
+
+4th
+[2J[0;0H++++SSSS++
+++++S++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++SSSS++
+++++S+++++
+++++++++++
+
+
+SCORE: 650
+YOU HAVE EATEN 15 MOOGLES
+
+SNEK HEAD	(4, 8)
+SNEK TAIL	(4, 1)
+LENGTH 	16
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 8)
+[(4 8), (4 7), (5 7), (6 7), (7 7), (7 6), (7 5), (7 4), (7 3), (7 2), (7 1), (7 0), (6 0), (5 0), (4 0), (4 1), ]
+8 5 1 4 
+
+
+hdir1:2, hdir2:-1
+1 4 5 8 
+
+picked 1st option
+[2J[0;0H++++SSSS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++SSSS++
+++++S+++++
+++++S+++++
+
+
+SCORE: 651
+YOU HAVE EATEN 15 MOOGLES
+
+SNEK HEAD	(4, 9)
+SNEK TAIL	(4, 0)
+LENGTH 	16
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (4, 9)
+[(4 9), (4 8), (4 7), (5 7), (6 7), (7 7), (7 6), (7 5), (7 4), (7 3), (7 2), (7 1), (7 0), (6 0), (5 0), (4 0), ]
+9 5 0 4 
+
+
+hdir1:2, hdir2:2
+0 4 5 9 
+
+5th
+5th
+[2J[0;0H+++++SSS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+++++SSSS++
+++++S+++++
+++++SS++++
+
+
+SCORE: 652
+YOU HAVE EATEN 15 MOOGLES
+
+SNEK HEAD	(5, 9)
+SNEK TAIL	(5, 0)
+LENGTH 	16
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (5, 9)
+[(5 9), (4 9), (4 8), (4 7), (5 7), (6 7), (7 7), (7 6), (7 5), (7 4), (7 3), (7 2), (7 1), (7 0), (6 0), (5 0), ]
+9 4 0 5 
+
+
+hdir1:1, hdir2:2
+0 4 5 9 
+
+picked 1st option
+[2J[0;0H++++++SS++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
++++++++S++
+X++++++S++
+++++SSSS++
+++++S+++++
+++++SSS+++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 653
+YOU HAVE EATEN 15 MOOGLES
+
+SNEK HEAD	(6, 9)
+SNEK TAIL	(6, 0)
+LENGTH 	16
+CURR FRAME 0 vs TIME OUT 54
+HEADLOC: (6, 9)
+[(6 9), (5 9), (4 9), (4 8), (4 7), (5 7), (6 7), (7 7), (7 6), (7 5), (7 4), (7 3), (7 2), (7 1), (7 0), (6 0), ]
+FOODLOC: (0, 6)
+1 1 0 0 
+
+
+
+
+
+xxxxxxSSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+XxxxxxxSxx
+xxxxSSSSxx
+xxxxSxxxxx
+xxxxSSSxxx
+
+
+ways: 1 1 0 0 
+
+dirs: 0 1 2 3 
+
+hdists: 8 10 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+XxxxxxxSxx
+xxxxSSSSxx
+xxxxSxSxxx
+xxxxSSSxxx
+
+
+ways: 0 1 0 1 
+
+dirs: 3 1 0 2 
+
+hdists: 7 9 2147483647 2147483647 
+
+
+
+
+
+xxxxxxxxxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+xxxxxxxSxx
+XxxxxxxSxx
+xxxxSSSSxx
+xxxxSSSxxx
+xxxxSSSxxx
+
+

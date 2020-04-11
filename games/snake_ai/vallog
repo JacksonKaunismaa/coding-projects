@@ -1,0 +1,41 @@
+==10051== Memcheck, a memory error detector
+==10051== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==10051== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==10051== Command: ./snek_AI
+==10051== 
+==10051== Conditional jump or move depends on uninitialised value(s)
+==10051==    at 0x10961E: heuristic_move (main.c:321)
+==10051==    by 0x109833: ai_play (main.c:419)
+==10051==    by 0x1099C7: main (main.c:509)
+==10051== 
+==10051== 
+==10051== Process terminating with default action of signal 2 (SIGINT)
+==10051==    at 0x10AA45: hits_edgex (snek_api.c:553)
+==10051==    by 0x10AB46: is_failure_statex (snek_api.c:583)
+==10051==    by 0x10AC17: valid_dirsx (snek_api.c:597)
+==10051==    by 0x10913E: shortest_path (main.c:201)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051==    by 0x109276: shortest_path (main.c:221)
+==10051== 
+==10051== HEAP SUMMARY:
+==10051==     in use at exit: 3,776 bytes in 97 blocks
+==10051==   total heap usage: 3,368,325 allocs, 3,368,228 frees, 80,875,224 bytes allocated
+==10051== 
+==10051== LEAK SUMMARY:
+==10051==    definitely lost: 0 bytes in 0 blocks
+==10051==    indirectly lost: 0 bytes in 0 blocks
+==10051==      possibly lost: 0 bytes in 0 blocks
+==10051==    still reachable: 3,776 bytes in 97 blocks
+==10051==         suppressed: 0 bytes in 0 blocks
+==10051== Reachable blocks (those to which a pointer was found) are not shown.
+==10051== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==10051== 
+==10051== For counts of detected and suppressed errors, rerun with: -v
+==10051== Use --track-origins=yes to see where uninitialised values come from
+==10051== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

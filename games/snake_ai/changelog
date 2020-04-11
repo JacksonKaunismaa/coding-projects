@@ -1,0 +1,9 @@
+--------March 28-------------
+hits_edge()
+Updated hits_edge() bug
+Credit: Mingde Yini
+
+hits_self()
+Resolved issue where hits_self() does not account for hitting the current
+position of the tail (which will move in the transition to the next frame)
+Credit: Noelle Lim & Fatima Jangda
