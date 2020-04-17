@@ -1,4 +1,19 @@
 function listen(){
+
+	browser.tabs.query({active: true, currentWindow: true})
+	.then((the_tabs) => {
+		browser.tabs.sendMessage(the_tabs[0].id, {value:"init"}) 
+		.then((ret) => {
+			switch (ret.val){
+				case -1:
+					document.getElementById("display").innerHTML = `Video not found!`;
+					break;
+				default:
+					document.getElementById("display").innerHTML = `Speed: ${ret.val}x`;
+			}
+		})
+	});
+	
 	var evtList = ["click", "keypress"];
 	for (evt of evtList){
 		document.addEventListener(evt, (e) => {
@@ -10,13 +25,15 @@ function listen(){
 
 			function click(tabs){
 				let thing = document.getElementById("speed").value;
+				document.getElementById("speed").value = "";
 				browser.tabs.sendMessage(tabs[0].id, {
 					value: thing
 				}).then((ret) => {
 					switch(ret.val){
 						case 1:
 							document.getElementById("result").style.color = "green";
-							document.getElementById("result").innerHTML = `Succesfully updated speed to "${thing}"`;
+							document.getElementById("result").innerHTML = `Succesfully updated speed to ${thing}`;
+							document.getElementById("display").innerHTML = `Speed ${ret.speed}x`;
 							break;
 						case 0:
 							document.getElementById("result").style.color = "black";
