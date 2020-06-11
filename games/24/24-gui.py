@@ -12,19 +12,19 @@ import os
 
 pg.init()
 pg.font.init()
-WIDTH, HEIGHT = 400, 300     # 1200, 1000  #400, 300
+WIDTH, HEIGHT = 1200, 1000     # 1200, 1000  #400, 300
 CARDS_NUM = 4
 TARGET = 24
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000
-font_size = 20           # 80   # 20
+font_size = 50           # 50   # 20
 frac_font = 40
-card_size = (70, 85)     # 133, 194    #70, 85
-button_size = (40, 40)   # 75, 75     # 40, 40
-gui_size = (45, 30)      # X, X    #45, 30
-wide_gui_size = (100, 25)
-big_wide_gui_size = (160, 25)
+card_size = (133, 194)     # 133, 194    #70, 85
+button_size = (75, 75)   # 75, 75     # 40, 40
+gui_size = (75, 75)      # 75, 60    #45, 30
+wide_gui_size = (100, 25)       #100,25     #
+big_wide_gui_size = (320, 50)     # 160, 25     #
 SCRIPT_LOC = os.path.dirname(os.path.realpath(__file__))
 gd = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption(f'{TARGET}!')
@@ -347,11 +347,11 @@ def handle_correct(gs):
     gs.correct += 1
     elo_table.update_player(puzzle_name, score_earned)
     gs.score += points_earned
-    gs.score_box.update_text(gs.score)
+    gs.score_box.update_text("%.1f"%gs.score, WIDTH, HEIGHT)
     gs.start = time.time()
     gs.correct_flag = 0
-    gs.pf_box.update_text("%.1f"%elo_table.performance)
-    gs.solved_box.update_text(gs.correct)
+    gs.pf_box.update_text("%.1f"%elo_table.performance, WIDTH, HEIGHT)
+    gs.solved_box.update_text(gs.correct, WIDTH, HEIGHT)
     th_event.set()
 
 def handle_wrong(gs):
@@ -367,14 +367,14 @@ def handle_wrong(gs):
     puzzle_name = get_puzzle_name(gs)
     elo_table.update_player(puzzle_name, 0)
     gs.score -= PENALTY
-    gs.score_box.update_text(gs.score)
+    gs.score_box.update_text("%.1f"%gs.score, WIDTH, HEIGHT)
     gs.start = time.time()
     gs.wrong += 1
     continue_screen(gs, f"A solution was {gs.correct_flag[:-1]}")
     gs.pass_btn.deselect()
     gs.correct_flag = 0
-    gs.pf_box.update_text("%.1f"%elo_table.performance)
-    gs.wrong_box.update_text(gs.wrong)
+    gs.pf_box.update_text("%.1f"%elo_table.performance, WIDTH, HEIGHT)
+    gs.wrong_box.update_text(gs.wrong, WIDTH, HEIGHT)
     th_event.set()
 
 def game():
@@ -396,22 +396,43 @@ def game():
     solver_thread = th.Thread(target=async_check, args=(gs,))
     solver_thread.start()
 
-    gs.score_disp = cards.TextBox("Score", pg.Rect((WIDTH-wide_gui_size[0])//2, 0, *wide_gui_size), bsize=2, fsize=font_size)
-    gs.score_box = cards.TextBox("0", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1], *wide_gui_size), bsize=2, fsize=font_size)
+    right_height = 0
+    left_height = 0
+    gs.score_disp = cards.TextBox("Score", pg.Rect(WIDTH, right_height, *wide_gui_size), bsize=2, fsize=font_size, align="right")   # just need the top left corner
+    gs.score_disp.resize(WIDTH, HEIGHT)
+    right_height = gs.score_disp.border.bottom
+    gs.score_box = cards.TextBox("0", pg.Rect(WIDTH, right_height, *wide_gui_size), bsize=2, fsize=font_size, align="right")
+    gs.score_box.resize(WIDTH, HEIGHT)
+    right_height = gs.score_box.border.bottom
 
-    gs.pf_disp = cards.TextBox("Performance", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1]*2, *wide_gui_size), bsize=2, fsize=font_size)
-    gs.pf_box = cards.TextBox("------", pg.Rect((WIDTH-wide_gui_size[0])//2, wide_gui_size[1]*3, *wide_gui_size), bsize=2, fsize=font_size)
+    gs.pf_disp = cards.TextBox("Performance", pg.Rect(WIDTH, right_height, *wide_gui_size), bsize=2, fsize=font_size, align="right")
+    gs.pf_disp.resize(WIDTH, HEIGHT)
+    right_height = gs.pf_disp.border.bottom
+    gs.pf_box = cards.TextBox("------", pg.Rect(WIDTH, right_height, *wide_gui_size), bsize=2, fsize=font_size, align="right")
+    gs.pf_box.resize(WIDTH, HEIGHT)
+    right_height = gs.pf_box.border.bottom
 
-    gs.time_disp = cards.TextBox("Time", pg.Rect(0, 0, *gui_size), bsize=2, fsize=font_size)
-    gs.time_box = cards.TextBox("0", pg.Rect(0, gui_size[1], *gui_size), bsize=2, fsize=font_size)
+    gs.time_disp = cards.TextBox("Time", pg.Rect(0, left_height, *gui_size), bsize=2, fsize=font_size, align="left")
+    gs.time_disp.resize(WIDTH, HEIGHT)
+    left_height = gs.time_disp.border.bottom
+    gs.time_box = cards.TextBox("0", pg.Rect(0, left_height, *gui_size), bsize=2, fsize=font_size, align="left")
+    gs.time_box.resize(WIDTH, HEIGHT)
+    left_height = gs.time_box.border.bottom
 
-    gs.solved_disp = cards.TextBox("Solved", pg.Rect(0, gui_size[1]*2, *gui_size), bsize=2, fsize=font_size)
-    gs.solved_box = cards.TextBox("0", pg.Rect(0, gui_size[1]*3, *gui_size), bsize=2, fsize=font_size)
+    gs.solved_disp = cards.TextBox("Solved", pg.Rect(0, left_height, *gui_size), bsize=2, fsize=font_size, align="left")
+    gs.solved_disp.resize(WIDTH, HEIGHT)
+    left_height = gs.solved_disp.border.bottom
+    gs.solved_box = cards.TextBox("0", pg.Rect(0, left_height, *gui_size), bsize=2, fsize=font_size, align="left")
+    gs.solved_box.resize(WIDTH, HEIGHT)
+    left_height = gs.solved_box.border.bottom
 
-    gs.wrong_disp = cards.TextBox("Wrong", pg.Rect(WIDTH-gui_size[0], 0, *gui_size), bsize=2, fsize=font_size)
-    gs.wrong_box = cards.TextBox("0", pg.Rect(WIDTH-gui_size[0], gui_size[1], *gui_size), bsize=2, fsize=font_size)
+    gs.wrong_disp = cards.TextBox("Wrong", pg.Rect(0, 0, *gui_size), bsize=2, fsize=font_size, align="center")
+    gs.wrong_disp.resize(WIDTH, HEIGHT)
+    gs.wrong_box = cards.TextBox("0", pg.Rect(0, gs.wrong_disp.border.bottom, *gui_size), bsize=2, fsize=font_size, align="center")
+    gs.wrong_box.resize(WIDTH, HEIGHT)
 
-    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect((WIDTH-big_wide_gui_size[0])//2, HEIGHT-big_wide_gui_size[1], *big_wide_gui_size), bsize=2, fsize=font_size)
+    gs.pass_btn = cards.TextBox("Claim no solution!", pg.Rect(0, HEIGHT-button_size[1]*4, *big_wide_gui_size), bsize=2, fsize=font_size, align="center")
+    gs.pass_btn.resize(WIDTH, HEIGHT)
 
     gs.correct_flag = 0
     gs.stack = {}
@@ -442,7 +463,7 @@ def game():
         gs.buttons[-1].deselect()
         gs.pass_btn.deselect()
 
-        gs.time_box.update_text(int(time.time()-game_start))
+        gs.time_box.update_text(int(time.time()-game_start), WIDTH, HEIGHT)
 
         last_card = one_left(gs.deck+gs.extra_cards)
         if (last_card and last_card.value == TARGET) or gs.correct_flag == 1:

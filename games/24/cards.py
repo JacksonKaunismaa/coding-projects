@@ -302,20 +302,30 @@ class Fraction(BorderedSprite):
 
 
 class TextBox(BorderedSprite):
-    def __init__(self, txt, sz, fsize=None, bsize=None):
+    def __init__(self, txt, sz, fsize=None, bsize=None, align="left"):
         super().__init__(sz, bsize=bsize)
-        self.sz = sz.copy()
         self.txt = txt
         if fsize is not None:
             self.font = pg.font.SysFont("Comic Sans MS", fsize)
         else:
             self.font = pg.font.SysFont("Comic Sans MS", 80)
+        self.align = align
+        if self.align == "right":
+            self.rect.topright = self.rect.topleft
+        elif self.align == "center":
+            self.rect.centerx = self.rect.left
         self.unhide()
+
+
+    def get_size(self):
+        return self.font.size(str(self.txt))
+
 
     def draw(self, gd):
         text = repr(self)
         text_surf = self.font.render(text, True, colors.BLACK)
-        super().center_draw(text_surf, gd)
+        #super().center_draw(text_surf, gd)
+        super().draw(text_surf, gd)
 
     def __repr__(self):
         if type(self.txt) is float:
@@ -323,6 +333,27 @@ class TextBox(BorderedSprite):
         else:
             return str(self.txt)
 
-    def update_text(self, new_text):
+    def update_text(self, new_text, WIDTH, HEIGHT):
         self.txt = new_text
+        self.resize(WIDTH, HEIGHT)
 
+    def resize(self, WIDTH, HEIGHT):
+        old_wide = self.rect.width
+        wideness, highness = self.get_size()
+
+        self.back = pg.Surface((wideness, highness))
+        self.back.fill(colors.WHITE)
+        self.rect.width = wideness
+        self.rect.height =  highness
+        self.border.width = wideness + self.b_width*2
+        self.border.height = highness + self.b_width*2
+        self.border.top = self.rect.top - self.b_width
+
+        if self.align == "right":
+            self.border.right = self.rect.right + self.b_width - (wideness-old_wide)  # since it would grow in that direction
+            self.rect.right = self.rect.right - (wideness-old_wide)
+        elif self.align == "left":
+            self.border.left = self.rect.left - self.b_width
+        elif self.align == "center":
+            self.border.left = (WIDTH - wideness - 2*self.b_width) // 2
+            self.rect.left = (WIDTH- wideness) // 2
