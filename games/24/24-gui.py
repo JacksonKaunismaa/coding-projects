@@ -13,8 +13,8 @@ import os
 pg.init()
 pg.font.init()
 WIDTH, HEIGHT = 1200, 1000     # 1200, 1000  #400, 300
-CARDS_NUM = 4
-TARGET = 24
+CARDS_NUM = 5
+TARGET = 60
 MAX_SCORE = 8500
 MIN_SCORE = 150
 PENALTY = 6000

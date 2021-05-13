@@ -37,3 +37,6 @@
 		return proc_msg(msg.value);
 	});
 })(); 			// call the function instantly
+
+
+console.log("hello from speeder");

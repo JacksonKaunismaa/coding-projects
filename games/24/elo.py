@@ -24,7 +24,7 @@ class EloTable(object):
             self.records = {}
 
     def get_rand_elo(self):
-        return np.random.normal(self.start_elo, 250)
+        return np.random.normal(self.start_elo, 50)
 
 
     def get_elo(self, p):
